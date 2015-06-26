@@ -30,7 +30,7 @@ public class NavigationDrawer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_drawer);
+        setContentView(R.layout.home);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         contentFrame = (FrameLayout) findViewById(R.id.content_frame);

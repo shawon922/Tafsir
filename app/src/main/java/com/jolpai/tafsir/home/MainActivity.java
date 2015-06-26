@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txt = (TextView) findViewById(R.id.myText);
+
 
 
     }
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setText() {
-        txt.setText("Tanim reja");
+
     }
 
 
