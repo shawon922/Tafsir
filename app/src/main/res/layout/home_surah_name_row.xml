@@ -1,69 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:layout_weight="1"
-        android:background="@color/navigation_background_gray_100"
+        android:background="@color/gray_100"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            android:background="@color/gray_600">
 
             <ImageView
+                android:id="@+id/imgReciteIcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            android:background="@color/green">
 
             <ImageView
                 android:id="@+id/surahNo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
-                android:background="@color/abc_search_url_text_normal" />
+                 />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5.5">
+            android:layout_weight="1"
+            android:background="@color/gray_100"
+            android:orientation="horizontal"
+            android:gravity="right">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/red"
+                android:gravity="left|center_vertical">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtSurahName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Fatiha"/>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@color/blue">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtTotalVerseNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+
+            </LinearLayout>
 
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:background="@null"/>
+
 </LinearLayout>

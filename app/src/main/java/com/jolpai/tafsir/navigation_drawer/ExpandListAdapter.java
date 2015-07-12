@@ -152,7 +152,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         String groupTitle = (String)getGroup(groupPosition);
         if(convertView == null){
             LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.navigation_expand_list_group_view,null);
+            convertView = inflater.inflate(R.layout.nv_expand_list_group_view,null);
         }
         TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNavigationGroup);
         txtViewHeader.setText(groupTitle);
