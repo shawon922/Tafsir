@@ -149,17 +149,43 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
+        if(groupPosition == 0){
+            String groupTitle = (String)getGroup(groupPosition);
+            if(convertView == null){
+                LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_row,null);
+            }
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtGroup);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
+
+
+        }else if(groupPosition==1){
+            String groupTitle = (String)getGroup(groupPosition);
+            if(convertView == null){
+                LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_row,null);
+            }
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtGroup);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
+
+        }
+
+
         String groupTitle = (String)getGroup(groupPosition);
         if(convertView == null){
             LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.nv_expand_list_group_view,null);
+            convertView = inflater.inflate(R.layout.nv_row,null);
         }
-        TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNavigationGroup);
+        TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtGroup);
         txtViewHeader.setText(groupTitle);
         txtViewHeader.setTypeface(Typeface.SANS_SERIF);
         txtViewHeader.setTextSize(20);
-
         return convertView;
+
     }
 
     /**
@@ -186,9 +212,9 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     final String childTxt = (String)getChild(groupPosition,childPosition);
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.navigation_expand_list_child_view,null);
+            convertView = inflater.inflate(R.layout.nv_child,null);
         }
-        TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtNavigationChild);
+        TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
         txtViewChild.setText(childTxt);
         txtViewChild.setTypeface(Typeface.SANS_SERIF);
         txtViewChild.setTextSize(15);

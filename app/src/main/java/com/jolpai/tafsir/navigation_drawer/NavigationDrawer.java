@@ -45,6 +45,9 @@ public class NavigationDrawer extends AppCompatActivity {
 
         prepearingData();
         expandListAdapter = new ExpandListAdapter(NavigationDrawer.this,listDataHeader,listDataChild);
+        View v=getLayoutInflater().inflate(R.layout.nv_header,null);
+
+        drawerList.addHeaderView(v,null,false);
         drawerList.setAdapter(expandListAdapter);
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 

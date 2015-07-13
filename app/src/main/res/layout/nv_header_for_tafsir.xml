@@ -6,8 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/green"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/green">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,9 +19,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:orientation="horizontal"
             android:background="@color/black_trns_20"
-            android:gravity="left"
-            android:orientation="horizontal">
+            android:gravity="left">
 
             <LinearLayout
                 android:layout_width="100dp"
@@ -31,7 +31,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/ic_launcher"/>
 
             </LinearLayout>
 
@@ -40,13 +40,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="left|center_vertical"
-                    android:text="Syad Qutub" />
+                    android:text="Syad Qutub"/>
 
 
             </LinearLayout>

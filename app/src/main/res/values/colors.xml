@@ -10,5 +10,8 @@
     <color name="gray_600">#757575</color>
     <color name="gray_100">#F5F5F5</color>
     <color name="gray_50">#EEEEEE</color>
+    <color name="black_trns_20">#25000000</color>
+
+    <color name="blue_trns_20">#252196F3</color>
 
 </resources>

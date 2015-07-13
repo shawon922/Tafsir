@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@color/amber"
         android:gravity="right"
         android:orientation="horizontal">
 
@@ -13,31 +14,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:background="@color/gray_100">
+            android:gravity="left|center_vertical">
 
             <TextView
+                android:id="@+id/txtChild"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ibn Kathir"/>
-
+                android:paddingLeft="70dp"
+                android:text="Language"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/blue">
 
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/switch1"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
     </LinearLayout>
 
 
-
 </LinearLayout>
+
+
