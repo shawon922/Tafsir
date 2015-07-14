@@ -1,7 +1,9 @@
-package com.jolpai.tafsir.navigation_drawer;
+package com.jolpai.tafsir.activity;
+
+
+import android.os.Bundle;
 
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,15 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.adapter.ExpandListAdapter;
+import com.jolpai.tafsir.entity.About;
+import com.jolpai.tafsir.entity.Audio;
+import com.jolpai.tafsir.entity.Font;
+import com.jolpai.tafsir.entity.Help;
+import com.jolpai.tafsir.entity.Lang;
+import com.jolpai.tafsir.entity.Tafsir;
+import com.jolpai.tafsir.entity.Translation;
+import com.jolpai.tafsir.entity.Update;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +33,9 @@ public class NavigationDrawer extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private FrameLayout contentFrame;
     private ExpandableListView drawerList;
-    private List<String> listDataHeader ;
-    private HashMap<String,List<String>> listDataChild;
-    private  ExpandListAdapter expandListAdapter;
+    private List<String> parentList ;
+    private HashMap<String,List<String>> childMapingWithParent;
+    private ExpandListAdapter expandListAdapter;
 
 
     @Override
@@ -44,7 +55,7 @@ public class NavigationDrawer extends AppCompatActivity {
         super.onResume();
 
         prepearingData();
-        expandListAdapter = new ExpandListAdapter(NavigationDrawer.this,listDataHeader,listDataChild);
+        expandListAdapter = new ExpandListAdapter(NavigationDrawer.this,parentList, childMapingWithParent);
         View v=getLayoutInflater().inflate(R.layout.nv_header,null);
 
         drawerList.addHeaderView(v,null,false);
@@ -59,18 +70,18 @@ public class NavigationDrawer extends AppCompatActivity {
     }
 
     protected void prepearingData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        parentList = new ArrayList<String>();
+        childMapingWithParent = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("Tafsir");
-        listDataHeader.add("Language");
-        listDataHeader.add("Translation");
-        listDataHeader.add("Font");
-        listDataHeader.add("Audio");
-        listDataHeader.add("Update");
-        listDataHeader.add("About");
-        listDataHeader.add("Help");
+        parentList.add(new Tafsir().toString());
+        parentList.add(new Lang().toString());
+        parentList.add(new Translation().toString());
+        parentList.add(new Font().toString());
+        parentList.add(new Audio().toString());
+        parentList.add(new Update().toString());
+        parentList.add(new About().toString());
+        parentList.add(new Help().toString());
 
         // Adding child data
         List<String> Tafsir = new ArrayList<String>();
@@ -92,9 +103,9 @@ public class NavigationDrawer extends AppCompatActivity {
 
 
 
-        listDataChild.put(listDataHeader.get(0), Tafsir); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), Language);
-        listDataChild.put(listDataHeader.get(2), Translation);
+        childMapingWithParent.put(parentList.get(0), Tafsir); // Header, Child data
+        childMapingWithParent.put(parentList.get(1), Language);
+        childMapingWithParent.put(parentList.get(2), Translation);
     }
 
     @Override

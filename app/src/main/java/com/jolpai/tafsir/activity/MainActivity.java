@@ -1,4 +1,4 @@
-package com.jolpai.tafsir.home;
+package com.jolpai.tafsir.activity;
 
 import android.content.Context;
 import android.os.Bundle;
