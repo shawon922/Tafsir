@@ -40,97 +40,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
 
 
     /**
-     * Gets the number of groups.
-     *
-     * @return the number of groups
-     */
-    @Override
-    public int getGroupCount() {
-
-        return this.parentList.size();
-    }
-
-    /**
-     * Gets the number of children in a specified group.
-     *
-     * @param groupPosition the position of the group for which the children
-     *                      count should be returned
-     * @return the children count in the specified group
-     */
-    @Override
-    public int getChildrenCount(int groupPosition) {
-        return this.childMapingWithParent.get(this.parentList.get(groupPosition)).size();
-    }
-
-    /**
-     * Gets the data associated with the given group.
-     *
-     * @param groupPosition the position of the group
-     * @return the data child for the specified group
-     */
-    @Override
-    public Object getGroup(int groupPosition) {
-        return this.parentList.get(groupPosition);
-    }
-
-    /**
-     * Gets the data associated with the given child within the given group.
-     *
-     * @param groupPosition the position of the group that the child resides in
-     * @param childPosition the position of the child with respect to other
-     *                      children in the group
-     * @return the data of the child
-     */
-    @Override
-    public Object getChild(int groupPosition, int childPosition) {
-        return this.childMapingWithParent.get(this.parentList.get(groupPosition)).get(childPosition);
-    }
-
-    /**
-     * Gets the ID for the group at the given position. This group ID must be
-     * unique across groups. The combined ID (see
-     * {@link #getCombinedGroupId(long)}) must be unique across ALL items
-     * (groups and all children).
-     *
-     * @param groupPosition the position of the group for which the ID is wanted
-     * @return the ID associated with the group
-     */
-    @Override
-    public long getGroupId(int groupPosition) {
-
-        return groupPosition;
-    }
-
-    /**
-     * Gets the ID for the given child within the given group. This ID must be
-     * unique across all children within the group. The combined ID (see
-     * {@link #getCombinedChildId(long, long)}) must be unique across ALL items
-     * (groups and all children).
-     *
-     * @param groupPosition the position of the group that contains the child
-     * @param childPosition the position of the child within the group for which
-     *                      the ID is wanted
-     * @return the ID associated with the child
-     */
-    @Override
-    public long getChildId(int groupPosition, int childPosition) {
-
-        return  childPosition;
-    }
-
-    /**
-     * Indicates whether the child and group IDs are stable across changes to the
-     * underlying data.
-     *
-     * @return whether or not the same ID always refers to the same object
-     * @see Adapter#hasStableIds()
-     */
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    /**
      * Gets a View that displays the given group. This View is only for the
      * group--the Views for the group's children will be fetched using
      * {@link #getChildView(int, int, boolean, android.view.View, android.view.ViewGroup)}.
@@ -204,7 +113,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
         LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.nv_row_tafsir,parent,false);
 
-      //  convertView.setOnClickListener(this);
+        //  convertView.setOnClickListener(this);
 
 
         TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtTafsir);
@@ -237,7 +146,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-    final String childTxt = (String)getChild(groupPosition, childPosition);
+        final String childTxt = (String)getChild(groupPosition, childPosition);
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.nv_child,null);
@@ -249,6 +158,109 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
 
         return convertView;
     }
+
+
+
+    /**
+     * Gets the data associated with the given child within the given group.
+     *
+     * @param groupPosition the position of the group that the child resides in
+     * @param childPosition the position of the child with respect to other
+     *                      children in the group
+     * @return the data of the child
+     */
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        return this.childMapingWithParent.get(this.parentList.get(groupPosition)).get(childPosition);
+    }
+    /**
+     * Gets the ID for the given child within the given group. This ID must be
+     * unique across all children within the group. The combined ID (see
+     * {@link #getCombinedChildId(long, long)}) must be unique across ALL items
+     * (groups and all children).
+     *
+     * @param groupPosition the position of the group that contains the child
+     * @param childPosition the position of the child within the group for which
+     *                      the ID is wanted
+     * @return the ID associated with the child
+     */
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+
+        return  childPosition;
+    }
+
+    /**
+     * Gets the number of children in a specified group.
+     *
+     * @param groupPosition the position of the group for which the children
+     *                      count should be returned
+     * @return the children count in the specified group
+     */
+    @Override
+    public int getChildrenCount(int groupPosition) {
+        return this.childMapingWithParent.get(this.parentList.get(groupPosition)).size();
+    }
+
+
+    /**
+     * Gets the data associated with the given group.
+     *
+     * @param groupPosition the position of the group
+     * @return the data child for the specified group
+     */
+    @Override
+    public Object getGroup(int groupPosition) {
+        return this.parentList.get(groupPosition);
+    }
+
+    /**
+     * Gets the number of groups.
+     *
+     * @return the number of groups
+     */
+    @Override
+    public int getGroupCount() {
+
+        return this.parentList.size();
+    }
+
+
+
+    /**
+     * Gets the ID for the group at the given position. This group ID must be
+     * unique across groups. The combined ID (see
+     * {@link #getCombinedGroupId(long)}) must be unique across ALL items
+     * (groups and all children).
+     *
+     * @param groupPosition the position of the group for which the ID is wanted
+     * @return the ID associated with the group
+     */
+    @Override
+    public long getGroupId(int groupPosition) {
+
+        return groupPosition;
+    }
+
+    @Override
+    public void notifyDataSetChanged()
+    {
+        // Refresh List rows
+        super.notifyDataSetChanged();
+    }
+
+    /**
+     * Indicates whether the child and group IDs are stable across changes to the
+     * underlying data.
+     *
+     * @return whether or not the same ID always refers to the same object
+     * @see Adapter#hasStableIds()
+     */
+    @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
 
     /**
      * Whether the child at the specified position is selectable.
@@ -262,6 +274,13 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
         return true;
     }
 
+
+
+    @Override
+    public boolean areAllItemsEnabled()
+    {
+        return true;
+    }
 
     @Override
     public void onClick(View v ) {
