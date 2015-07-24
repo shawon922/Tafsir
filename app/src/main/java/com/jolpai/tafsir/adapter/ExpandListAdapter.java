@@ -1,7 +1,6 @@
 package com.jolpai.tafsir.adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,66 +59,78 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
-       /* if(groupPosition == 0){
+       String groupTitle = (String)getGroup(groupPosition);
 
-
-            String groupTitle = (String)getGroup(groupPosition);
-
-                LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.nv_row_tafsir,parent,false);
-
-            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtTafsir);
+        if(groupPosition == 0){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
             txtViewHeader.setText(groupTitle);
             txtViewHeader.setTypeface(Typeface.SANS_SERIF);
             txtViewHeader.setTextSize(20);
 
-
-        }else if(groupPosition==1){
-            String groupTitle = (String)getGroup(groupPosition);
-            if(convertView == null){
-                LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.nv_row,null);
-            }
-            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtGroup);
+        }else if (groupPosition == 1){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
             txtViewHeader.setText(groupTitle);
             txtViewHeader.setTypeface(Typeface.SANS_SERIF);
             txtViewHeader.setTextSize(20);
 
-        }else {
-            String groupTitle = (String) getGroup(groupPosition);
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.nv_row, null);
-            }
-            TextView txtViewHeader = (TextView) convertView.findViewById(R.id.txtGroup);
+        }else if (groupPosition == 2){
+
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_lang,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
             txtViewHeader.setText(groupTitle);
             txtViewHeader.setTypeface(Typeface.SANS_SERIF);
             txtViewHeader.setTextSize(20);
-        }*/
+        }else if (groupPosition == 3){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_font,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
 
+        }else if (groupPosition == 4){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_audio,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
 
-    /*    String groupTitle = (String) getGroup(groupPosition);
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.nv_row, null);
+        }else if (groupPosition == 5){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
+
+        }else if (groupPosition == 6){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
+
+        }else if (groupPosition == 7){
+            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
+            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
+            txtViewHeader.setText(groupTitle);
+            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
+            txtViewHeader.setTextSize(20);
+
         }
-        TextView txtViewHeader = (TextView) convertView.findViewById(R.id.txtGroup);
-        txtViewHeader.setText(groupTitle);
-        txtViewHeader.setTypeface(Typeface.SANS_SERIF);
-        txtViewHeader.setTextSize(20);*/
 
-        String groupTitle = (String)getGroup(groupPosition);
-
-        LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.nv_row_tafsir,parent,false);
 
         //  convertView.setOnClickListener(this);
 
 
-        TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtTafsir);
-        txtViewHeader.setText(groupTitle);
-        txtViewHeader.setTypeface(Typeface.SANS_SERIF);
-        txtViewHeader.setTextSize(20);
 
         return convertView;
 
@@ -254,7 +265,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
      * underlying data.
      *
      * @return whether or not the same ID always refers to the same object
-     * @see Adapter#hasStableIds()
+
      */
     @Override
     public boolean hasStableIds() {

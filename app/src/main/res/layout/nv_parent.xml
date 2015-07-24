@@ -26,6 +26,20 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/gray_100">
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox"
+                android:focusable="false"/>
+        </LinearLayout>
+
 
 
     </LinearLayout>
