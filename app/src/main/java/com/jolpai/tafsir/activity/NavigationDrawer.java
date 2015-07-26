@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
-import com.jolpai.tafsir.adapter.NVadapter;
+import com.jolpai.tafsir.adapter.NavigationAdapter;
 import com.jolpai.tafsir.entity.About;
 import com.jolpai.tafsir.entity.Audio;
 import com.jolpai.tafsir.entity.Child;
@@ -99,7 +99,7 @@ public class NavigationDrawer extends AppCompatActivity {
 
         parents = newParents;
 
-        final NVadapter adapter = new NVadapter(NavigationDrawer.this,parents);
+        final NavigationAdapter adapter = new NavigationAdapter(NavigationDrawer.this,parents);
 
         final MyExpandableListAdapter mAdapter = new MyExpandableListAdapter();
         drawerList.setAdapter(adapter);

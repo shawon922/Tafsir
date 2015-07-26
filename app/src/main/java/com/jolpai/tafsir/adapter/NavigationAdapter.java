@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by Tanim reja on 7/16/2015.
  */
-public class NVadapter extends BaseExpandableListAdapter
+public class NavigationAdapter extends BaseExpandableListAdapter
 {
 Context context;
 
@@ -32,7 +32,7 @@ Context context;
     private int ChildClickStatus=-1;
     private ArrayList<Parent> parents;
 
-    public NVadapter(Context context, ArrayList<Parent> parents)
+    public NavigationAdapter(Context context, ArrayList<Parent> parents)
     {
         this.context = context;
         this.parents=parents;
