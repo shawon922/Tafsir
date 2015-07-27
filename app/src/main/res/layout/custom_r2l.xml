@@ -1,0 +1,15 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <com.jolpai.tafsir.custom.R2L
+        android:id="@+id/cl_R2L"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+
+    </com.jolpai.tafsir.custom.R2L>
+
+</ScrollView>
