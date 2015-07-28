@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
 import com.jolpai.tafsir.adapter.NavigationAdapter;
+import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.entity.About;
 import com.jolpai.tafsir.entity.Audio;
 import com.jolpai.tafsir.entity.Child;
@@ -33,6 +34,7 @@ import com.jolpai.tafsir.entity.Parent;
 import com.jolpai.tafsir.entity.Tafsir;
 import com.jolpai.tafsir.entity.Translation;
 import com.jolpai.tafsir.entity.Update;
+import com.jolpai.tafsir.entity.Verse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,6 +88,8 @@ public class NavigationDrawer extends AppCompatActivity {
         super.onResume();
 
 
+        List<Verse> verseList = App.getContext().getDBManager().getVerseArabic();
+        Log.e("verse", ""+verseList.size());
 
 
 
