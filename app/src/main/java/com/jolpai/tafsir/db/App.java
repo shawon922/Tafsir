@@ -12,6 +12,7 @@ import java.io.File;
 public class App extends Application {
     private static App instence;
     private DatabaseManager dbManager;
+    private Context context;
 
 
 
@@ -19,7 +20,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        loadApplicationData(instence);
+      //  loadApplicationData(instence);
     }
 
     public DatabaseManager getDBManager() {
@@ -37,8 +38,10 @@ public class App extends Application {
     }
 
     public synchronized static App getContext() {
-        if (instence == null)
+        if (instence == null) {
             instence = new App();
+            loadApplicationData();
+        }
 
         return instence;
     }
@@ -63,8 +66,11 @@ public class App extends Application {
             return null;
     }
 
-    public static boolean loadApplicationData(Context ctx) {
-        DatabaseManager dbManager = new DatabaseManager(ctx);
+    public static boolean loadApplicationData() {
+       Context context=instence;
+
+
+        DatabaseManager dbManager = new DatabaseManager(context);
         if(dbManager.initializeDatabase())
         {
             App.getContext().setDBManager(dbManager);

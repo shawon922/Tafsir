@@ -31,12 +31,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         super(context, DB_NAME, null, VERSION);
 
         this.context = context;
-        pref = this.context.getSharedPreferences("iapp_pref",
-                this.context.MODE_PRIVATE);
+     //   pref = this.context.getSharedPreferences("iapp_pref", this.context.MODE_PRIVATE);
 
         DB_PATH = App.getContext().getAppDataDir();
 
-        if (pref.getBoolean("isfirst", true) || !checkDataBase()) {
+    //    if (pref.getBoolean("isfirst", true) || !checkDataBase()) {
             try {
                 copyDataBase();
                 SharedPreferences.Editor editor = pref.edit();
@@ -46,7 +45,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
 
-        }
+     //   }
     }
 
 
