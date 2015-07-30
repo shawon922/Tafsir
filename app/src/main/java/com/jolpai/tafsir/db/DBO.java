@@ -5,7 +5,8 @@ package com.jolpai.tafsir.db;
  */
 public class DBO {
 
-    public static final String DB_Name ="jolpai";
+    public static final String DB_Name ="jolpai.sqlite";
+ // public static final String DB_Name ="DB_Sinorise.sqlite";
 
     public static final String T_SurahName="SurahName";
     public static final String T_Settings="Settings";

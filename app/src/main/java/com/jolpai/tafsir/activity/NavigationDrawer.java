@@ -1,6 +1,8 @@
 package com.jolpai.tafsir.activity;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import android.support.v4.widget.DrawerLayout;
@@ -24,6 +26,7 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
 import com.jolpai.tafsir.adapter.NavigationAdapter;
 import com.jolpai.tafsir.db.App;
+import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.About;
 import com.jolpai.tafsir.entity.Audio;
 import com.jolpai.tafsir.entity.Child;
@@ -40,7 +43,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class NavigationDrawer extends AppCompatActivity {
+public class NavigationDrawer extends Activity {
 
     private DrawerLayout drawerLayout;
     private FrameLayout contentFrame;
@@ -54,6 +57,7 @@ public class NavigationDrawer extends AppCompatActivity {
     private int ParentClickStatus=-1;
     private int ChildClickStatus=-1;
     private ArrayList<Parent> parents;
+    private Context context;
 
 
     @Override
@@ -88,8 +92,9 @@ public class NavigationDrawer extends AppCompatActivity {
         super.onResume();
 
 
-        List<Verse> verseList = App.getContext().getDBManager().getVerseArabic();
-        Log.e("verse", ""+verseList.size());
+      //  DatabaseManager dbm = App.getContext().getDatabaseManager();
+        List<String> name = App.getContext().getDatabaseManager().getFiscalYearList();
+
 
 
 
