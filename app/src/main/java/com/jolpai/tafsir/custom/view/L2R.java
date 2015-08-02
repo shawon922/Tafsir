@@ -1,4 +1,4 @@
-package com.jolpai.tafsir.custom;
+package com.jolpai.tafsir.custom.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

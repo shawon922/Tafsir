@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <com.jolpai.tafsir.custom.L2R
+    <com.jolpai.tafsir.custom.view.L2R
         android:id="@+id/cl_L2R"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true">
 
-    </com.jolpai.tafsir.custom.L2R>
+    </com.jolpai.tafsir.custom.view.L2R>
 
 </ScrollView>
