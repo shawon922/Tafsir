@@ -3,15 +3,15 @@ package com.jolpai.tafsir.db;
 /**
  * Created by Tanim reja on 7/28/2015.
  */
-public class DBO {
+public class DP {
 
+    public static final String DB_Folder ="TafsirDB";
     public static final String DB_Name ="jolpai.sqlite";
- // public static final String DB_Name ="DB_Sinorise.sqlite";
 
-    public static final String T_SurahName="SurahName";
-    public static final String T_Settings="Settings";
-    public static final String T_VerseArabic="VerseArabic";
-    public static final String T_VerseTrans="VerseTrans";
+    public static final String Tbl_SurahName ="SurahName";
+    public static final String Tbl_Settings="Settings";
+    public static final String Tbl_VerseArabic="VerseArabic";
+    public static final String Tbl_VerseTrans="VerseTrans";
 
     public static final String VerseTrans_Id="VerseTrans";
     public static final String VerseTrans_SurahNo="surahNo";

@@ -18,20 +18,15 @@ import java.io.OutputStream;
 public class App extends Application {
     private static App instence;
     private DatabaseManager dbm;
-
-    public static final int VERSION = 1;
-    public static final SQLiteDatabase.CursorFactory FACTORY = null;
-    private static String DB_NAME = "jolpai.sqlite";
+  //  public static final SQLiteDatabase.CursorFactory FACTORY = null;
+    private static String DB_NAME = DP.DB_Name;
     private String DB_PATH = "";
     public static SQLiteDatabase db;
-    private static Context context;
-
 
 
     public synchronized static App getContext() {
         if (instence == null)
             instence = new App();
-
 
         instence.setDatabaseManager();
         return instence;
@@ -57,9 +52,6 @@ public class App extends Application {
 
             }
         }
-
-
-
     }
 
     public boolean initializeDatabase(){
@@ -115,7 +107,7 @@ public class App extends Application {
 
     private String getAppDirectory(){
         if(isExtSDCardPresent()){
-            String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/TafsirDB";
+            String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+DP.DB_Folder;
             File file = new File(filePath);
             if(!file.exists()){
                 file.mkdir();

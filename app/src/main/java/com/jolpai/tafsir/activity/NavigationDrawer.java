@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,6 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
 import com.jolpai.tafsir.adapter.NavigationAdapter;
 import com.jolpai.tafsir.db.App;
-import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.About;
 import com.jolpai.tafsir.entity.Audio;
 import com.jolpai.tafsir.entity.Child;
@@ -37,7 +35,6 @@ import com.jolpai.tafsir.entity.Parent;
 import com.jolpai.tafsir.entity.Tafsir;
 import com.jolpai.tafsir.entity.Translation;
 import com.jolpai.tafsir.entity.Update;
-import com.jolpai.tafsir.entity.Verse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,7 +90,7 @@ public class NavigationDrawer extends Activity {
 
 
       //  DatabaseManager dbm = App.getContext().getDatabaseManager();
-        List<String> name = App.getContext().getDatabaseManager().getFiscalYearList();
+        List<String> name = App.getContext().getDatabaseManager().getVersesArabic();
 
 
 
