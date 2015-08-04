@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Message;
 
-import net.ieclbd.finance.custom.exception.CustomException;
-import net.ieclbd.finance.custom.listener.OnCompleteListener;
+import com.jolpai.tafsir.custom.exception.CustomException;
+import com.jolpai.tafsir.custom.listener.OnCompleteListener;
 
 public class CommiunicationTask extends AsyncTask<Void, Integer, Void> {
  

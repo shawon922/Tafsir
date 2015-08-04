@@ -9,14 +9,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.ieclbd.finance.R;
+import com.jolpai.tafsir.R;
 
 import static android.view.Gravity.CENTER_HORIZONTAL;
 import static android.view.Gravity.CENTER_VERTICAL;
 
 public class MyToast {
 
-    public static void show(Context activity,Object text, Integer imgId ,Integer bacground ,int duration){
+   /* public static void show(Context activity,Object text, Integer imgId ,Integer bacground ,int duration){
         LayoutInflater inflater=((Activity)activity).getLayoutInflater();
         View customToastroot =inflater.inflate(R.layout.my_toast, null);
 
@@ -49,11 +49,13 @@ public class MyToast {
         customtoast.setDuration(duration);
         customtoast.show();
     }
-    public static void show(Context activity,Object text,int duration){
+    */
+
+   /* public static void show(Context activity,Object text,int duration){
         show(activity, text, null, null, duration);
     }
     public static void show(Context activity,Object text){
         show(activity, text, null, null, Toast.LENGTH_SHORT);
-    }
+    }*/
 
 }

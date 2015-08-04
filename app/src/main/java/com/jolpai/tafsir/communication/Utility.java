@@ -21,8 +21,9 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import net.ieclbd.finance.R;
-import net.ieclbd.finance.custom.view.MyToast;
+
+import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.custom.view.MyToast;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
@@ -289,19 +290,19 @@ public class Utility {
 			public void onReceive(Context arg0, Intent arg1) {
 				switch (getResultCode()) {
 				case Activity.RESULT_OK:
-					MyToast.show(ctx, "SMS sent");
+					//MyToast.show(ctx, "SMS sent");
 					break;
 				case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-					MyToast.show(ctx, "Generic failure");
+					//MyToast.show(ctx, "Generic failure");
 					break;
 				case SmsManager.RESULT_ERROR_NO_SERVICE:
-					MyToast.show(ctx, "No service");
+					//MyToast.show(ctx, "No service");
 					break;
 				case SmsManager.RESULT_ERROR_NULL_PDU:
-					MyToast.show(ctx, "Null PDU");
+					//MyToast.show(ctx, "Null PDU");
 					break;
 				case SmsManager.RESULT_ERROR_RADIO_OFF:
-					MyToast.show(ctx, "Radio off");
+					//MyToast.show(ctx, "Radio off");
 					break;
 				}
 			}
@@ -313,10 +314,10 @@ public class Utility {
 			public void onReceive(Context arg0, Intent arg1) {
 				switch (getResultCode()) {
 					case Activity.RESULT_OK:
-						MyToast.show(ctx, "SMS delivered");
+					//	MyToast.show(ctx, "SMS delivered");
 						break;
 					case Activity.RESULT_CANCELED:
-						MyToast.show(ctx, "SMS not delivered");
+					//	MyToast.show(ctx, "SMS not delivered");
 						break;
 				}
 			}
@@ -362,14 +363,14 @@ public class Utility {
 	public static void openInternetSettingsActivity(final Context context)
 	{
 		final AlertDialog.Builder alert = new AlertDialog.Builder(context);
-		alert.setIcon(R.drawable.yellow_warning);
+		/*alert.setIcon(R.drawable.yellow_warning);
 		alert.setTitle(R.string.no_internet);
 		alert.setMessage(R.string.connect_to_internet);
 		alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				context.startActivity(new Intent(Settings.ACTION_SETTINGS));
 			}
-		});
+		});*/
 
 		alert.show();
 	}

@@ -34,8 +34,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
 
-    public List<String> getVersesArabic(){
-        List<String> spinnerList = new ArrayList<String>();
+    public ArrayList<String> getVersesArabic(){
+        ArrayList<String> spinnerList = new ArrayList<String>();
         String sql = "select * from "+ DP.Tbl_VerseArabic;
 
         Cursor cursor = db.rawQuery(sql, null);

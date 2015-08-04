@@ -16,8 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import net.ieclbd.finance.R;
-import net.ieclbd.finance.custom.listener.OnDialogButtonClick;
+
+import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.custom.listener.OnDialogButtonClick;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -131,7 +132,7 @@ public class MyDialog {
 		this.buttonMap = buttonMap;
 	}
 
-    public  void show(){
+    /*public  void show(){
    
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		View view = View.inflate(activity, R.layout.my_dialog, null);
@@ -270,5 +271,5 @@ public class MyDialog {
 		lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 		window.setAttributes(lp);
 	
-	}
+	}*/
 }

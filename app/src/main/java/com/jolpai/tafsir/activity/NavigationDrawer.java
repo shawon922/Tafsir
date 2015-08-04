@@ -3,8 +3,13 @@ package com.jolpai.tafsir.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,12 +40,13 @@ import com.jolpai.tafsir.entity.Parent;
 import com.jolpai.tafsir.entity.Tafsir;
 import com.jolpai.tafsir.entity.Translation;
 import com.jolpai.tafsir.entity.Update;
+import com.jolpai.tafsir.fragment.Verse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class NavigationDrawer extends Activity {
+public class NavigationDrawer extends FragmentActivity implements Verse.OnFragmentInteractionListener {
 
     private DrawerLayout drawerLayout;
     private FrameLayout contentFrame;
@@ -55,7 +61,7 @@ public class NavigationDrawer extends Activity {
     private int ChildClickStatus=-1;
     private ArrayList<Parent> parents;
     private Context context;
-
+    private Fragment verse = new Verse();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,16 +76,10 @@ public class NavigationDrawer extends Activity {
         adapter = new ExpandListAdapter(NavigationDrawer.this,parentList, childMapingWithParent);
         View v=getLayoutInflater().inflate(R.layout.nv_header,null);
 
-        final ArrayList<Parent> dummyList = buildDummyData();
-
-       // final MyExpandableListAdapter mAdapter = new MyExpandableListAdapter();
-
 
         drawerList.addHeaderView(v, null, false);
         drawerList.setAdapter(adapter);
-        //drawerList.setAdapter(mAdapter);
 
-       // loadHosts(dummyList);
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
 
     }
@@ -89,11 +89,14 @@ public class NavigationDrawer extends Activity {
         super.onResume();
 
 
-      //  DatabaseManager dbm = App.getContext().getDatabaseManager();
-        List<String> name = App.getContext().getDatabaseManager().getVersesArabic();
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack();
+        FragmentTransaction ft =fragmentManager.beginTransaction();
 
+          ft.replace(R.id.content_frame, verse);
 
+        ft.commit();
 
     }
 
@@ -225,6 +228,10 @@ public class NavigationDrawer extends Activity {
         childMapingWithParent.put(parentList.get(2), Translation);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 
 
     private class DrawerItemClickListener implements ListView. OnItemClickListener {
@@ -235,6 +242,27 @@ public class NavigationDrawer extends Activity {
     }
 
     private void selectItem(int position) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack();
+        FragmentTransaction ft =fragmentManager.beginTransaction();
+
+        //FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        switch(position){
+            case 0 :
+                // ft.replace(R.id.order_navigation_frameLayout, orderGenerate);
+                ft.replace(R.id.content_frame, verse);
+                break;
+            case 1 :
+                ft.replace(R.id.content_frame, verse);
+                //getSupportActionBar().setTitle("Order");
+                break;
+
+        }
+
+        ft.commit();
+        //drawerLayout.closeDrawer(drawerListView);
     }
 
     private class MyExpandableListAdapter extends BaseExpandableListAdapter

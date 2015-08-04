@@ -4,8 +4,8 @@ package com.jolpai.tafsir.communication;
 import android.content.Context;
 import android.util.Log;
 
-import net.ieclbd.finance.custom.exception.CustomException;
-import net.ieclbd.finance.custom.exception.ErrorCode;
+import com.jolpai.tafsir.custom.exception.CustomException;
+import com.jolpai.tafsir.custom.exception.ErrorCode;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
