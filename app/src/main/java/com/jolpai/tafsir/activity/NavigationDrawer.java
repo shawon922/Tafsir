@@ -70,6 +70,11 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
+
+     //   DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
+
+
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         contentFrame = (FrameLayout) findViewById(R.id.content_frame);
         drawerList = (ExpandableListView)findViewById(R.id.left_drawer);
@@ -105,7 +110,7 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
     protected void onResume() {
         super.onResume();
 
-       // DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
+        DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.popBackStack();
         FragmentTransaction ft =fragmentManager.beginTransaction();
