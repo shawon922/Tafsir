@@ -17,6 +17,9 @@ public class Settings {
     private ArrayList <Audio> about;
     private ArrayList <Help> help;
 
+    private boolean isTafsirSelect;
+
+
 
     public ArrayList<Tafsir> getTafsir() {
         return tafsir;
@@ -80,5 +83,14 @@ public class Settings {
 
     public void setHelp(ArrayList<Help> help) {
         this.help = help;
+    }
+
+
+    public boolean isTafsirSelect() {
+        return isTafsirSelect;
+    }
+
+    public void setIsTafsirSelect(boolean isTafsirSelect) {
+        this.isTafsirSelect = isTafsirSelect;
     }
 }

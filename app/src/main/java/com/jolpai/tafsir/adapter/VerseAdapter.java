@@ -49,8 +49,8 @@ public class VerseAdapter  extends ArrayAdapter<String> implements View.OnClickL
             String arabic = list.get(position);
             holder.txtTitle.setText(arabic);
             holder.txtTitle.setTextSize(25);
-            Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/verdana.ttf");
-            holder.txtTitle.setTypeface(tf, Typeface.BOLD);
+           // Typeface tf = Typeface.createFromAsset(context.getAssets(),"fonts/TRADO.TTF");
+            holder.txtTitle.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
 
         }
 

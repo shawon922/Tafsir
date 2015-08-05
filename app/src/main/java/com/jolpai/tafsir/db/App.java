@@ -2,6 +2,7 @@ package com.jolpai.tafsir.db;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.provider.ContactsContract;
@@ -22,23 +23,31 @@ public class App extends Application {
     private static String DB_NAME = DP.DB_Name;
     private String DB_PATH = "";
     public static SQLiteDatabase db;
+    public static Context context;
 
 
     public synchronized static App getContext() {
         if (instence == null)
             instence = new App();
 
-        instence.setDatabaseManager();
+
         return instence;
     }
 
-    public DatabaseManager getDatabaseManager(){
-       return dbm;
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
     }
 
-    public void setDatabaseManager(){
-        DB_PATH = getAppDirectory();
+    public DatabaseManager getDatabaseManager(){
+        setDatabaseManager();
+        return dbm;
+    }
+
+    public  void setDatabaseManager(){
+
+       DatabaseManager manager = new DatabaseManager(instence);
+        /*DB_PATH = App.getContext().getAppDirectory();
 
         if(!checkDataBase()){
             try{
@@ -46,30 +55,12 @@ public class App extends Application {
             }catch (IOException e){
                 e.printStackTrace();
             }
-        }else{
-            if (initializeDatabase()){
-                dbm = new DatabaseManager(instence,db);
+        }*/
 
-            }
+        if(manager.initializeDatabase()){
+            dbm=manager;
         }
     }
-
-    public boolean initializeDatabase(){
-        if(DB_PATH == null){
-            return false;
-        }else{
-            try{
-                db=SQLiteDatabase.openDatabase(DB_PATH + "/" + DB_NAME, null,
-                        SQLiteDatabase.OPEN_READWRITE
-                                | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-            }catch (Exception ex){
-                ex.printStackTrace();
-                return false;
-            }
-            return true;
-        }
-    }
-
 
 
     private  void copyDataBase() throws IOException {
@@ -105,7 +96,7 @@ public class App extends Application {
         }
     }
 
-    private String getAppDirectory(){
+    public String getAppDirectory(){
         if(isExtSDCardPresent()){
             String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+DP.DB_Folder;
             File file = new File(filePath);

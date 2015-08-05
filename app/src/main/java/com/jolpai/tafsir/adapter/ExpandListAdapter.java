@@ -6,11 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.entity.Audio;
+import com.jolpai.tafsir.entity.Font;
+import com.jolpai.tafsir.entity.Lang;
+import com.jolpai.tafsir.entity.Tafsir;
+import com.jolpai.tafsir.entity.Translation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,7 +28,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
 
     private Context context;
     private List <String> parentList;
-    private HashMap<String,List<String>> childMapingWithParent;
+    private HashMap<String,ArrayList<?>> childMapingWithParent;
 
 
     /**
@@ -30,7 +37,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
      * @param parentList  that's group data of ExpandableListView. its a string type List.
      * @param childMapingWithParent  its child data that's mapped with group data of ExpandableListView. its a HashMap.
      */
-    public ExpandListAdapter(Context context,List<String> parentList,HashMap<String,List<String>> childMapingWithParent){
+    public ExpandListAdapter(Context context,List<String> parentList,HashMap<String,ArrayList<?>> childMapingWithParent){
 
         this.context=context;
         this.parentList = parentList;
@@ -69,6 +76,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
             txtViewHeader.setTypeface(Typeface.SANS_SERIF);
             txtViewHeader.setTextSize(20);
 
+
         }else if (groupPosition == 1){
             LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
@@ -96,30 +104,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
         }else if (groupPosition == 4){
             LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.nv_parent_audio,parent,false);
-            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
-            txtViewHeader.setText(groupTitle);
-            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
-            txtViewHeader.setTextSize(20);
-
-        }else if (groupPosition == 5){
-            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
-            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
-            txtViewHeader.setText(groupTitle);
-            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
-            txtViewHeader.setTextSize(20);
-
-        }else if (groupPosition == 6){
-            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
-            TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
-            txtViewHeader.setText(groupTitle);
-            txtViewHeader.setTypeface(Typeface.SANS_SERIF);
-            txtViewHeader.setTextSize(20);
-
-        }else if (groupPosition == 7){
-            LayoutInflater inflater =(LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.nv_parent_tafsir,parent,false);
             TextView txtViewHeader = (TextView)convertView.findViewById(R.id.txtNV_rowTitle);
             txtViewHeader.setText(groupTitle);
             txtViewHeader.setTypeface(Typeface.SANS_SERIF);
@@ -157,16 +141,70 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childTxt = (String)getChild(groupPosition, childPosition);
-        if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.nv_child,null);
-        }
-        TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
-        txtViewChild.setText(childTxt);
-        txtViewChild.setTypeface(Typeface.SANS_SERIF);
-        txtViewChild.setTextSize(15);
+        if(groupPosition==0){
+            final Tafsir tafsir = (Tafsir)getChild(groupPosition, childPosition);
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_child,null);
+            }
+            TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
+            txtViewChild.setText(tafsir.getName());
+            txtViewChild.setTypeface(Typeface.SANS_SERIF);
+            txtViewChild.setTextSize(15);
+            convertView.setTag(tafsir);
 
+        }else if(groupPosition==1){
+            final Lang tafsir = (Lang)getChild(groupPosition, childPosition);
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_child,null);
+            }
+            TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
+            txtViewChild.setText(tafsir.getName());
+            txtViewChild.setTypeface(Typeface.SANS_SERIF);
+            txtViewChild.setTextSize(15);
+
+        }else if (groupPosition==2){
+            final Translation tafsir = (Translation)getChild(groupPosition, childPosition);
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_child,null);
+            }
+            TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
+            txtViewChild.setText(tafsir.getName());
+            txtViewChild.setTypeface(Typeface.SANS_SERIF);
+            txtViewChild.setTextSize(15);
+
+        }else if(groupPosition==3){
+            final Font tafsir = (Font)getChild(groupPosition, childPosition);
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_child,null);
+            }
+            TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
+            txtViewChild.setText(tafsir.getName());
+            txtViewChild.setTypeface(Typeface.SANS_SERIF);
+            txtViewChild.setTextSize(15);
+
+        }else if(groupPosition==4){
+            final Audio tafsir = (Audio)getChild(groupPosition, childPosition);
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.nv_child,null);
+            }
+            TextView txtViewChild =(TextView)convertView.findViewById(R.id.txtChild);
+            txtViewChild.setText(tafsir.getName());
+            txtViewChild.setTypeface(Typeface.SANS_SERIF);
+            txtViewChild.setTextSize(15);
+
+
+        }
+
+
+
+
+
+        convertView.setOnClickListener( this);
         return convertView;
     }
 
@@ -235,8 +273,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter implements View
 
         return this.parentList.size();
     }
-
-
 
     /**
      * Gets the ID for the group at the given position. This group ID must be

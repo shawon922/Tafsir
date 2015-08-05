@@ -30,6 +30,7 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
 import com.jolpai.tafsir.adapter.NavigationAdapter;
 import com.jolpai.tafsir.db.App;
+import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.About;
 import com.jolpai.tafsir.entity.Audio;
 import com.jolpai.tafsir.entity.Child;
@@ -37,6 +38,7 @@ import com.jolpai.tafsir.entity.Font;
 import com.jolpai.tafsir.entity.Help;
 import com.jolpai.tafsir.entity.Lang;
 import com.jolpai.tafsir.entity.Parent;
+import com.jolpai.tafsir.entity.Settings;
 import com.jolpai.tafsir.entity.Tafsir;
 import com.jolpai.tafsir.entity.Translation;
 import com.jolpai.tafsir.entity.Update;
@@ -46,13 +48,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class NavigationDrawer extends FragmentActivity implements Verse.OnFragmentInteractionListener {
+public class NavigationDrawer extends FragmentActivity implements Verse.OnFragmentInteractionListener,ListView.OnItemClickListener {
 
     private DrawerLayout drawerLayout;
     private FrameLayout contentFrame;
     private ExpandableListView drawerList;
     private List<String> parentList ;
-    private HashMap<String,List<String>> childMapingWithParent;
+    private HashMap<String,ArrayList<?>> childMapingWithParent;
     private ExpandListAdapter adapter;
 
     private static final String STR_CHECKED = " has Checked!";
@@ -81,6 +83,21 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
         drawerList.setAdapter(adapter);
 
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
+        drawerList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+
+                if(groupPosition==0){
+                    Tafsir t = (Tafsir) v.getTag();
+                    Toast.makeText(NavigationDrawer.this,t.getName(),Toast.LENGTH_SHORT).show();
+
+                }
+
+                return false;
+            }
+        });
 
     }
 
@@ -88,13 +105,12 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
     protected void onResume() {
         super.onResume();
 
-
-
+       // DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.popBackStack();
         FragmentTransaction ft =fragmentManager.beginTransaction();
 
-          ft.replace(R.id.content_frame, verse);
+        ft.replace(R.id.content_frame, verse);
 
         ft.commit();
 
@@ -191,7 +207,15 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
 
     protected void prepearingData() {
         parentList = new ArrayList<String>();
-        childMapingWithParent = new HashMap<String, List<String>>();
+        childMapingWithParent = new HashMap<String, ArrayList<?>>();
+
+        Settings settings = new Settings();
+
+        settings.setTafsir(App.getContext().getDatabaseManager().getTafsirNameList());
+        settings.setLang(App.getContext().getDatabaseManager().getLangNameList());
+        settings.setTranslation(App.getContext().getDatabaseManager().getTranslatorNameList());
+        settings.setAudio(App.getContext().getDatabaseManager().getReciterNameList());
+        settings.setFont(App.getContext().getDatabaseManager().getFontNameList());
 
         // Adding child data
         parentList.add(new Tafsir().toString());
@@ -199,33 +223,13 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
         parentList.add(new Translation().toString());
         parentList.add(new Font().toString());
         parentList.add(new Audio().toString());
-        parentList.add(new Update().toString());
-        parentList.add(new About().toString());
-        parentList.add(new Help().toString());
-
         // Adding child data
-        List<String> Tafsir = new ArrayList<String>();
-        Tafsir.add("The Shawshank Redemption");
-        Tafsir.add("The Godfather");
-        Tafsir.add("The Godfather: Part II");
 
-
-        List<String> Language = new ArrayList<String>();
-        Language.add("The Conjuring");
-        Language.add("Despicable Me 2");
-        Language.add("Turbo");
-
-
-        List<String> Translation = new ArrayList<String>();
-        Translation.add("2 Guns");
-        Translation.add("The Smurfs 2");
-        Translation.add("The Spectacular Now");
-
-
-
-        childMapingWithParent.put(parentList.get(0), Tafsir); // Header, Child data
-        childMapingWithParent.put(parentList.get(1), Language);
-        childMapingWithParent.put(parentList.get(2), Translation);
+        childMapingWithParent.put(parentList.get(0), settings.getTafsir()); // Header, Child data
+        childMapingWithParent.put(parentList.get(1), settings.getLang());
+        childMapingWithParent.put(parentList.get(2), settings.getTranslation());
+        childMapingWithParent.put(parentList.get(3), settings.getFont());
+        childMapingWithParent.put(parentList.get(4), settings.getAudio());
     }
 
     @Override
@@ -233,11 +237,18 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this,""+position,Toast.LENGTH_SHORT).show();
+    }
+
 
     private class DrawerItemClickListener implements ListView. OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem( position);
+
+
         }
     }
 

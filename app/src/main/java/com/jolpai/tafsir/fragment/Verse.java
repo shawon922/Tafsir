@@ -82,9 +82,6 @@ public class Verse extends Fragment {
         VerseAdapter adapter = new VerseAdapter( getActivity(),name);
         listVerseArabic.setAdapter(adapter);
 
-
-
-
         return v;
     }
 
