@@ -71,7 +71,7 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
         setContentView(R.layout.home);
 
 
-     //   DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
+       DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
 
 
 

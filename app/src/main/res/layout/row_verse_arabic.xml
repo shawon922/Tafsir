@@ -1,42 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <LinearLayout
+    <com.jolpai.tafsir.custom.view.R2L
+        android:id="@+id/cl_R2L"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="right"
-        android:background="@color/gray_100">
+        android:focusable="true">
 
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/blue_trns_20">
+    </com.jolpai.tafsir.custom.view.R2L>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center|center_vertical">
-            <TextView
-                android:id="@+id/txtVerseArabic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Verse Arabic"/>
-
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-
-
-
-</LinearLayout>
+</ScrollView>
