@@ -133,7 +133,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public ArrayList<String> getVersesArabic(){
         ArrayList<String> spinnerList = new ArrayList<String>();
-        String sql = "select * from "+ DP.Tbl_VerseArabic + "  LIMIT 3000";
+        String sql = "select * from "+ DP.Tbl_VerseArabic + "  LIMIT 100";
 
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){

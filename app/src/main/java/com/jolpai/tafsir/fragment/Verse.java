@@ -1,17 +1,30 @@
 package com.jolpai.tafsir.fragment;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.VerseAdapter;
+import com.jolpai.tafsir.custom.view.R2L;
 import com.jolpai.tafsir.db.App;
+import com.jolpai.tafsir.entity.Global;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,11 +89,46 @@ public class Verse extends Fragment {
         View v = inflater.inflate(R.layout.fragment_verse, container, false);
 
 
-        ArrayList<String> name = App.getContext().getDatabaseManager().getVersesArabic();
 
         listVerseArabic = (ListView)v.findViewById(R.id.listviewVerse);
-        VerseAdapter adapter = new VerseAdapter( getActivity(),name);
+        VerseAdapter adapter = new VerseAdapter( getActivity(), Global.getVerseList());
         listVerseArabic.setAdapter(adapter);
+
+
+       /*Typeface  tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/TRADO.TTF");
+        ArrayList<String> list=Global.getVerseList();
+
+        for(int j=0;j<list.size();j++){
+            LinearLayout ll = (LinearLayout)v.findViewById(R.id.llVerseView);
+            String arabic = list.get(j);
+            String [] arrayWhitespace = arabic.split("\\s+");
+            View rowView = inflater.inflate(R.layout.row_verse_arabic, null, false);
+            R2L customLayout = (R2L) rowView.findViewById(R.id.cl_R2L);
+            for (int i=0; i<arrayWhitespace.length; i++) {
+                View normalView =View.inflate(getActivity(), R.layout.normal_view, null);
+                View emptyView =View.inflate(getActivity(), R.layout.normal_empty_view, null);
+
+                TextView tv = (TextView)normalView.findViewById(R.id.textView);
+                TextView tv2 = (TextView)emptyView.findViewById(R.id.textView2);
+
+                tv.setTypeface(tf, Typeface.NORMAL);
+                tv.setTextSize(30);
+                tv.setTextColor(Color.GRAY);
+                tv.setTypeface(tf, Typeface.NORMAL);
+                tv.setText(arrayWhitespace[i].toString());
+                tv2.setText(" ");
+                tv2.setTextSize(30);
+
+                customLayout.addView(normalView);
+                customLayout.addView(emptyView);
+            }
+
+            ll.addView(rowView);
+
+        }
+*/
+
+
 
         return v;
     }

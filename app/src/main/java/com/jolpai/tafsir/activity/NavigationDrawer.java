@@ -3,6 +3,7 @@ package com.jolpai.tafsir.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -26,6 +27,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
 import com.jolpai.tafsir.adapter.NavigationAdapter;
@@ -35,6 +38,7 @@ import com.jolpai.tafsir.entity.About;
 import com.jolpai.tafsir.entity.Audio;
 import com.jolpai.tafsir.entity.Child;
 import com.jolpai.tafsir.entity.Font;
+import com.jolpai.tafsir.entity.Global;
 import com.jolpai.tafsir.entity.Help;
 import com.jolpai.tafsir.entity.Lang;
 import com.jolpai.tafsir.entity.Parent;
@@ -75,10 +79,15 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
 
 
 
+
+
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         contentFrame = (FrameLayout) findViewById(R.id.content_frame);
         drawerList = (ExpandableListView)findViewById(R.id.left_drawer);
         prepearingData();
+
+        getDataFromPref();
 
         adapter = new ExpandListAdapter(NavigationDrawer.this,parentList, childMapingWithParent);
         View v=getLayoutInflater().inflate(R.layout.nv_header,null);
@@ -118,6 +127,25 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
         ft.replace(R.id.content_frame, verse);
 
         ft.commit();
+
+    }
+
+    protected void getDataFromPref(){
+        ArrayList<String> name ;
+        SharedPreferences prefs = this.getSharedPreferences("myKey", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+
+        if(prefs.contains("verses")){
+            String json = prefs.getString("verses", null);
+            name = gson.fromJson(json, new TypeToken<List<String>>(){}.getType());
+        }else{
+            name=App.getContext().getDatabaseManager().getVersesArabic();
+            String jsonString = gson.toJson(name);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("verses",jsonString);
+            editor.commit();
+        }
+        Global.setVerseList(name);
 
     }
 
