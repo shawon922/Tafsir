@@ -8,16 +8,26 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.adapter.HidingScrollListener;
+import com.jolpai.tafsir.adapter.RecyclerAdapter;
 import com.jolpai.tafsir.adapter.VerseAdapter;
 import com.jolpai.tafsir.custom.view.R2L;
 import com.jolpai.tafsir.db.App;
@@ -42,6 +52,8 @@ public class Verse extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private Toolbar mToolbar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -88,12 +100,68 @@ public class Verse extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_verse, container, false);
 
+
+
+
+
+/*
+
         listVerseArabic = (ListView)v.findViewById(R.id.listviewVerse);
         VerseAdapter adapter = new VerseAdapter( getActivity(), Global.getVerseList());
         listVerseArabic.setAdapter(adapter);
 
+*/
+
+      //  initToolbar( v);
+      //  initRecyclerView( v);
+
         return v;
     }
+
+
+    private void initToolbar(View v) {
+        mToolbar = (Toolbar)v.findViewById(R.id.toolbar);
+        ((ActionBarActivity)getActivity()).setSupportActionBar(mToolbar);
+        ((ActionBarActivity)getActivity()).setTitle(getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    private void initRecyclerView(View v) {
+        RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(Global.getVerseList());
+        recyclerView.setAdapter(recyclerAdapter);
+        //setting up our OnScrollListener
+        recyclerView.setOnScrollListener(new HidingScrollListener() {
+            @Override
+            public void onHide() {
+                hideViews();
+            }
+
+            @Override
+            public void onShow() {
+                showViews();
+            }
+        });
+    }
+
+    private void hideViews() {
+        mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+
+        Toast.makeText(getActivity(),"hide",Toast.LENGTH_LONG).show();
+
+        /*FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabButton.getLayoutParams();
+        int fabBottomMargin = lp.bottomMargin;
+        mFabButton.animate().translationY(mFabButton.getHeight()+fabBottomMargin).setInterpolator(new AccelerateInterpolator(2)).start();*/
+    }
+
+    private void showViews() {
+        mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+       /* mFabButton.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();*/
+        Toast.makeText(getActivity(),"show",Toast.LENGTH_LONG).show();
+    }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

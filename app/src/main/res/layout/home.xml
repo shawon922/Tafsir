@@ -11,62 +11,18 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:layout_height="match_parent"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="8"
-                android:padding="2dp"
-                android:orientation="horizontal">
-
-                <ListView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="8"
-                    android:background="@color/gray_500_trans_50"
-                    android:id="@+id/listSurahName">
-
-                </ListView>
-
-                <ListView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/listPara">
-
-                </ListView>
-
-                <ListView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/gray_500_trans_50"
-                    android:layout_weight="1">
-
-                </ListView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-            </LinearLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"/>
 
 
-        </LinearLayout>
 </FrameLayout>
     <!-- The navigation drawer -->
     <ExpandableListView android:id="@+id/left_drawer"

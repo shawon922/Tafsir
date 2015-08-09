@@ -18,6 +18,15 @@ import java.util.List;
 /**
  * Created by Tanim reja on 8/4/2015.
  */
+// TODO: Code rearrange
+// TODO: Add Listview auto hide header view
+// TODO: Make faster scroll
+// TODO: Add L2R for translation
+// TODO: Make bookmark when user  long-clicked on row
+// TODO:
+// TODO:
+// TODO:
+// TODO:
 public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickListener {
 
     private Context context;
@@ -59,6 +68,7 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
                 tv.setTextColor(Color.DKGRAY);
                 tv.setTypeface(tf, Typeface.NORMAL);
                 tv.setText(arrayWhitespace[i].toString());
+//                tv.setElevation(5);
                 tv2.setText(" ");
                 tv2.setTextSize(35);
 
@@ -95,7 +105,12 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
 
 
     static class ViewHolder {
-        TextView txtTitle;
+        TextView txtEmpty,
+                txtNormal,
+                txtRound;
+        View normalView,
+            emptyView,
+            roundView;
         String id;
         ImageView imgMenuIcon;
 

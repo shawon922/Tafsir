@@ -12,10 +12,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
@@ -31,7 +37,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.ExpandListAdapter;
+import com.jolpai.tafsir.adapter.HidingScrollListener;
 import com.jolpai.tafsir.adapter.NavigationAdapter;
+import com.jolpai.tafsir.adapter.RecyclerAdapter;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.About;
@@ -52,7 +60,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class NavigationDrawer extends FragmentActivity implements Verse.OnFragmentInteractionListener,ListView.OnItemClickListener {
+public class NavigationDrawer extends ActionBarActivity implements Verse.OnFragmentInteractionListener,ListView.OnItemClickListener {
 
     private DrawerLayout drawerLayout;
     private FrameLayout contentFrame;
@@ -68,7 +76,7 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
     private ArrayList<Parent> parents;
     private Context context;
     private Fragment verse = new Verse();
-
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,11 +84,6 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
 
 
        DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
-
-
-
-
-
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         contentFrame = (FrameLayout) findViewById(R.id.content_frame);
@@ -113,6 +116,54 @@ public class NavigationDrawer extends FragmentActivity implements Verse.OnFragme
             }
         });
 
+
+
+        initToolbar( v);
+        initRecyclerView( v);
+
+    }
+
+
+    private void initToolbar(View v) {
+        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        (this).setSupportActionBar(mToolbar);
+        (this).setTitle(getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    private void initRecyclerView(View v) {
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(Global.getVerseList());
+        recyclerView.setAdapter(recyclerAdapter);
+        //setting up our OnScrollListener
+        recyclerView.setOnScrollListener(new HidingScrollListener() {
+            @Override
+            public void onHide() {
+                hideViews();
+            }
+
+            @Override
+            public void onShow() {
+                showViews();
+            }
+        });
+    }
+
+    private void hideViews() {
+        mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+
+      //  Toast.makeText(this,"hide",Toast.LENGTH_LONG).show();
+
+        /*FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mFabButton.getLayoutParams();
+        int fabBottomMargin = lp.bottomMargin;
+        mFabButton.animate().translationY(mFabButton.getHeight()+fabBottomMargin).setInterpolator(new AccelerateInterpolator(2)).start();*/
+    }
+
+    private void showViews() {
+        mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+       /* mFabButton.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();*/
+      //  Toast.makeText(this,"show",Toast.LENGTH_LONG).show();
     }
 
     @Override

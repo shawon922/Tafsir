@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:id="@+id/llVerseView">
+<!--
 
        <ListView
             android:layout_width="match_parent"
@@ -16,6 +17,20 @@
             android:divider="@color/white">
 
         </ListView>
+-->
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="?attr/actionBarSize"
+            android:clipToPadding="false"/>/>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"/>
 
 
     </LinearLayout>
