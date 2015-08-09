@@ -26,6 +26,7 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
     R2L customLayout,customLayout_other;
     LayoutInflater cInflater = null;
     Typeface tf;
+
     public VerseAdapter(Context context, List<String> list) {
         super(context, R.layout.row_verse_arabic, list);
 
@@ -37,24 +38,14 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-
-
         cInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = cInflater.inflate(R.layout.row_verse_arabic, parent, false);
 
         customLayout = (R2L) convertView.findViewById(R.id.cl_R2L);
 
-
-
         if (list != null) {
-
             String arabic = list.get(position);
-
-
-
             String [] arrayWhitespace = arabic.split("\\s+");
-
-
 
             for (int i=0; i<arrayWhitespace.length; i++) {
                 View normalView =View.inflate(context, R.layout.normal_view, null);
@@ -64,23 +55,17 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
                 TextView tv2 = (TextView)emptyView.findViewById(R.id.textView2);
 
                 tv.setTypeface(tf, Typeface.NORMAL);
-                tv.setTextSize(30);
-                tv.setTextColor(Color.GRAY);
+                tv.setTextSize(35);
+                tv.setTextColor(Color.DKGRAY);
                 tv.setTypeface(tf, Typeface.NORMAL);
                 tv.setText(arrayWhitespace[i].toString());
                 tv2.setText(" ");
-                tv2.setTextSize(30);
-              //  customLayout.removeView(normalView);
+                tv2.setTextSize(35);
+
                 customLayout.addView(normalView);
                 customLayout.addView(emptyView);
             }
-
-
-           // customLayout.removeView(tv);
-
-          //  customLayout=ditasteString(arabic,parent);
         }
-
         return convertView;
 
     }
@@ -94,14 +79,8 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
         TextView tv = new TextView(context);
 
         String [] arrayWhitespace = msg.split("\\s+");
-
-
-
         for (int i=0; i<arrayWhitespace.length; i++) {
-
             tv.setText(arrayWhitespace[i].toString());
-           // customLayout.removeView(tv);
-            customLayout.addView(tv);
         }
 
         return customLayout;

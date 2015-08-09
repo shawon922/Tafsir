@@ -2,13 +2,16 @@
     android:id="@+id/scroller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/gray_50">
 
     <com.jolpai.tafsir.custom.view.R2L
         android:id="@+id/cl_R2L"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:background="@color/amber_50"
+        android:layout_marginBottom="4dp">
 
     </com.jolpai.tafsir.custom.view.R2L>
 

@@ -132,8 +132,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
 
     public ArrayList<String> getVersesArabic(){
-        ArrayList<String> spinnerList = new ArrayList<String>();
-        String sql = "select * from "+ DP.Tbl_VerseArabic + "  LIMIT 100";
+        ArrayList<String> verseList = new ArrayList<String>();
+        String sql = "select " +DP.VerseArabic_SurahNo+ "," +DP.VerseArabic_Verse+ " from "+ DP.Tbl_VerseArabic + "  LIMIT 100";
 
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
@@ -143,12 +143,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 name = cursor.getString(cursor.getColumnIndex(DP.VerseArabic_SurahNo));
                 id = cursor.getString(cursor.getColumnIndex(DP.VerseArabic_Verse));
 
-                spinnerList.add(id);
+                verseList.add(id);
             }while(cursor.moveToNext());
         }
         cursor.close();
 
-        return spinnerList;
+        return verseList;
     }
 
 

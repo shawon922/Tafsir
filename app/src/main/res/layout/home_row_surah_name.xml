@@ -26,7 +26,7 @@
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@color/green">
+            android:background="@color/green_500">
 
             <ImageView
                 android:id="@+id/surahNo"
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/red"
+                android:background="@color/red_500"
                 android:gravity="left|center_vertical">
 
                 <TextView
@@ -64,7 +64,7 @@
             <LinearLayout
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:background="@color/blue">
+                android:background="@color/blue_500">
 
                 <TextView
                     android:id="@+id/txtTotalVerseNo"

@@ -88,47 +88,9 @@ public class Verse extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_verse, container, false);
 
-
-
         listVerseArabic = (ListView)v.findViewById(R.id.listviewVerse);
         VerseAdapter adapter = new VerseAdapter( getActivity(), Global.getVerseList());
         listVerseArabic.setAdapter(adapter);
-
-
-       /*Typeface  tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/TRADO.TTF");
-        ArrayList<String> list=Global.getVerseList();
-
-        for(int j=0;j<list.size();j++){
-            LinearLayout ll = (LinearLayout)v.findViewById(R.id.llVerseView);
-            String arabic = list.get(j);
-            String [] arrayWhitespace = arabic.split("\\s+");
-            View rowView = inflater.inflate(R.layout.row_verse_arabic, null, false);
-            R2L customLayout = (R2L) rowView.findViewById(R.id.cl_R2L);
-            for (int i=0; i<arrayWhitespace.length; i++) {
-                View normalView =View.inflate(getActivity(), R.layout.normal_view, null);
-                View emptyView =View.inflate(getActivity(), R.layout.normal_empty_view, null);
-
-                TextView tv = (TextView)normalView.findViewById(R.id.textView);
-                TextView tv2 = (TextView)emptyView.findViewById(R.id.textView2);
-
-                tv.setTypeface(tf, Typeface.NORMAL);
-                tv.setTextSize(30);
-                tv.setTextColor(Color.GRAY);
-                tv.setTypeface(tf, Typeface.NORMAL);
-                tv.setText(arrayWhitespace[i].toString());
-                tv2.setText(" ");
-                tv2.setTextSize(30);
-
-                customLayout.addView(normalView);
-                customLayout.addView(emptyView);
-            }
-
-            ll.addView(rowView);
-
-        }
-*/
-
-
 
         return v;
     }
