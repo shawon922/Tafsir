@@ -6,15 +6,13 @@
     android:layout_gravity="center"
     card_view:cardCornerRadius="4dp">
 
-   <TextView
-        android:id="@+id/itemTextView"
+    <com.jolpai.tafsir.custom.view.R2L
+        android:id="@+id/cl_R2L"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        style="@style/Base.TextAppearance.AppCompat.Body2"/>
+        android:focusable="true">
 
-
+    </com.jolpai.tafsir.custom.view.R2L>
 
 
 </android.support.v7.widget.CardView>

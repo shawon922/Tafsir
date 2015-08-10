@@ -26,7 +26,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         if (viewType == TYPE_ITEM) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_item, parent, false);
+            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_test, parent, false);
+            final View r2l=LayoutInflater.from(context).inflate(R.layout.row_verse_arabic, parent, false);
             return RecyclerItemViewHolder.newInstance(view);
         } else if (viewType == TYPE_HEADER) {
             final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header, parent, false);
