@@ -9,7 +9,7 @@ import android.os.Message;
 import com.jolpai.tafsir.custom.exception.CustomException;
 import com.jolpai.tafsir.custom.listener.OnCompleteListener;
 
-public class CommiunicationTask extends AsyncTask<Void, Integer, Void> {
+public class CommunicationTask extends AsyncTask<Void, Integer, Void> {
  
 
 	private OnCompleteListener completeListener;
@@ -20,7 +20,7 @@ public class CommiunicationTask extends AsyncTask<Void, Integer, Void> {
 	Message message = Message.obtain();
 	Bundle bundle = new Bundle();
 
-	public CommiunicationTask(Context context,Request request) {
+	public CommunicationTask(Context context, Request request) {
 		this.context = context;
 		this.request = request;
 		this.request.setContext(this.context);
@@ -30,7 +30,7 @@ public class CommiunicationTask extends AsyncTask<Void, Integer, Void> {
 	}
 	
 	
-	public CommiunicationTask(Context context,Request request,Object dilogTitle,Object dilogMessage) {
+	public CommunicationTask(Context context, Request request, Object dilogTitle, Object dilogMessage) {
 		this.context = context;
 		this.request = request;
 		this.request.setContext(this.context);
@@ -48,7 +48,7 @@ public class CommiunicationTask extends AsyncTask<Void, Integer, Void> {
 			this.dialog.setMessage((String)dilogMessage);}
 	}
 
-	private CommiunicationTask(Context context) {}
+	private CommunicationTask(Context context) {}
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
