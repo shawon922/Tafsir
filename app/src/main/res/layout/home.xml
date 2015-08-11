@@ -44,10 +44,10 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/settingsIcon"
+                        android:id="@+id/settingsImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/settings_white"
+                        android:background="@drawable/setting_image_selector"
                         android:layout_margin="4dp"/>
 
 
