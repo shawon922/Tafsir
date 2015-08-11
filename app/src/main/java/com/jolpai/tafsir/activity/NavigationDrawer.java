@@ -4,6 +4,7 @@ package com.jolpai.tafsir.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -127,7 +128,10 @@ public class NavigationDrawer extends ActionBarActivity implements Verse.OnFragm
     private void initToolbar(View v) {
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         (this).setSupportActionBar(mToolbar);
-        (this).setTitle(getString(R.string.app_name));
+        TextView tv = (TextView)findViewById(R.id.txtToolbarHeader);
+        tv.setText("TAFSIR");
+        tv.setTextColor(Color.WHITE);
+        tv.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 

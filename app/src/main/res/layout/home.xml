@@ -18,11 +18,46 @@
             android:layout_height="match_parent"
             android:background="@color/blue_trns_20"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center|right">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|left">
+                        <TextView
+                            android:id="@+id/txtToolbarHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hello"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/settingsIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/settings_white"
+                        android:layout_margin="4dp"/>
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+
+
+
 
 
 </FrameLayout>
