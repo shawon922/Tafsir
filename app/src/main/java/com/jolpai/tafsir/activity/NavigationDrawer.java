@@ -122,15 +122,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
         int id = v.getId();
         if (id == settingImageView.getId()) {
 
-            /*Intent intent = new Intent(NavigationDrawer.this, com.jolpai.tafsir.activity.Settings.class);
-            this.startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);*/
-
-
-
-          //  Dialog dialog = new Dialog(this, R.style.DialogAnimation);
-
-            new ShowDialog(this,"Hello").certificate_statementDialog("Loan No:");
+            new ShowDialog(this).settingsDialogFromBotton();
 
         }
     }

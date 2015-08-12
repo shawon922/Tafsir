@@ -17,16 +17,14 @@ import com.jolpai.tafsir.R;
  */
 public class ShowDialog {
     private static Context context;
-    private static String title;
 
-    public ShowDialog(Context context, String title){
+    public ShowDialog(Context context){
         this.context=context;
-        this.title=title;
 
 
     }
 
-    public static void certificate_statementDialog(String accountFieldTitle){
+    public static void settingsDialogFromBotton(){
         AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.DialogAnimation);
         // Get the layout inflater
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -34,8 +32,7 @@ public class ShowDialog {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         View v = inflater.inflate(R.layout.dialog_certificate_statement_request, null);
-        TextView accountTitle = (TextView)v.findViewById(R.id.txtAccountTitle);
-        accountTitle.setText(accountFieldTitle);
+
 
         builder.setView(v)
                 // Add action buttons
@@ -43,14 +40,15 @@ public class ShowDialog {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         // sign in the user ...
+
+
                     }
                 })
                 .setNegativeButton("DISCARD", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }
-                })
-                .setTitle(title);
+                });
          builder.create().show();
     }
 

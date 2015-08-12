@@ -2,61 +2,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_500"
+    android:background="@color/amber_500"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/amber_500"
         android:orientation="vertical">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/red_500"
+            android:background="@color/white"
+            android:scrollbarThumbVertical="@color/white"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@color/white"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtAccountTitle"
-                    android:text="Name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/amber_500"
-                    android:textStyle="bold" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="720dp"
+    android:background="@color/white">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:background="@color/amber_500" />
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Statement/Certificate Details:"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/amber_500"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:background="@color/amber_500" />
-
-
+</LinearLayout>
 
             </LinearLayout>
         </ScrollView>
