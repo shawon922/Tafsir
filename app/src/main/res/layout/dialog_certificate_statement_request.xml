@@ -15,30 +15,29 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:scrollbarThumbVertical="@color/white"
             android:gravity="bottom"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scrollbarThumbVertical="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:background="@color/white"
+                android:orientation="vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="720dp"
-    android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="720dp"
+                    android:background="@color/white">
 
-</LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
+
         </ScrollView>
 
-
     </LinearLayout>
-
 
 </LinearLayout>
