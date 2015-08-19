@@ -2,10 +2,8 @@ package com.jolpai.tafsir.db;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
-import android.provider.ContactsContract;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,7 +18,7 @@ public class App extends Application {
     private static App instence;
     private DatabaseManager dbm;
   //  public static final SQLiteDatabase.CursorFactory FACTORY = null;
-    private static String DB_NAME = DP.DB_Name;
+    private static String DB_NAME = DbProperty.DB_Name;
     private String DB_PATH = "";
     public static SQLiteDatabase db;
     public static Context context;
@@ -98,7 +96,7 @@ public class App extends Application {
 
     public String getAppDirectory(){
         if(isExtSDCardPresent()){
-            String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+DP.DB_Folder;
+            String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+ DbProperty.DB_Folder;
             File file = new File(filePath);
             if(!file.exists()){
                 file.mkdir();

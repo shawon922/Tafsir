@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/amber_50">
+        android:background="@color/amber_100">
 
         <LinearLayout
             android:layout_width="50dp"
@@ -18,13 +18,34 @@
 
         </LinearLayout>
 
-        <com.jolpai.tafsir.custom.view.R2L
-            android:id="@+id/cl_R2L"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true">
+            android:layout_marginBottom="1dp"
+            android:orientation="vertical">
 
-        </com.jolpai.tafsir.custom.view.R2L>
+            <com.jolpai.tafsir.custom.view.R2L
+                android:id="@+id/cl_R2L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:background="@color/amber_50">
+
+            </com.jolpai.tafsir.custom.view.R2L>
+
+            <com.jolpai.tafsir.custom.view.L2R
+                android:id="@+id/cl_L2R"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:background="@color/amber_50">
+
+            </com.jolpai.tafsir.custom.view.L2R>
+
+
+        </LinearLayout>
+
+
 
 
 

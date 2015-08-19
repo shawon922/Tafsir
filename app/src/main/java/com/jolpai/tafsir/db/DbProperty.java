@@ -3,7 +3,7 @@ package com.jolpai.tafsir.db;
 /**
  * Created by Tanim reja on 7/28/2015.
  */
-public class DP {
+public class DbProperty {
 
     public static final String DB_Folder ="TafsirDB";
     public static final String DB_Name ="jolpai.sqlite";

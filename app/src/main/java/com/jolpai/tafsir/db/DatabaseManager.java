@@ -1,7 +1,6 @@
 package com.jolpai.tafsir.db;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Tanim reja on 7/28/2015.
@@ -29,14 +27,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public static final int VERSION = 1;
     public static final SQLiteDatabase.CursorFactory FACTORY = null;
     private SQLiteDatabase db;
-    private static String DB_NAME = DP.DB_Name;
+    private static String DB_NAME = DbProperty.DB_Name;
     private String DB_PATH = "";
     private Context context;
     private DatabaseManager dbm;
 
 
     public DatabaseManager(Context context){
-        super(context, DP.DB_Name,FACTORY,VERSION);
+        super(context, DbProperty.DB_Name,FACTORY,VERSION);
         this.context=context;
 
         DB_PATH = App.getContext().getAppDirectory();
@@ -113,7 +111,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     private String getAppDirectory(){
         if(isExtSDCardPresent()){
-            String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+DP.DB_Folder;
+            String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+ DbProperty.DB_Folder;
             File file = new File(filePath);
             if(!file.exists()){
                 file.mkdir();
@@ -133,15 +131,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public ArrayList<String> getVersesArabic(){
         ArrayList<String> verseList = new ArrayList<String>();
-        String sql = "select " +DP.VerseArabic_SurahNo+ "," +DP.VerseArabic_Verse+ " from "+ DP.Tbl_VerseArabic + "  LIMIT 100";
+        String sql = "select " + DbProperty.VerseArabic_SurahNo+ "," + DbProperty.VerseArabic_Verse+ " from "+ DbProperty.Tbl_VerseArabic + "  where surahNo=83";
 
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
             do{
                 String name = "";
                 String id = "";
-                name = cursor.getString(cursor.getColumnIndex(DP.VerseArabic_SurahNo));
-                id = cursor.getString(cursor.getColumnIndex(DP.VerseArabic_Verse));
+                name = cursor.getString(cursor.getColumnIndex(DbProperty.VerseArabic_SurahNo));
+                id = cursor.getString(cursor.getColumnIndex(DbProperty.VerseArabic_Verse));
 
                 verseList.add(id);
             }while(cursor.moveToNext());

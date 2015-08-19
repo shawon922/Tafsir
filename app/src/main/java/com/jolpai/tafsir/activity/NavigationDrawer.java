@@ -102,7 +102,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
         SharedPreferences prefs = this.getSharedPreferences("myKey", Context.MODE_PRIVATE);
         Gson gson = new Gson();
 
-        if(prefs.contains("verses")){
+        if(prefs.contains("versesT")){
             String json = prefs.getString("verses", null);
             name = gson.fromJson(json, new TypeToken<List<String>>(){}.getType());
         }else{
