@@ -7,7 +7,16 @@ import java.util.ArrayList;
  */
 public class Global {
     private static ArrayList<String> VERSE_LIST ;
+    private static ArrayList<Trans> VERSE_TRANS_LIST;
 
+
+    public static ArrayList<Trans> getVerseTransList() {
+        return VERSE_TRANS_LIST;
+    }
+
+    public static void setVerseTransList(ArrayList<Trans> verseTransList) {
+        VERSE_TRANS_LIST = verseTransList;
+    }
 
     public static ArrayList<String> getVerseList() {
         return VERSE_LIST;

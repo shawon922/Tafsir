@@ -24,6 +24,7 @@ import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.entity.Trans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
         setContentView(R.layout.home);
 
        DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
-
+        verseTransList();//testing english trans
         getDataFromPref();
         initToolbar();
         initRecyclerView();
@@ -92,7 +93,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     protected void onResume() {
         super.onResume();
 
-        DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
+      //  DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
 
 
     }
@@ -114,6 +115,12 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
         }
         Global.setVerseList(name);
 
+    }
+
+    protected void verseTransList(){
+        ArrayList<Trans> verseTransList;
+        verseTransList=App.getContext().getDatabaseManager().getPlainTrans("en");
+        Global.setVerseTransList(verseTransList);
     }
 
 

@@ -36,13 +36,13 @@ public class RecyclerItemViewHolder extends RecyclerView.ViewHolder {
         return new RecyclerItemViewHolder(parent,lCustomR2L,lCustomL2R);
     }
 
-    public void setItemText(CharSequence text) {
+    public void setItemText(CharSequence text,CharSequence verseTrans) {
         View normalView =View.inflate(context, R.layout.normal_view, null);
         View normalViewEng =View.inflate(context, R.layout.normal_view, null);
         TextView tv = (TextView)normalView.findViewById(R.id.textView);
         TextView tvEng = (TextView)normalViewEng.findViewById(R.id.textView);
-        CharSequence name= "Tanim reja";
-        tvEng.setText(name);
+
+        tvEng.setText(verseTrans);
         tv.setText(text);
         tv.setTypeface(tf);
         tv.setTextSize(35);

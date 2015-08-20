@@ -10,17 +10,17 @@ public class DbProperty {
 
     public static final String Tbl_SurahName ="SurahName";
     public static final String Tbl_Settings="Settings";
-    public static final String Tbl_VerseArabic="VerseArabic";
-    public static final String Tbl_VerseTrans="VerseTrans";
+    public static final String Tbl_VerseArabic="Verse";
+    public static final String Tbl_VerseTrans="Trans";
 
-    public static final String VerseTrans_Id="VerseTrans";
-    public static final String VerseTrans_SurahNo="surahNo";
-    public static final String VerseTrans_VerseNo="verseNo";
-    public static final String VerseTrans_Verse="verse";
+    public static final String Tbl_VerseTrans_Id="VerseTrans";
+    public static final String Tbl_VerseTrans_SurahNo="surahNo";
+    public static final String Tbl_VerseTrans_VerseNo="verseNo";
+    public static final String Tbl_VerseTrans_Verse="verse";
 
-    public static final String VerseArabic_Id="VerseTrans";
-    public static final String VerseArabic_SurahNo="surahNo";
-    public static final String VerseArabic_VerseNo="verseNo";
-    public static final String VerseArabic_Verse="verse";
+    public static final String Tbl_VerseArabic_Id="VerseTrans";
+    public static final String Tbl_VerseArabic_SurahNo="surahNo";
+    public static final String Tbl_VerseArabic_VerseNo="verseNo";
+    public static final String Tbl_VerseArabic_Verse="verse";
 
 }

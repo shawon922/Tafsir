@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.entity.Trans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +18,13 @@ import java.util.List;
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<String> mItemList;
+    private ArrayList<Trans> mTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 
     public RecyclerAdapter(List<String> itemList) {
         mItemList = itemList;
+        mTransList= Global.getVerseTransList();
     }
 
     @Override
@@ -40,7 +45,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (!isPositionHeader(position)) {
             RecyclerItemViewHolder holder = (RecyclerItemViewHolder) viewHolder;
             String itemText = mItemList.get(position - 1); // we are taking header in to account so all of our items are correctly positioned
-            holder.setItemText(itemText);
+            Trans trans = new Trans();
+            trans=mTransList.get(position - 1);
+            holder.setItemText(itemText,trans.getVerse().toString());
         }
     }
     //our old getItemCount()
