@@ -2,6 +2,7 @@ package com.jolpai.tafsir.activity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,16 +35,24 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
 
     private Toolbar mToolbar;
     private ImageView settingImageView;
+    private String surahNo;
+    private String surahName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
        DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
+
+
+        Intent intent = getIntent();
+        surahNo= intent.getStringExtra("surahNo");
+        surahName= intent.getStringExtra("surahName");
         verseTransList();//testing english trans
         getDataFromPref();
         initToolbar();
         initRecyclerView();
+
 
     }
 
@@ -54,7 +63,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
         TextView tv = (TextView)findViewById(R.id.txtToolbarHeader);
         settingImageView = (ImageView)findViewById(R.id.settingsImage);
         settingImageView.setOnClickListener(this);
-        tv.setText("TAFSIR");
+        tv.setText(surahName);
         tv.setTextColor(Color.WHITE);
         tv.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
@@ -93,9 +102,6 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     protected void onResume() {
         super.onResume();
 
-      //  DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
-
-
     }
 
     protected void getDataFromPref(){
@@ -107,7 +113,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
             String json = prefs.getString("verses", null);
             name = gson.fromJson(json, new TypeToken<List<String>>(){}.getType());
         }else{
-            name=App.getContext().getDatabaseManager().getVersesArabic();
+            name=App.getContext().getDatabaseManager().getVersesArabic(surahNo);
             String jsonString = gson.toJson(name);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("verses",jsonString);
@@ -119,7 +125,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
 
     protected void verseTransList(){
         ArrayList<Trans> verseTransList;
-        verseTransList=App.getContext().getDatabaseManager().getPlainTrans("en");
+        verseTransList=App.getContext().getDatabaseManager().getPlainTrans(surahNo);
         Global.setVerseTransList(verseTransList);
     }
 

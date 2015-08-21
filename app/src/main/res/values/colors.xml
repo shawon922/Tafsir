@@ -4,17 +4,21 @@
     <color name="black_trns_20">#25000000</color>
 
     <color name="white">#ffffff</color>
+    <color name="white_trns_10">#90ffffff</color>
 
     <color name="red_500">#F44336</color>
 
     <color name ="deepOrange_500">#FF5722</color>
 
     <color name="green_500">#4CAF50</color>
+    <color name="light_green_600">#7CB342</color>
 
     <color name="amber_500">#FFC107</color>
     <color name="amber_200">#FFE082</color>
     <color name="amber_100">#FFECB3</color>
     <color name="amber_50">#FFF8E1</color>
+
+    <color name="brown_500">#795548</color>
 
 
     <color name="blue_500">#2196F3</color>
@@ -30,6 +34,18 @@
     <color name="gray_100">#F5F5F5</color>
     <color name="gray_50">#EEEEEE</color>
     <color name="gray_500_trans_50">#509E9E9E</color>
+
+
+
+    <integer-array name="androidcolors">
+
+        <item>@color/gray_500</item>
+        <item>@color/amber_500</item>
+        <item>@color/light_green_600</item>
+        <item>@color/brown_500</item>
+
+    </integer-array>
+
 
 
 </resources>

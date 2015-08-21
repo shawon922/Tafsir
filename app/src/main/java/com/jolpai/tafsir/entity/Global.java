@@ -8,7 +8,15 @@ import java.util.ArrayList;
 public class Global {
     private static ArrayList<String> VERSE_LIST ;
     private static ArrayList<Trans> VERSE_TRANS_LIST;
+    private static ArrayList<SurahName> SURAH_NAME_LIST;
 
+    public static ArrayList<SurahName> getSurahNameList() {
+        return SURAH_NAME_LIST;
+    }
+
+    public static void setSurahNameList(ArrayList<SurahName> surahNameList) {
+        SURAH_NAME_LIST = surahNameList;
+    }
 
     public static ArrayList<Trans> getVerseTransList() {
         return VERSE_TRANS_LIST;

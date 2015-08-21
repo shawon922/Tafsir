@@ -43,12 +43,17 @@ public class RecyclerItemViewHolder extends RecyclerView.ViewHolder {
         TextView tvEng = (TextView)normalViewEng.findViewById(R.id.textView);
 
         tvEng.setText(verseTrans);
+        tvEng.setTypeface(tf);
+        tvEng.setTextSize(22);
+
         tv.setText(text);
         tv.setTypeface(tf);
         tv.setTextSize(35);
         tv.setTextColor(Color.DKGRAY);
+
         mCustomR2L.removeAllViews();
         mCustomR2L.addView(normalView);
+
         mCustomL2R.removeAllViews();
         mCustomL2R.addView(normalViewEng);
     }

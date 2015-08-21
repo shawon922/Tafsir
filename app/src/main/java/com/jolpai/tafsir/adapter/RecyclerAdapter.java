@@ -46,7 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             RecyclerItemViewHolder holder = (RecyclerItemViewHolder) viewHolder;
             String itemText = mItemList.get(position - 1); // we are taking header in to account so all of our items are correctly positioned
             Trans trans = new Trans();
-            trans=mTransList.get(position - 1);
+            trans=mTransList.get(position-1);
             holder.setItemText(itemText,trans.getVerse().toString());
         }
     }
