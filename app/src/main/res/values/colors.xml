@@ -4,7 +4,7 @@
     <color name="black_trns_20">#25000000</color>
 
     <color name="white">#ffffff</color>
-    <color name="white_trns_10">#90ffffff</color>
+    <color name="white_trns_10">#50ffffff</color>
 
     <color name="red_500">#F44336</color>
 
@@ -23,6 +23,7 @@
 
     <color name="blue_500">#2196F3</color>
     <color name="blue_trns_20">#202196F3</color>
+    <color name="blue_gray_500">#607D8B</color>
 
     <color name="gray_800">#424242</color>
     <color name="gray_600">#757575</color>
@@ -35,12 +36,14 @@
     <color name="gray_50">#EEEEEE</color>
     <color name="gray_500_trans_50">#509E9E9E</color>
 
+    <color name="teal_500">#009688</color>
+
 
 
     <integer-array name="androidcolors">
 
         <item>@color/gray_500</item>
-        <item>@color/amber_500</item>
+        <item>@color/blue_gray_500</item>
         <item>@color/light_green_600</item>
         <item>@color/brown_500</item>
 
