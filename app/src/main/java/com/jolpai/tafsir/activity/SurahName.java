@@ -83,12 +83,12 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     }
 
     private void hideViews() {
-        mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+      //  mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
 
     }
 
     private void showViews() {
-        mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+      //  mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
 
     }
 
