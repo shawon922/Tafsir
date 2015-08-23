@@ -3,6 +3,7 @@ package com.jolpai.tafsir.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,12 +34,9 @@ import java.util.List;
 
 public class SurahName extends AppCompatActivity implements View.OnClickListener {
 
-
-
-
-
     private Toolbar mToolbar;
     private ImageView settingImageView;
+    MediaPlayer mediaPlayer = new MediaPlayer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
