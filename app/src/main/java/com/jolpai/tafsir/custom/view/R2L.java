@@ -109,7 +109,7 @@ public class R2L extends ViewGroup {
                 height = ypos + mHeight;
             }
         }
-        height += 5; // Fudge to avoid clipping bottom of last row.
+        height += 2; // Fudge to avoid clipping bottom of last row.
         setMeasuredDimension(width, height);
     }
 
