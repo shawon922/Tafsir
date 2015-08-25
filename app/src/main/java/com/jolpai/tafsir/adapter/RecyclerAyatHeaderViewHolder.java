@@ -6,8 +6,8 @@ import android.view.View;
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerHeaderViewHolder extends RecyclerView.ViewHolder {
-    public RecyclerHeaderViewHolder(View itemView) {
+public class RecyclerAyatHeaderViewHolder extends RecyclerView.ViewHolder {
+    public RecyclerAyatHeaderViewHolder(View itemView) {
         super(itemView);
     }
 

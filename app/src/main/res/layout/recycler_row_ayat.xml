@@ -14,7 +14,18 @@
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal|top"
+
             android:background="@color/white_trns_10">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ayat_number"
+                android:text="322"
+                android:textSize="8sp"
+                android:gravity="center_vertical|center_horizontal"
+
+                />
 
         </LinearLayout>
 

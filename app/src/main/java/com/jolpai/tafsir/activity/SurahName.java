@@ -1,8 +1,5 @@
 package com.jolpai.tafsir.activity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,20 +14,16 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
-import com.jolpai.tafsir.adapter.RecyclerAdapter;
 import com.jolpai.tafsir.adapter.RecyclerSurahNameAdapter;
+import com.jolpai.tafsir.adapter.RecyclerSurahNameItemViewHolder;
 import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.Trans;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SurahName extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,13 +49,12 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         settingImageView = (ImageView)findViewById(R.id.settingsImage);
         settingImageView.setOnClickListener(this);
         tv.setText("TAFSIR");
-        tv.setTextColor(Color.WHITE);
         tv.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 
     private void initRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerSurahNameAdapter recyclerAdapter = new RecyclerSurahNameAdapter();
         recyclerView.setAdapter(recyclerAdapter);
@@ -70,7 +62,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         recyclerView.setOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
-                hideViews();
+                hideViews(recyclerView);
             }
 
             @Override
@@ -78,15 +70,24 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
                 showViews();
             }
         });
+
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RecyclerSurahNameItemViewHolder ss = (RecyclerSurahNameItemViewHolder) recyclerView.getChildViewHolder(v);
+
+            }
+        });
     }
 
-    private void hideViews() {
-      //  mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+    private void hideViews(final RecyclerView recyclerView) {
+        mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+
 
     }
 
     private void showViews() {
-      //  mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+        mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
 
     }
 

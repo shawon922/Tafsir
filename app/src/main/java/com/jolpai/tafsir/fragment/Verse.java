@@ -1,10 +1,6 @@
 package com.jolpai.tafsir.fragment;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,27 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
-import com.jolpai.tafsir.adapter.RecyclerAdapter;
-import com.jolpai.tafsir.adapter.VerseAdapter;
-import com.jolpai.tafsir.custom.view.R2L;
-import com.jolpai.tafsir.db.App;
+import com.jolpai.tafsir.adapter.RecyclerAyatAdapter;
 import com.jolpai.tafsir.entity.Global;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -129,7 +111,7 @@ public class Verse extends Fragment {
     private void initRecyclerView(View v) {
         RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(Global.getVerseList());
+        RecyclerAyatAdapter recyclerAdapter = new RecyclerAyatAdapter(Global.getVerseList());
         recyclerView.setAdapter(recyclerAdapter);
         //setting up our OnScrollListener
         recyclerView.setOnScrollListener(new HidingScrollListener() {

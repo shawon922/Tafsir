@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
-import com.jolpai.tafsir.adapter.RecyclerAdapter;
+import com.jolpai.tafsir.adapter.RecyclerAyatAdapter;
 import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
@@ -72,7 +72,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     private void initRecyclerView() {
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(Global.getVerseList());
+        RecyclerAyatAdapter recyclerAdapter = new RecyclerAyatAdapter(Global.getVerseList());
         recyclerView.setAdapter(recyclerAdapter);
         //setting up our OnScrollListener
         recyclerView.setOnScrollListener(new HidingScrollListener() {

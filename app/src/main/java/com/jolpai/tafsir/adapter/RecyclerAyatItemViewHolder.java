@@ -15,26 +15,26 @@ import com.jolpai.tafsir.custom.view.R2L;
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerItemViewHolder extends RecyclerView.ViewHolder {
+public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
    // private final TextView mItemTextView;
     Context context;
     private  final R2L mCustomR2L;
     private  final L2R mCustomL2R;
     private  static Typeface tf ;
 
-    public RecyclerItemViewHolder(final View parent,R2L r2l,L2R l2r) {
+    public RecyclerAyatItemViewHolder(final View parent, R2L r2l, L2R l2r) {
         super(parent);
         mCustomR2L = r2l;
         mCustomL2R=l2r;
         context=parent.getContext();
     }
 
-    public static RecyclerItemViewHolder newInstance(View parent) {
+    public static RecyclerAyatItemViewHolder newInstance(View parent) {
         tf=Typeface.createFromAsset(parent.getContext().getAssets(),"fonts/TRADO.TTF");
         R2L lCustomR2L = (R2L) parent.findViewById(R.id.cl_R2L);
         L2R lCustomL2R=(L2R) parent.findViewById(R.id.cl_L2R);
 
-        return new RecyclerItemViewHolder(parent,lCustomR2L,lCustomL2R);
+        return new RecyclerAyatItemViewHolder(parent,lCustomR2L,lCustomL2R);
     }
 
     public void setItemText(String text,CharSequence verseTrans) {

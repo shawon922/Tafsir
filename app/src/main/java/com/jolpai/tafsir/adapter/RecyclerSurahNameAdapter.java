@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.NavigationDrawer;
@@ -17,8 +16,6 @@ import com.jolpai.tafsir.entity.Trans;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by Tanim reja on 8/9/2015.
@@ -38,7 +35,7 @@ public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.
     public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         if (viewType == TYPE_ITEM) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_surah_item, parent, false);
+            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_row_surah, parent, false);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -47,7 +44,7 @@ public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.
                     Intent intent = new Intent(parent.getContext(), NavigationDrawer.class);
                     intent.putExtra("surahNo",""+surahName.getSurahNo());
                     intent.putExtra("surahName",""+surahName.getSurahName());
-                    parent.getContext().startActivity(intent);
+                   // parent.getContext().startActivity(intent);
 
 
                 }
@@ -61,7 +58,7 @@ public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.
 
             return RecyclerSurahNameItemViewHolder.newInstance(view);
         } else if (viewType == TYPE_HEADER) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_surah_header, parent, false);
+            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header_surah, parent, false);
             return new RecyclerSurahNameHeaderViewHolder(view);
         }
         throw new RuntimeException("There is no type that matches the type " + viewType + " + make sure your using types    correctly");

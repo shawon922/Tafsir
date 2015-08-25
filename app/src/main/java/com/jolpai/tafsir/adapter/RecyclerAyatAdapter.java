@@ -16,13 +16,13 @@ import java.util.List;
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerAyatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<String> mItemList;
     private ArrayList<Trans> mTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 
-    public RecyclerAdapter(List<String> itemList) {
+    public RecyclerAyatAdapter(List<String> itemList) {
         mItemList = itemList;
         mTransList= Global.getVerseTransList();
     }
@@ -31,11 +31,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         if (viewType == TYPE_ITEM) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_item_test, parent, false);
-            return RecyclerItemViewHolder.newInstance(view);
+            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_row_ayat, parent, false);
+            return RecyclerAyatItemViewHolder.newInstance(view);
         } else if (viewType == TYPE_HEADER) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header, parent, false);
-            return new RecyclerHeaderViewHolder(view);
+            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header_ayat, parent, false);
+            return new RecyclerAyatHeaderViewHolder(view);
         }
         throw new RuntimeException("There is no type that matches the type " + viewType + " + make sure your using types    correctly");
     }
@@ -43,7 +43,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (!isPositionHeader(position)) {
-            RecyclerItemViewHolder holder = (RecyclerItemViewHolder) viewHolder;
+            RecyclerAyatItemViewHolder holder = (RecyclerAyatItemViewHolder) viewHolder;
             String itemText = mItemList.get(position - 1); // we are taking header in to account so all of our items are correctly positioned
             Trans trans = new Trans();
             trans=mTransList.get(position-1);
