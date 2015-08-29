@@ -25,6 +25,7 @@ import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.entity.Verse;
 import com.jolpai.tafsir.entity.VerseTrans;
 
 import java.util.ArrayList;
@@ -105,26 +106,13 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     }
 
     protected void getDataFromPref(){
-        ArrayList<String> name ;
-        SharedPreferences prefs = this.getSharedPreferences("myKey", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-
-        if(prefs.contains("versesT")){
-            String json = prefs.getString("verses", null);
-            name = gson.fromJson(json, new TypeToken<List<String>>(){}.getType());
-        }else{
-            name=App.getContext().getDatabaseManager().getVersesArabic(surahNo);
-            String jsonString = gson.toJson(name);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("verses",jsonString);
-            editor.commit();
-        }
-        Global.setVerseList(name);
-
+        ArrayList<Verse> verseArabicList ;
+        verseArabicList=App.getContext().getDatabaseManager().getVersesArabic(surahNo);
+        Global.setVerseList(verseArabicList);
     }
 
     protected void verseTransList(){
-        ArrayList<VerseTrans> verseVerseTransList;
+        ArrayList<Verse> verseVerseTransList;
         verseVerseTransList =App.getContext().getDatabaseManager().getPlainTrans(surahNo);
         Global.setVerseVerseTransList(verseVerseTransList);
     }

@@ -11,6 +11,7 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.NavigationDrawer;
 import com.jolpai.tafsir.entity.Global;
 import com.jolpai.tafsir.entity.SurahName;
+import com.jolpai.tafsir.entity.Verse;
 import com.jolpai.tafsir.entity.VerseTrans;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.Random;
  */
 public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<SurahName> mItemList;
-    private ArrayList<VerseTrans> mVerseTransList;
+    private ArrayList<Verse> mVerseTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 

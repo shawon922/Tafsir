@@ -11,6 +11,8 @@ import com.jolpai.tafsir.entity.Font;
 import com.jolpai.tafsir.entity.Lang;
 import com.jolpai.tafsir.entity.SurahName;
 import com.jolpai.tafsir.entity.Tafsir;
+import com.jolpai.tafsir.entity.Verse;
+import com.jolpai.tafsir.entity.VerseArabic;
 import com.jolpai.tafsir.entity.VerseTrans;
 import com.jolpai.tafsir.entity.Translation;
 
@@ -154,19 +156,21 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<String> getVersesArabic(String surahNo){
-        ArrayList<String> verseList = new ArrayList<String>();
+    public ArrayList<Verse> getVersesArabic(String surahNo){
+        ArrayList<Verse> verseList = new ArrayList<>();
       //  String sql = "select " + DbProperty.Tbl_VerseArabic_SurahNo+ "," + DbProperty.Tbl_VerseArabic_Verse+ " from "+ DbProperty.Tbl_VerseArabic + "  where surahNo="+surahNo+"";
         String sql="select * from Verse where surahNo="+surahNo+"";
         Cursor cursor = db.rawQuery(sql, null);
+        VerseArabic verseArabic;
         if(cursor.moveToFirst()){
             do{
-                String name = "";
-                String id = "";
-                name = cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_SurahNo));
-                id = cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_Verse));
+                verseArabic=new VerseArabic();
+                verseArabic.setSurahNo(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_SurahNo)));
+                verseArabic.setVerse(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_Verse)));
+                verseArabic.setVerseId(cursor.getString(cursor.getColumnIndex("verseId")));
 
-                verseList.add(id);
+
+                verseList.add(verseArabic);
             }while(cursor.moveToNext());
         }
         cursor.close();
@@ -174,11 +178,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return verseList;
     }
 
-    public ArrayList<VerseTrans> getPlainTrans(String surahNo){
-        ArrayList<VerseTrans> verseVerseTransList = new ArrayList<>();
+    public ArrayList<Verse> getPlainTrans(String surahNo){
+        ArrayList<Verse> verseTransList = new ArrayList<>();
        // String sql = "select " + DbProperty.Tbl_VerseTrans_SurahNo+ "," + DbProperty.Tbl_VerseTrans_Verse+ " from "+ DbProperty.Tbl_VerseTrans + "  where surahNo="+surahNo+" and lang='bn'";
 
-        String sql="select * from VerseTrans  where surahNo="+surahNo+" and lang='bn'";
+        String sql="select * from Trans  where surahNo="+surahNo+" and lang='bn'";
         VerseTrans verseTrans;
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
@@ -188,12 +192,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 verseTrans.setVerse(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_Verse)));
                 verseTrans.setVerseId(cursor.getString(cursor.getColumnIndex("verseId")));
 
-                verseVerseTransList.add(verseTrans);
+                verseTransList.add(verseTrans);
             }while(cursor.moveToNext());
         }
         cursor.close();
 
-        return verseVerseTransList;
+        return verseTransList;
     }
 
     public ArrayList<Tafsir> getTafsirNameList(){

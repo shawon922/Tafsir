@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.entity.Verse;
+import com.jolpai.tafsir.entity.VerseArabic;
 import com.jolpai.tafsir.entity.VerseTrans;
 
 import java.util.ArrayList;
@@ -17,14 +19,14 @@ import java.util.List;
  * Created by Tanim reja on 8/9/2015.
  */
 public class RecyclerAyatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<String> mItemList;
-    private ArrayList<VerseTrans> mVerseTransList;
+    private List<Verse> verseArabicList;
+    private ArrayList<Verse> verseTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 
-    public RecyclerAyatAdapter(List<String> itemList) {
-        mItemList = itemList;
-        mVerseTransList = Global.getVerseVerseTransList();
+    public RecyclerAyatAdapter(List<Verse> itemList) {
+        verseArabicList = itemList;
+        verseTransList = Global.getVerseVerseTransList();
     }
 
     @Override
@@ -44,15 +46,23 @@ public class RecyclerAyatAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (!isPositionHeader(position)) {
             RecyclerAyatItemViewHolder holder = (RecyclerAyatItemViewHolder) viewHolder;
-            String itemText = mItemList.get(position - 1); // we are taking header in to account so all of our items are correctly positioned
-            VerseTrans verseTrans = new VerseTrans();
-            verseTrans = mVerseTransList.get(position-1);
-            holder.setItemText(itemText, verseTrans.getVerse().toString());
+
+            VerseArabic verseArabic = (VerseArabic) verseArabicList.get(position - 1);
+            VerseTrans verseTrans;
+            if(verseArabic.getVerseId().equalsIgnoreCase("0")){
+                verseTrans = new VerseTrans();
+            }else if(verseArabic.getSurahNo().equalsIgnoreCase("1") ||verseArabic.getSurahNo().equalsIgnoreCase("9") ){
+                verseTrans = (VerseTrans) verseTransList.get(position-1);
+            }else{
+                verseTrans = (VerseTrans) verseTransList.get(position-2);
+            }
+
+            holder.setItemText(verseArabic, verseTrans);
         }
     }
     //our old getItemCount()
     public int getBasicItemCount() {
-        return mItemList == null ? 0 : mItemList.size();
+        return verseArabicList == null ? 0 : verseArabicList.size();
     }
 
     //our new getItemCount() that includes header View

@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by Tanim reja on 8/7/2015.
  */
 public class Global {
-    private static ArrayList<String> VERSE_LIST ;
-    private static ArrayList<VerseTrans> verseVerseTransList;
+    private static ArrayList<Verse> VERSE_LIST ;
+    private static ArrayList<Verse> verseVerseTransList;
     private static ArrayList<SurahName> SURAH_NAME_LIST;
 
     public static ArrayList<SurahName> getSurahNameList() {
@@ -18,19 +18,19 @@ public class Global {
         SURAH_NAME_LIST = surahNameList;
     }
 
-    public static ArrayList<VerseTrans> getVerseVerseTransList() {
+    public static ArrayList<Verse> getVerseVerseTransList() {
         return verseVerseTransList;
     }
 
-    public static void setVerseVerseTransList(ArrayList<VerseTrans> verseVerseTransList) {
+    public static void setVerseVerseTransList(ArrayList<Verse> verseVerseTransList) {
         Global.verseVerseTransList = verseVerseTransList;
     }
 
-    public static ArrayList<String> getVerseList() {
+    public static ArrayList<Verse> getVerseList() {
         return VERSE_LIST;
     }
 
-    public static void setVerseList(ArrayList<String> verseList) {
+    public static void setVerseList(ArrayList<Verse> verseList) {
         VERSE_LIST = verseList;
     }
 }
