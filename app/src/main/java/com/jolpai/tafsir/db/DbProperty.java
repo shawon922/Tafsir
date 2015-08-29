@@ -11,7 +11,7 @@ public class DbProperty {
     public static final String Tbl_SurahName ="SurahName";
     public static final String Tbl_Settings="Settings";
     public static final String Tbl_VerseArabic="Verse";
-    public static final String Tbl_VerseTrans="Trans";
+    public static final String Tbl_VerseTrans="VerseTrans";
 
     public static final String Tbl_VerseTrans_Id="VerseTrans";
     public static final String Tbl_VerseTrans_SurahNo="surahNo";

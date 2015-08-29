@@ -11,7 +11,7 @@ import com.jolpai.tafsir.entity.Font;
 import com.jolpai.tafsir.entity.Lang;
 import com.jolpai.tafsir.entity.SurahName;
 import com.jolpai.tafsir.entity.Tafsir;
-import com.jolpai.tafsir.entity.Trans;
+import com.jolpai.tafsir.entity.VerseTrans;
 import com.jolpai.tafsir.entity.Translation;
 
 import java.io.File;
@@ -156,8 +156,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public ArrayList<String> getVersesArabic(String surahNo){
         ArrayList<String> verseList = new ArrayList<String>();
-        String sql = "select " + DbProperty.Tbl_VerseArabic_SurahNo+ "," + DbProperty.Tbl_VerseArabic_Verse+ " from "+ DbProperty.Tbl_VerseArabic + "  where surahNo="+surahNo+"";
-
+      //  String sql = "select " + DbProperty.Tbl_VerseArabic_SurahNo+ "," + DbProperty.Tbl_VerseArabic_Verse+ " from "+ DbProperty.Tbl_VerseArabic + "  where surahNo="+surahNo+"";
+        String sql="select * from Verse where surahNo="+surahNo+"";
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
             do{
@@ -174,23 +174,26 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return verseList;
     }
 
-    public ArrayList<Trans> getPlainTrans(String surahNo){
-        ArrayList<Trans> verseTransList = new ArrayList<>();
-        String sql = "select " + DbProperty.Tbl_VerseTrans_SurahNo+ "," + DbProperty.Tbl_VerseTrans_Verse+ " from "+ DbProperty.Tbl_VerseTrans + "  where surahNo="+surahNo+"";
-        Trans trans;
+    public ArrayList<VerseTrans> getPlainTrans(String surahNo){
+        ArrayList<VerseTrans> verseVerseTransList = new ArrayList<>();
+       // String sql = "select " + DbProperty.Tbl_VerseTrans_SurahNo+ "," + DbProperty.Tbl_VerseTrans_Verse+ " from "+ DbProperty.Tbl_VerseTrans + "  where surahNo="+surahNo+" and lang='bn'";
+
+        String sql="select * from VerseTrans  where surahNo="+surahNo+" and lang='bn'";
+        VerseTrans verseTrans;
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
             do{
-                trans =new Trans();
-                trans.setSurahNo(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_SurahNo)));
-                trans.setVerse(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_Verse)));
+                verseTrans =new VerseTrans();
+                verseTrans.setSurahNo(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_SurahNo)));
+                verseTrans.setVerse(cursor.getString(cursor.getColumnIndex(DbProperty.Tbl_VerseArabic_Verse)));
+                verseTrans.setVerseId(cursor.getString(cursor.getColumnIndex("verseId")));
 
-                verseTransList.add(trans);
+                verseVerseTransList.add(verseTrans);
             }while(cursor.moveToNext());
         }
         cursor.close();
 
-        return verseTransList;
+        return verseVerseTransList;
     }
 
     public ArrayList<Tafsir> getTafsirNameList(){

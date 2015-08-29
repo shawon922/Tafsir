@@ -5,31 +5,11 @@ package com.jolpai.tafsir.entity;
  */
 public class Verse {
 
-    private String  verse,
-                    surahNo,
-                    verseNo;
+    private String surahNo;
+    private String verseNo;
+    private String verse;
+    private String lang;
+    private String translator;
+    private String sijdah;
 
-    public String getVerse() {
-        return verse;
-    }
-
-    public void setVerse(String verse) {
-        this.verse = verse;
-    }
-
-    public String getSurahNo() {
-        return surahNo;
-    }
-
-    public void setSurahNo(String surahNo) {
-        this.surahNo = surahNo;
-    }
-
-    public String getVerseNo() {
-        return verseNo;
-    }
-
-    public void setVerseNo(String verseNo) {
-        this.verseNo = verseNo;
-    }
 }

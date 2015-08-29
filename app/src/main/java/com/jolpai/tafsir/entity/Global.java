@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Global {
     private static ArrayList<String> VERSE_LIST ;
-    private static ArrayList<Trans> VERSE_TRANS_LIST;
+    private static ArrayList<VerseTrans> verseVerseTransList;
     private static ArrayList<SurahName> SURAH_NAME_LIST;
 
     public static ArrayList<SurahName> getSurahNameList() {
@@ -18,12 +18,12 @@ public class Global {
         SURAH_NAME_LIST = surahNameList;
     }
 
-    public static ArrayList<Trans> getVerseTransList() {
-        return VERSE_TRANS_LIST;
+    public static ArrayList<VerseTrans> getVerseVerseTransList() {
+        return verseVerseTransList;
     }
 
-    public static void setVerseTransList(ArrayList<Trans> verseTransList) {
-        VERSE_TRANS_LIST = verseTransList;
+    public static void setVerseVerseTransList(ArrayList<VerseTrans> verseVerseTransList) {
+        Global.verseVerseTransList = verseVerseTransList;
     }
 
     public static ArrayList<String> getVerseList() {

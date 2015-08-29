@@ -25,7 +25,7 @@ import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.Trans;
+import com.jolpai.tafsir.entity.VerseTrans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,9 +124,9 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     }
 
     protected void verseTransList(){
-        ArrayList<Trans> verseTransList;
-        verseTransList=App.getContext().getDatabaseManager().getPlainTrans(surahNo);
-        Global.setVerseTransList(verseTransList);
+        ArrayList<VerseTrans> verseVerseTransList;
+        verseVerseTransList =App.getContext().getDatabaseManager().getPlainTrans(surahNo);
+        Global.setVerseVerseTransList(verseVerseTransList);
     }
 
 
