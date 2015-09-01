@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.custom.view.L2R;
 import com.jolpai.tafsir.custom.view.R2L;
+import com.jolpai.tafsir.entity.Global;
 import com.jolpai.tafsir.entity.VerseArabic;
 import com.jolpai.tafsir.entity.VerseTrans;
 
@@ -28,11 +29,14 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
         super(parent);
         mCustomR2L = r2l;
         mCustomL2R=l2r;
+        Global.setTypefaceArabic(Typeface.createFromAsset(parent.getContext().getAssets(), "fonts/TRADO.TTF"));
+       // Global.setTypefaceTrans(Typeface.createFromAsset(parent.getContext().getAssets(), "fonts/SOLAIMANLIPI.TTF"));
         context=parent.getContext();
     }
 
     public static RecyclerAyatItemViewHolder newInstance(View parent) {
         tf=Typeface.createFromAsset(parent.getContext().getAssets(),"fonts/TRADO.TTF");
+
         R2L lCustomR2L = (R2L) parent.findViewById(R.id.cl_R2L);
         L2R lCustomL2R=(L2R) parent.findViewById(R.id.cl_L2R);
 
@@ -47,7 +51,7 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
         TextView txtAyat = (TextView)normalView.findViewById(R.id.textView);
 
         txtAyat.setText(verseArabic.getVerse());
-        txtAyat.setTypeface(tf);
+        txtAyat.setTypeface(Global.getTypefaceArabic());
         txtAyat.setTextSize(35);
         txtAyat.setTextColor(Color.DKGRAY);
         tvEmpty.setText("   ");
@@ -62,7 +66,7 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
         ImageView imgAyat = (ImageView)normarImgView.findViewById(R.id.imgAyatNo);
 
         tvEng.setText(verseTrans.getVerse());
-        tvEng.setTypeface(tf);
+        tvEng.setTypeface(Global.getTypefaceArabic());
         tvEng.setTextSize(22);
        // tv.setText(text);
 
@@ -87,5 +91,41 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
             mCustomR2L.addView(normalEmptyView);
         }*/
         // mCustomR2L.addView(normarImgView);
+
+
+        /*
+        * samuh, i just discovered this issue while tracking down a memory leak in one of my apps ... it's definitely a concern in my case, so i coded this class as a work-around:
+
+public class Typefaces{
+
+private static final Hashtable<String, Typeface> cache = new Hashtable<String, Typeface>();
+
+	public static Typeface get(Context c, String name){
+		synchronized(cache){
+			if(!cache.containsKey(name)){
+				Typeface t = Typeface.createFromAsset(
+						c.getAssets(),
+						String.format("fonts/%s.ttf", name)
+					);
+				cache.put(name, t);
+			}
+			return cache.get(name);
+		}
+	}
+
+}
+
+when you want to load one of your custom fonts, you'd say something like:
+Typefaces.get("myfont");
+
+basically this class ensures Android only loads each font once per instance of your app. the tradeoff, of course, is that each requested typeface object will remain in memory until your app is totally stopped by the OS (even though a given activity may not require each font).
+
+this works for my app anyway, my memory leak is gone now.
+        *
+        *
+        * */
+
+
+
     }
 }

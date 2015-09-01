@@ -9,10 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.custom.view.L2R;
-import com.jolpai.tafsir.custom.view.R2L;
 import com.jolpai.tafsir.entity.SurahName;
-import com.jolpai.tafsir.fragment.Surah;
 
 import java.util.Random;
 

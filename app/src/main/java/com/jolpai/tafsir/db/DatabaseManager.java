@@ -6,15 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 
-import com.jolpai.tafsir.entity.Audio;
-import com.jolpai.tafsir.entity.Font;
-import com.jolpai.tafsir.entity.Lang;
 import com.jolpai.tafsir.entity.SurahName;
 import com.jolpai.tafsir.entity.Tafsir;
+import com.jolpai.tafsir.entity.Translation;
 import com.jolpai.tafsir.entity.Verse;
 import com.jolpai.tafsir.entity.VerseArabic;
 import com.jolpai.tafsir.entity.VerseTrans;
-import com.jolpai.tafsir.entity.Translation;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -219,24 +216,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Lang> getLangNameList(){
-        ArrayList<Lang> list = new ArrayList<>();
 
-        Lang lang = new Lang();
-        lang.setName("Arabic");
-        list.add(lang);
-
-        Lang lang1 = new Lang();
-        lang1.setName("English");
-        list.add(lang1);
-
-        Lang lang2 = new Lang();
-        lang2.setName("Bangla");
-        list.add(lang2);
-
-        return list;
-
-    }
 
     public ArrayList<Translation> getTranslatorNameList(){
         ArrayList<Translation> list = new ArrayList<>();
@@ -261,42 +241,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Audio> getReciterNameList(){
-        ArrayList<Audio> list = new ArrayList<>();
 
-        Audio lang = new Audio();
-        lang.setName("Al Afasi");
-        list.add(lang);
-
-        Audio lang1 = new Audio();
-        lang1.setName("Bilal");
-        list.add(lang1);
-
-        Audio lang2 = new Audio();
-        lang2.setName("Ibn Baz");
-        list.add(lang2);
-
-        return list;
-
-    }
-
-    public ArrayList<Font> getFontNameList(){
-        ArrayList<Font> list = new ArrayList<>();
-
-        Font lang = new Font();
-        lang.setName("Itali");
-        list.add(lang);
-
-        Font lang1 = new Font();
-        lang1.setName("Arial");
-        list.add(lang1);
-
-        Font lang2 = new Font();
-        lang2.setName("Solaimani Lipi");
-        list.add(lang2);
-
-        return list;
-
-    }
 
 }
