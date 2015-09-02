@@ -1,6 +1,5 @@
 package com.jolpai.tafsir.activity;
 
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +35,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.surah);
+        setContentView(R.layout.surah_name);
         Global.setTypefaceArabic(Typefaces.get(SurahName.this, "trado"));
 
         DatabaseManager dbm = new DatabaseManager(SurahName.this);

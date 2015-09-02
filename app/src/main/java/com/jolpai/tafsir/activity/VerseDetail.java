@@ -1,9 +1,7 @@
 package com.jolpai.tafsir.activity;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -16,8 +14,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
 import com.jolpai.tafsir.adapter.RecyclerAyatAdapter;
@@ -25,13 +21,10 @@ import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.Verse;
-import com.jolpai.tafsir.entity.VerseTrans;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class NavigationDrawer extends ActionBarActivity implements View.OnClickListener {
+public class VerseDetail extends ActionBarActivity implements View.OnClickListener {
 
 
     private Toolbar mToolbar;
@@ -41,9 +34,9 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.verse_detail);
 
-       DatabaseManager dbm = new DatabaseManager(NavigationDrawer.this);
+       DatabaseManager dbm = new DatabaseManager(VerseDetail.this);
 
 
         Intent intent = getIntent();
@@ -107,13 +100,13 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
     }
 
     protected void getDataFromPref(){
-        ArrayList<Verse> verseArabicList ;
+        ArrayList<com.jolpai.tafsir.entity.Verse> verseArabicList ;
         verseArabicList=App.getContext().getDatabaseManager().getVersesArabic(surahNo);
         Global.setVerseList(verseArabicList);
     }
 
     protected void verseTransList(){
-        ArrayList<Verse> verseVerseTransList;
+        ArrayList<com.jolpai.tafsir.entity.Verse> verseVerseTransList;
         verseVerseTransList =App.getContext().getDatabaseManager().getPlainTrans(surahNo);
         Global.setVerseVerseTransList(verseVerseTransList);
     }

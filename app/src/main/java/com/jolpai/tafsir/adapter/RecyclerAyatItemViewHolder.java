@@ -77,7 +77,7 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
         }else{
             txtAyatNo.setVisibility(View.VISIBLE);
             txtAyatNo.setText(verseTrans.getVerseId());
-            txtAyatNo.setTextColor(context.getResources().getColor(R.color.blue_500));
+            txtAyatNo.setTextColor(context.getResources().getColor(R.color.gray_800));
         }
 
         View normalViewTrans =View.inflate(context, R.layout.normal_view, null);

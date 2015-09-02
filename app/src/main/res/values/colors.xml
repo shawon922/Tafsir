@@ -44,7 +44,6 @@
 
         <item>@color/gray_500</item>
         <item>@color/blue_gray_500</item>
-        <item>@color/light_green_600</item>
         <item>@color/brown_500</item>
 
     </integer-array>

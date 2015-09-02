@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.activity.NavigationDrawer;
+import com.jolpai.tafsir.activity.VerseDetail;
 import com.jolpai.tafsir.entity.Global;
 import com.jolpai.tafsir.entity.SurahName;
-import com.jolpai.tafsir.entity.Verse;
-import com.jolpai.tafsir.entity.VerseTrans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +21,7 @@ import java.util.Random;
  */
 public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<SurahName> mItemList;
-    private ArrayList<Verse> mVerseTransList;
+    private ArrayList<com.jolpai.tafsir.entity.Verse> mVerseTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 
@@ -42,7 +40,7 @@ public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.
                 public void onClick(View v) {
                     SurahName surahName =(SurahName) v.getTag();
 
-                    Intent intent = new Intent(parent.getContext(), NavigationDrawer.class);
+                    Intent intent = new Intent(parent.getContext(), VerseDetail.class);
                     intent.putExtra("surahNo",""+surahName.getSurahNo());
                     intent.putExtra("surahName",""+surahName.getSurahName());
                     parent.getContext().startActivity(intent);

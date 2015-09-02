@@ -1,13 +1,10 @@
 package com.jolpai.tafsir.custom.view;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.jolpai.tafsir.R;
 
@@ -31,7 +28,7 @@ public class ShowDialog {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        View v = inflater.inflate(R.layout.dialog_certificate_statement_request, null);
+        View v = inflater.inflate(R.layout.dialog_settings, null);
 
 
         builder.setView(v)
