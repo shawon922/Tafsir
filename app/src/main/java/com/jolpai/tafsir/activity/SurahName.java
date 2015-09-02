@@ -36,7 +36,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.surah_name);
-        Global.setTypefaceArabic(Typefaces.get(SurahName.this, "trado"));
+        Global.setTypefaceArabic(Typefaces.get(SurahName.this,Global.selectedEngFontName));
 
         DatabaseManager dbm = new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans

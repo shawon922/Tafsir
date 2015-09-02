@@ -36,7 +36,7 @@ public class RecyclerSurahNameItemViewHolder extends RecyclerView.ViewHolder imp
 
     public static RecyclerSurahNameItemViewHolder newInstance(View parent) {
 
-        Global.setTypefaceTrans(Typefaces.get(parent.getContext(), "trado"));
+        Global.setTypefaceTrans(Typefaces.get(parent.getContext(),Global.selectedEngFontName));
         TextView txtSurahName = (TextView) parent.findViewById(R.id.txtSurahName);
 
 

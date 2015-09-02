@@ -38,15 +38,12 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
         mCustomR2L = r2l;
         mCustomL2R=l2r;
         txtAyatNo=(TextView) parent.findViewById(R.id.txtAyatNo);
-      //  Global.setTypefaceArabic(Typeface.createFromAsset(parent.getContext().getAssets(), "fonts/trado.ttf"));
-       // Global.setTypefaceArabic(Typeface.createFromAsset(parent.getContext().getAssets(), "fonts/SOLAIMANLIPI.TTF"));
         context=parent.getContext();
     }
 
     public static RecyclerAyatItemViewHolder newInstance(View parent) {
-       // tf=Typeface.createFromAsset(parent.getContext().getAssets(),"fonts/trado.ttf");
-        Global.setTypefaceArabic(Typefaces.get(parent.getContext(), "trado"));
-        Global.setTypefaceTrans(Typefaces.get(parent.getContext(), "SolaimanLipi"));
+        Global.setTypefaceArabic(Typefaces.get(parent.getContext(),Global.selectedArabicFontName));
+        Global.setTypefaceTrans(Typefaces.get(parent.getContext(), Global.selectedTransFontName));
 
 
         R2L lCustomR2L = (R2L) parent.findViewById(R.id.cl_R2L);

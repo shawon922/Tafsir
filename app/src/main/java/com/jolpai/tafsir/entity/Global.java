@@ -18,6 +18,9 @@ public class Global {
 
     private static Typeface typefaceArabic ;
     private static Typeface typefaceTrans ;
+    public static String selectedArabicFontName="me_quran_volt_newmet";
+    public static String selectedTransFontName="SolaimanLipi";
+    public static String selectedEngFontName="trado";
 
 
     public static Typeface getTypefaceArabic() {
