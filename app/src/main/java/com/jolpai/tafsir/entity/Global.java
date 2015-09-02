@@ -1,7 +1,10 @@
 package com.jolpai.tafsir.entity;
 
 import android.app.Application;
+import android.content.Context;
 import android.graphics.Typeface;
+
+import com.jolpai.tafsir.custom.view.Typefaces;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,8 @@ public class Global {
     }
 
     public static void setTypefaceArabic(Typeface typefaceArabic) {
+
+
         Global.typefaceArabic = typefaceArabic;
     }
 

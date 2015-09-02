@@ -66,6 +66,7 @@ public class NavigationDrawer extends ActionBarActivity implements View.OnClickL
         settingImageView.setOnClickListener(this);
         tv.setText(surahName);
         tv.setTextColor(Color.WHITE);
+        tv.setTypeface(Global.getTypefaceArabic());
         tv.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }

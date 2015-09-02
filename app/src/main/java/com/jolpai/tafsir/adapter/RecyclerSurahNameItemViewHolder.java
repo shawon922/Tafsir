@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.custom.view.Typefaces;
+import com.jolpai.tafsir.entity.Global;
 import com.jolpai.tafsir.entity.SurahName;
 
 import java.util.Random;
@@ -34,7 +36,7 @@ public class RecyclerSurahNameItemViewHolder extends RecyclerView.ViewHolder imp
 
     public static RecyclerSurahNameItemViewHolder newInstance(View parent) {
 
-        tf=Typeface.createFromAsset(parent.getContext().getAssets(),"fonts/TRADO.TTF");
+        Global.setTypefaceTrans(Typefaces.get(parent.getContext(), "trado"));
         TextView txtSurahName = (TextView) parent.findViewById(R.id.txtSurahName);
 
 
@@ -49,17 +51,17 @@ public class RecyclerSurahNameItemViewHolder extends RecyclerView.ViewHolder imp
         card.setTag(surahName);
 
         txtSurahNo.setText(surahName.getSurahNo());
-        txtSurahNo.setTypeface(tf);
+        txtSurahNo.setTypeface(Global.getTypefaceTrans());
         txtSurahNo.setTextSize(20);
         txtSurahNo.setTextColor(Color.DKGRAY);
 
         txtSurahName.setText(surahName.getSurahName());
-        txtSurahName.setTypeface(tf);
+        txtSurahName.setTypeface(Global.getTypefaceTrans());
         txtSurahName.setTextSize(23);
         txtSurahName.setTextColor(randomAndroidColor);
 
         txtAyahNo.setText(surahName.getVerseNo());
-        txtAyahNo.setTypeface(tf);
+        txtAyahNo.setTypeface(Global.getTypefaceTrans());
         txtAyahNo.setTextSize(15);
         txtAyahNo.setTextColor(brown_500);
 

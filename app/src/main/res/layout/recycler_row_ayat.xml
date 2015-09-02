@@ -18,11 +18,13 @@
 
             android:background="@color/white_trns_10">
             <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/txtAyatNo"
                 android:background="@drawable/ayat_number"
                 android:text="322"
-                android:textSize="8sp"
+                android:textSize="12sp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical|center_horizontal"
 
                 />

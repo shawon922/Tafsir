@@ -41,7 +41,7 @@ public class VerseAdapter extends ArrayAdapter<String> implements View.OnClickLi
 
         this.context = context;
         this.list = list;
-        tf = Typeface.createFromAsset(context.getAssets(), "fonts/TRADO.TTF");
+        tf = Typeface.createFromAsset(context.getAssets(), "trado.ttf");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.jolpai.tafsir.activity;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,11 +20,13 @@ import com.jolpai.tafsir.adapter.HidingScrollListener;
 import com.jolpai.tafsir.adapter.RecyclerSurahNameAdapter;
 import com.jolpai.tafsir.adapter.RecyclerSurahNameItemViewHolder;
 import com.jolpai.tafsir.custom.view.ShowDialog;
+import com.jolpai.tafsir.custom.view.Typefaces;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SurahName extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,12 +37,14 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.surah);
+        Global.setTypefaceArabic(Typefaces.get(SurahName.this, "trado"));
 
         DatabaseManager dbm = new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans
 
         initToolbar();
         initRecyclerView();
+
     }
 
     private void initToolbar() {
@@ -49,8 +54,13 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         settingImageView = (ImageView)findViewById(R.id.settingsImage);
         settingImageView.setOnClickListener(this);
         tv.setText("TAFSIR");
+        tv.setTypeface(Global.getTypefaceArabic());
         tv.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+        int[] androidColors = SurahName.this.getResources().getIntArray(R.array.androidcolors);
+        int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+
+        mToolbar.setBackgroundColor(randomAndroidColor);
     }
 
     private void initRecyclerView() {
