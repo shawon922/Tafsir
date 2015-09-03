@@ -26,59 +26,99 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="720dp"
-                android:background="@drawable/shadow_border"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Translation Language"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray_500"/>
 
-
-                <Spinner
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:id="@+id/spinner"
+                    android:layout_height="100dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/white">
+                    <TextView
+                        android:text="Select Translation"
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
 
-                    android:background="@drawable/shadow_border"/>
+                </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Translated by"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray_500"/>
-                <Spinner
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:id="@+id/spinner1"
+                    android:layout_height="100dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/white">
+                    <TextView
+                        android:text="Select Translator"
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
 
-                    style="@style/spinner_style"/>
+                </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Choose Your Tafsir"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray_500"/>
-                <Spinner
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:id="@+id/spinner2"
-                    style="@style/spinner_style"/>
+                    android:layout_height="100dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/white">
+                    <TextView
+                        android:text="Select Reciter"
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Choose Your Font"
-                    android:textSize="20sp"
-                    android:textColor="@color/gray_500"/>
-                <Spinner
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:id="@+id/spinner3"
-                    style="@style/spinner_style"/>
+                    android:layout_height="100dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/white">
+                    <TextView
+                        android:text="Select Secondary Font"
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    card_view:cardElevation="5dp"
+                    card_view:cardBackgroundColor="@color/white">
+                    <TextView
+                        android:text="Select Primary Font"
+                        android:layout_marginTop="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+
+                </android.support.v7.widget.CardView>
+
+
 
 
             </LinearLayout>
