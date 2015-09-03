@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.entity.Global;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,10 @@ public class ShowDialog {
 
         final Spinner spnrFont = (Spinner)v.findViewById(R.id.spnrFont);
         List<String> list = new ArrayList<String>();
-        list.add("Bn_Solimani_lipi");
-        list.add("Bn_Syem_rupali");
-        list.add("In_trado");
-        list.add("En_Arial");
+        list.add("me_quran_volt_newmet");
+        list.add("trado");
+        list.add("_PDMS_Saleem_QuranFont");
+        list.add("noorehira");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrFont.setAdapter(dataAdapter);
@@ -51,6 +52,8 @@ public class ShowDialog {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(context,spnrFont.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                Global.selectedArabicFontName=spnrFont.getSelectedItem().toString();
+
             }
 
             @Override
