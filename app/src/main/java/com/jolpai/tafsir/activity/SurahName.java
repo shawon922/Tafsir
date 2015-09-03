@@ -36,7 +36,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.surah_name);
-        Global.setTypefaceArabic(Typefaces.get(SurahName.this,Global.selectedEngFontName));
+        Global.setTypefaceArabic(Typefaces.get(SurahName.this, Global.selectedEngFontName));
 
         DatabaseManager dbm = new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans
@@ -55,11 +55,12 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         tv.setText("TAFSIR");
         tv.setTypeface(Global.getTypefaceArabic());
         tv.setTextSize(25);
+        tv.setTextColor(getResources().getColor(R.color.white));
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         int[] androidColors = SurahName.this.getResources().getIntArray(R.array.androidcolors);
         int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
 
-        mToolbar.setBackgroundColor(randomAndroidColor);
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.gray_500));
     }
 
     private void initRecyclerView() {
@@ -119,47 +120,4 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_surah, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
