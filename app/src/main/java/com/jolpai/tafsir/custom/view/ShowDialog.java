@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
@@ -22,6 +24,8 @@ import java.util.List;
  */
 public class ShowDialog {
     private static Context context;
+    private View view;
+    private TextView  txtFontArabicSize;
 
     public ShowDialog(Context context){
         this.context=context;
@@ -29,17 +33,43 @@ public class ShowDialog {
 
     }
 
-    public static void settingsDialogFromBotton(){
+    public  void settingsDialogFromBotton(){
         AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.DialogAnimation);
         // Get the layout inflater
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
         View v = inflater.inflate(R.layout.dialog_settings, null);
 
-        final Spinner spnrFont = (Spinner)v.findViewById(R.id.spnrFont);
+        view =(View)v.findViewById(R.id.llFontArabicPlus);
+        view =(View)v.findViewById(R.id.llFontArabicMinus);
+        txtFontArabicSize =(TextView)v.findViewById(R.id.txtFontArabicSize);
+        view =(View)v.findViewById(R.id.txtSampleArabic);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.llFontArabicPlus:
+                        increaseFontSize();
+                        break;
+                    case R.id.llFontArabicMinus:
+                        decreaseFontSize();
+                        break;
+
+
+
+
+
+                    default:
+                        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+
+        final Spinner spnrFont = (Spinner)v.findViewById(R.id.spnrFontArabic);
         List<String> list = new ArrayList<String>();
+        list.add("Choose You Font");
         list.add("me_quran_volt_newmet");
         list.add("trado");
         list.add("_PDMS_Saleem_QuranFont");
@@ -51,11 +81,11 @@ public class ShowDialog {
         spnrFont.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(context,spnrFont.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-                Global.selectedArabicFontName=spnrFont.getSelectedItem().toString();
-
+                if (position != 0) {
+                    Toast.makeText(context, spnrFont.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                    Global.selectedArabicFontName = spnrFont.getSelectedItem().toString();
+                }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -80,5 +110,18 @@ public class ShowDialog {
          builder.create().show();
     }
 
+   public void increaseFontSize(){
+        Global.arabicFontSize +=1;
+        txtFontArabicSize.setTextSize(Global.arabicFontSize);
+    }
+
+    public void decreaseFontSize(){
+        Global.arabicFontSize -=1;
+        txtFontArabicSize.setTextSize(Global.arabicFontSize);
+    }
+
+
+
 
 }
+

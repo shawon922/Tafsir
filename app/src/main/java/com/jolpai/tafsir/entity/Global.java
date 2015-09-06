@@ -21,6 +21,7 @@ public class Global {
     public static String selectedArabicFontName="trado";
     public static String selectedTransFontName="SolaimanLipi";
     public static String selectedEngFontName="trado";
+    public static int arabicFontSize =15;
 
 
     public static Typeface getTypefaceArabic() {
