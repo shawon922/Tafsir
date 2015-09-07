@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
+import com.jolpai.tafsir.activity.VerseDetail;
 import com.jolpai.tafsir.entity.Global;
 
 import java.util.ArrayList;
@@ -22,10 +23,14 @@ import java.util.List;
 /**
  * Created by Tanim reja on 8/3/2015.
  */
-public class ShowDialog {
+public class ShowDialog implements View.OnClickListener{
     private static Context context;
     private View view;
-    private TextView  txtFontArabicSize;
+    private TextView  txtFontArabicSize,
+            txtSampleArabic,
+            txtFontArabicPlus,
+            txtFontArabicMinus;
+
 
     public ShowDialog(Context context){
         this.context=context;
@@ -40,32 +45,14 @@ public class ShowDialog {
 
         View v = inflater.inflate(R.layout.dialog_settings, null);
 
-        view =(View)v.findViewById(R.id.llFontArabicPlus);
-        view =(View)v.findViewById(R.id.llFontArabicMinus);
+        txtFontArabicPlus =(TextView)v.findViewById(R.id.txtFontArabicPlus);
+        txtFontArabicMinus =(TextView)v.findViewById(R.id.txtFontArabicMinus);
         txtFontArabicSize =(TextView)v.findViewById(R.id.txtFontArabicSize);
-        view =(View)v.findViewById(R.id.txtSampleArabic);
+        txtSampleArabic=(TextView)v.findViewById(R.id.txtSampleArabic);
+        view =v.findViewById(R.id.txtSampleArabic);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.llFontArabicPlus:
-                        increaseFontSize();
-                        break;
-                    case R.id.llFontArabicMinus:
-                        decreaseFontSize();
-                        break;
-
-
-
-
-
-                    default:
-                        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        });
+        txtFontArabicPlus.setOnClickListener(this);
+        txtFontArabicMinus.setOnClickListener(this);
 
         final Spinner spnrFont = (Spinner)v.findViewById(R.id.spnrFontArabic);
         List<String> list = new ArrayList<String>();
@@ -98,6 +85,8 @@ public class ShowDialog {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         // sign in the user ...
+                       // (VerseDetail)context.onResume();
+
 
 
                     }
@@ -112,16 +101,32 @@ public class ShowDialog {
 
    public void increaseFontSize(){
         Global.arabicFontSize +=1;
-        txtFontArabicSize.setTextSize(Global.arabicFontSize);
+        txtFontArabicSize.setText(String.valueOf(Global.arabicFontSize));
+        txtSampleArabic.setTextSize(Global.arabicFontSize);
     }
 
     public void decreaseFontSize(){
         Global.arabicFontSize -=1;
-        txtFontArabicSize.setTextSize(Global.arabicFontSize);
+        txtFontArabicSize.setText(String.valueOf(Global.arabicFontSize));
+        txtSampleArabic.setTextSize(Global.arabicFontSize);
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txtFontArabicPlus:
+                increaseFontSize();
+                break;
+            case R.id.txtFontArabicMinus:
+                decreaseFontSize();
+                break;
 
 
+            default:
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
 

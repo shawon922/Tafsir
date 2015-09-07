@@ -61,7 +61,7 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
 
         txtAyat.setText(verseArabic.getVerse());
         txtAyat.setTypeface(Global.getTypefaceArabic());
-        txtAyat.setTextSize(35);
+        txtAyat.setTextSize(Global.arabicFontSize);
         txtAyat.setTextColor(Color.DKGRAY);
         tvEmpty.setText("  ");
 
@@ -79,12 +79,12 @@ public class RecyclerAyatItemViewHolder extends RecyclerView.ViewHolder {
 
         View normalViewTrans =View.inflate(context, R.layout.normal_view, null);
 
-        TextView tvEng = (TextView)normalViewTrans.findViewById(R.id.textView);
+        TextView txtTrans = (TextView)normalViewTrans.findViewById(R.id.textView);
 
-        tvEng.setText(verseTrans.getVerse());
-        tvEng.setTypeface(Global.getTypefaceTrans());
-        tvEng.setTextSize(22);
-        tvEng.setTextColor(Color.DKGRAY);
+        txtTrans.setText(verseTrans.getVerse());
+        txtTrans.setTypeface(Global.getTypefaceTrans());
+        txtTrans.setTextSize(22);
+        txtTrans.setTextColor(Color.DKGRAY);
 
 
 

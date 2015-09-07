@@ -13,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
@@ -44,8 +45,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
         surahName= intent.getStringExtra("surahName");
         verseTransList();//testing english trans
         getDataFromPref();
-        initToolbar();
-        initRecyclerView();
+
 
 
     }
@@ -93,10 +93,40 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
 
     }
 
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // The activity is about to become visible.
+    }
     @Override
     protected void onResume() {
         super.onResume();
+        // The activity has become visible (it is now "resumed").
+        initToolbar();
+        initRecyclerView();
+        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
 
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Another activity is taking focus (this activity is about to be "paused").
+        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
+
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // The activity is no longer visible (it is now "stopped")
+        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // The activity is about to be destroyed.
+        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
     }
 
     protected void getDataFromPref(){

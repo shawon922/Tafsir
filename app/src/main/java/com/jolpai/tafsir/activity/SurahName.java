@@ -13,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
@@ -41,8 +42,16 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         DatabaseManager dbm = new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans
 
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initToolbar();
         initRecyclerView();
+        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show();
 
     }
 
