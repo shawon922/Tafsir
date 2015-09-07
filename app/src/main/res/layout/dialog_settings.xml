@@ -22,12 +22,12 @@
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
-                <android.support.v7.widget.CardView
+            <android.support.v7.widget.CardView
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    card_view:cardCornerRadius="10dp"
-                    android:layout_marginBottom="10dp"
+                    card_view:cardCornerRadius="1dp"
+                    android:layout_marginBottom="15dp"
 
                     card_view:cardElevation="3dp"
                     card_view:cardBackgroundColor="@color/white">
@@ -46,15 +46,12 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="5"
                                 android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:text="Select Arabic Font"/>
+
 
                                 <Spinner
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
                                     android:id="@+id/spnrFontArabic">
                                 </Spinner>
 
@@ -63,7 +60,8 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="2">
+                                android:gravity="center"
+                                android:layout_weight="1">
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -76,7 +74,7 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="2"
+                                android:layout_weight="1.5"
                                 android:orientation="vertical">
 
                                 <LinearLayout
@@ -84,7 +82,8 @@
                                     android:layout_height="0dp"
                                     android:id="@+id/llFontArabicPlus"
                                     android:layout_weight="2"
-                                    android:background="@drawable/round_top_right_corner_ll"
+                                    android:background="@drawable/font_increase_decrease_selector"
+                                    android:clickable="true"
                                     android:orientation="vertical">
                                     <TextView
                                         android:layout_width="match_parent"
@@ -92,14 +91,16 @@
                                         android:id="@+id/txtFontArabicPlus"
                                         android:gravity="center"
                                         android:textSize="30sp"
+                                        android:background="@drawable/font_increase_decrease_selector"
+                                        android:clickable="true"
                                         android:text="+"/>
 
                                 </LinearLayout>
+
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
-                                    android:background="@color/gray_500">
-
+                                    android:background="@color/white">
                                 </View>
 
                                 <LinearLayout
@@ -107,132 +108,165 @@
                                     android:layout_height="0dp"
                                     android:id="@+id/llFontArabicMinus"
                                     android:layout_weight="2"
-                                    android:background="@drawable/round_bottom_right_corner_ll"
+                                    android:background="@drawable/font_increase_decrease_selector"
+                                    android:clickable="true"
                                     android:orientation="vertical">
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:id="@+id/txtFontArabicMinus"
                                         android:gravity="center"
-                                        android:text="-"
-                                        android:textSize="30sp"/>
+                                        android:textSize="30sp"
+                                        android:background="@drawable/font_increase_decrease_selector"
+                                        android:clickable="true"
+                                        android:text="-"/>
 
                                 </LinearLayout>
 
                             </LinearLayout>
 
                         </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray_300"></View>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center_horizontal|center_vertical">
+                            android:padding="10dp"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@color/gray_50">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/txtSampleArabic"
-                                android:text="My Name is Tanim Reja"/>
+                                android:textColor="@color/blue_500"
+                                android:text="Tafsir"/>
                         </LinearLayout>
 
                     </LinearLayout>
-
-
-
-
-
-
-
 
                 </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
-                card_view:cardCornerRadius="10dp"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="1dp"
+                android:layout_marginBottom="15dp"
+
                 card_view:cardElevation="3dp"
                 card_view:cardBackgroundColor="@color/white">
 
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Select Secondary  Font"/>
-
-                        <Spinner
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/spnrFontTrans">
-                        </Spinner>
-
-                    </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="2">
-                        <TextView
-                            android:layout_width="match_parent"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:text="22"
-                            android:gravity="center"
-                            android:textSize="20sp"/>
+                            android:layout_weight="5"
+                            android:orientation="vertical">
+
+
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:id="@+id/spnrFontTrans">
+                            </Spinner>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/txtFontTransSize"
+                                android:text="22"
+                                android:gravity="center"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:id="@+id/llFontTransPlus"
+                                android:layout_weight="2"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/txtFontTransPlus"
+                                    android:gravity="center"
+                                    android:textSize="30sp"
+                                    android:background="@drawable/font_increase_decrease_selector"
+                                    android:clickable="true"
+                                    android:text="+"/>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/white">
+
+                            </View>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:id="@+id/llFontTransMinus"
+                                android:layout_weight="2"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/txtFontTransMinus"
+                                    android:gravity="center"
+                                    android:textSize="30sp"
+                                    android:background="@drawable/font_increase_decrease_selector"
+                                    android:clickable="true"
+                                    android:text="-"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_300"></View>
+
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="vertical">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:background="@color/gray_50">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="2"
-                            android:background="@drawable/round_top_right_corner_ll"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:textSize="30sp"
-                                android:text="+"/>
-
-                        </LinearLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/gray_500">
-
-                        </View>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="2"
-                            android:background="@drawable/round_bottom_right_corner_ll"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:text="-"
-                                android:textSize="30sp"/>
-
-                        </LinearLayout>
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtSampleTrans"
+                            android:textColor="@color/blue_500"
+                            android:text="Tafsir"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -240,62 +274,80 @@
 
 
 
-            </android.support.v7.widget.CardView>
 
+
+
+
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
-                card_view:cardCornerRadius="10dp"
-                android:layout_height="200dp"
+                card_view:cardCornerRadius="1dp"
+                android:layout_height="wrap_content"
                 card_view:cardElevation="3dp"
                 card_view:cardBackgroundColor="@color/white">
 
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Select Language"/>
+                        android:orientation="horizontal">
 
-                        <Spinner
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/spnrLangTrans">
-                        </Spinner>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:orientation="vertical">
+
+
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:id="@+id/spnrLangTrans">
+                            </Spinner>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+                            android:orientation="vertical">
+
+
+                            <Spinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:id="@+id/spnrLang">
+                            </Spinner>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:orientation="vertical">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="top|left"
+                        android:background="@color/gray_50">
+
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="Select Translator"/>
-
-                        <Spinner
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/spnrLang">
-                        </Spinner>
-
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:id="@+id/txtSampleTranslatorDetail"
+                            android:textColor="@color/blue_500"
+                            android:text="Detail of Translator"/>
                     </LinearLayout>
-
-
-
 
 
                 </LinearLayout>
