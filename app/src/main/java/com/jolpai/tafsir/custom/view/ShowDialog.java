@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
 import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.entity.Verse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,8 @@ public class ShowDialog implements View.OnClickListener{
                         // sign in the user ...
                        // (VerseDetail)context.onResume();
 
+                        VerseDetail v = new VerseDetail();
+                        v.initRecyclerView();
 
 
                     }
