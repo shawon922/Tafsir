@@ -194,7 +194,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
 
             ArrayList<Settings> fontList;
             fontList = App.getContext().getDatabaseManager().getFont("arb");
-            
+
 
 
             List<String> list = new ArrayList<String>();
