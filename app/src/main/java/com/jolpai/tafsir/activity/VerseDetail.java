@@ -29,9 +29,11 @@ import com.jolpai.tafsir.custom.view.ShowDialog;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.entity.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class VerseDetail extends ActionBarActivity implements View.OnClickListener {
 
@@ -48,16 +50,12 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
 
         DatabaseManager dbm = new DatabaseManager(VerseDetail.this);
 
-
         Intent intent = getIntent();
         surahNo = intent.getStringExtra("surahNo");
         surahName = intent.getStringExtra("surahName");
         verseTransList();//testing english trans
         getDataFromPref();
-
-
     }
-
 
     private void initToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -193,8 +191,14 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
             txtFontArabicMinus.setOnClickListener(this);
 
             final Spinner spnrFont = (Spinner) v.findViewById(R.id.spnrFontArabic);
+
+            ArrayList<Settings> fontList;
+            fontList = App.getContext().getDatabaseManager().getFont("arb");
+            
+
+
             List<String> list = new ArrayList<String>();
-            list.add("Choose You Font");
+            list.add("Choose Arabic Font");
             list.add("me_quran_volt_newmet");
             list.add("trado");
             list.add("_PDMS_Saleem_QuranFont");
