@@ -21,7 +21,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/txtAyatNo"
-                android:background="@drawable/ayat_number"
+                android:background="@drawable/ayat_number_gray"
                 android:text="322"
                 android:textSize="12sp"
                 android:layout_marginTop="20dp"
