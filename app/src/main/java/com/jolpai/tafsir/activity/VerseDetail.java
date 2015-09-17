@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.adapter.HidingScrollListener;
 import com.jolpai.tafsir.adapter.RecyclerAyatAdapter;
 import com.jolpai.tafsir.custom.view.ShowDialog;
+import com.jolpai.tafsir.custom.view.Typefaces;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.entity.Global;
@@ -60,13 +62,13 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
     private void initToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         (this).setSupportActionBar(mToolbar);
-        TextView tv = (TextView) findViewById(R.id.txtToolbarHeader);
+        TextView txtToolbar = (TextView) findViewById(R.id.txtToolbarHeader);
         settingImageView = (ImageView) findViewById(R.id.settingsImage);
         settingImageView.setOnClickListener(this);
-        tv.setText(surahName);
-        tv.setTextColor(Color.WHITE);
-        tv.setTypeface(Global.getTypefaceArabic());
-        tv.setTextSize(25);
+        txtToolbar.setText(surahName);
+        txtToolbar.setTextColor(Color.WHITE);
+        txtToolbar.setTypeface(Global.getTypefaceArabic());
+        txtToolbar.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 
@@ -112,7 +114,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
         // The activity has become visible (it is now "resumed").
         initToolbar();
         initRecyclerView();
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -120,7 +122,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
     protected void onPause() {
         super.onPause();
         // Another activity is taking focus (this activity is about to be "paused").
-        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -128,14 +130,14 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
     protected void onStop() {
         super.onStop();
         // The activity is no longer visible (it is now "stopped")
-        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // The activity is about to be destroyed.
-        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
+
     }
 
     protected void getDataFromPref() {
@@ -184,13 +186,16 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
             txtSampleArabic = (TextView) v.findViewById(R.id.txtSampleArabic);
             view = v.findViewById(R.id.txtSampleArabic);
 
+
             txtSampleArabic.setTextSize(Global.arabicFontSize);
-            txtFontArabicSize.setText(String .valueOf(Global.arabicFontSize));
+            txtSampleArabic.setTypeface(Global.getTypefaceArabic());
+            txtFontArabicSize.setText(String.valueOf(Global.arabicFontSize));
 
             txtFontArabicPlus.setOnClickListener(this);
             txtFontArabicMinus.setOnClickListener(this);
 
             final Spinner spnrFont = (Spinner) v.findViewById(R.id.spnrFontArabic);
+
 
             ArrayList<Settings> fontList;
             fontList = App.getContext().getDatabaseManager().getFont("arb");
@@ -198,7 +203,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
 
 
             List<String> list = new ArrayList<String>();
-            list.add("Choose Arabic Font");
+
             list.add("me_quran_volt_newmet");
             list.add("trado");
             list.add("_PDMS_Saleem_QuranFont");
@@ -206,13 +211,20 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, list);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spnrFont.setAdapter(dataAdapter);
+            String compareValue="trado";
+            if (!compareValue.equals("trado")) {
+                int spinnerPosition = dataAdapter.getPosition(compareValue);
+                spnrFont.setSelection(spinnerPosition);
+            }
+
 
             spnrFont.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     if (position != 0) {
                         Toast.makeText(context, spnrFont.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        Global.selectedArabicFontName = spnrFont.getSelectedItem().toString();
+                        Global.setTypefaceArabic(Typefaces.get(VerseDetail.this, spnrFont.getSelectedItem().toString()));
+                        txtSampleArabic.setTypeface(Global.getTypefaceArabic());
                     }
                 }
 

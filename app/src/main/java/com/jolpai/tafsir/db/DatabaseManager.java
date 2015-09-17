@@ -34,6 +34,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private String DB_PATH = "";
     private Context context;
     private DatabaseManager dbm;
+    private static int currentDbVersion;
 
 
     public DatabaseManager(Context context){
@@ -41,6 +42,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         this.context=context;
 
         DB_PATH = App.getContext().getAppDirectory();
+
 
         if(!checkDataBase()){
             try{
@@ -58,6 +60,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+    public  static void getDV(){
 
     }
 
@@ -105,6 +111,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     private  boolean checkDataBase(){
         String myPath = DB_PATH+"/"+DB_NAME;
+
+
+
         if( new File(myPath).exists()){
             return true;
         }else{
@@ -246,7 +255,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public ArrayList<Settings> getFont(String langType){
         ArrayList<Settings> list = new ArrayList<>();
 
-        String sql="select * from Font where lang="+langType+"";
+        String sql="select * from Font where lang='" + langType + "'" ;
         Cursor cursor = db.rawQuery(sql, null);
         Settings settings=null;
 
