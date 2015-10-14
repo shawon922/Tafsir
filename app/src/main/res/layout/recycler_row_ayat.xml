@@ -9,14 +9,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_300">
+        android:background="@color/gray_500">
 
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|top"
-
-            android:background="@color/gray_300">
+            android:layout_marginRight="1dp"
+            android:background="@color/white">
             <TextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -34,29 +34,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:background="@color/gray_50"
+            android:background="@color/white_trns_100"
             android:orientation="vertical">
-
-            <com.jolpai.tafsir.custom.view.R2L
-                android:id="@+id/cl_R2L"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:background="@color/gray_50"
-                android:layout_margin="5dp">
+                android:background="@color/white"
+                android:orientation="vertical">
 
-            </com.jolpai.tafsir.custom.view.R2L>
+                <com.jolpai.tafsir.custom.view.R2L
+                    android:id="@+id/cl_R2L"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:layout_margin="5dp">
 
-            <com.jolpai.tafsir.custom.view.L2R
-                android:id="@+id/cl_L2R"
+                </com.jolpai.tafsir.custom.view.R2L>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:background="@color/gray_50"
-                android:layout_margin="5dp">
+                android:background="@color/white"
+                android:layout_marginBottom="1dp"
+                android:orientation="vertical">
+                <com.jolpai.tafsir.custom.view.L2R
+                    android:id="@+id/cl_L2R"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:layout_margin="5dp">
 
-            </com.jolpai.tafsir.custom.view.L2R>
+                </com.jolpai.tafsir.custom.view.L2R>
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
