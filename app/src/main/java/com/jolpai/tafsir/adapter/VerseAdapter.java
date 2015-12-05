@@ -7,58 +7,66 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.Verse;
-import com.jolpai.tafsir.entity.VerseArabic;
-import com.jolpai.tafsir.entity.VerseTrans;
+import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.Verse;
+import com.jolpai.tafsir.model.VerseArabic;
+import com.jolpai.tafsir.model.VerseTrans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerAyatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class VerseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Verse> verseArabicList;
-    private ArrayList<Verse> verseTransList;
+    private List<Verse> verseTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 
-    public RecyclerAyatAdapter(List<Verse> itemList) {
+
+    public VerseAdapter(List<Verse> itemList) {
         verseArabicList = itemList;
         verseTransList = Global.getVerseVerseTransList();
     }
+    public VerseAdapter(List<Verse> itemList,List<Verse> verseTransList) {
+        verseArabicList = itemList;
+        verseTransList = Global.getVerseVerseTransList();
+    }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         if (viewType == TYPE_ITEM) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_row_ayat, parent, false);
-            return RecyclerAyatItemViewHolder.newInstance(view);
+            final View view = LayoutInflater.from(context).inflate(R.layout.verse_row, parent, false);
+            return VerseItemViewHolder.newInstance(view);
         } else if (viewType == TYPE_HEADER) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header_ayat, parent, false);
-            return new RecyclerAyatHeaderViewHolder(view);
+            final View view = LayoutInflater.from(context).inflate(R.layout.verse_header, parent, false);
+            return new VerseHeaderViewHolder(view);
         }
         throw new RuntimeException("There is no type that matches the type " + viewType + " + make sure your using types    correctly");
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+
         if (!isPositionHeader(position)) {
-            RecyclerAyatItemViewHolder holder = (RecyclerAyatItemViewHolder) viewHolder;
+            VerseItemViewHolder holder = (VerseItemViewHolder) viewHolder;
 
             VerseArabic verseArabic = (VerseArabic) verseArabicList.get(position - 1);
             VerseTrans verseTrans;
-            if(verseArabic.getVerseId().equalsIgnoreCase("0")){
+            if (verseArabic.getVerseId().equalsIgnoreCase("0")) {
                 verseTrans = new VerseTrans();
-            }else if(verseArabic.getSurahNo().equalsIgnoreCase("1") ||verseArabic.getSurahNo().equalsIgnoreCase("9") ){
-                verseTrans = (VerseTrans) verseTransList.get(position-1);
-            }else{
-                verseTrans = (VerseTrans) verseTransList.get(position-2);
+            } else if (verseArabic.getSurahNo().equalsIgnoreCase("1") || verseArabic.getSurahNo().equalsIgnoreCase("9")) {
+                verseTrans = (VerseTrans) verseTransList.get(position - 1);
+            } else {
+                verseTrans = (VerseTrans) verseTransList.get(position - 2);
             }
 
             holder.setItemText(verseArabic, verseTrans);
+
         }
+
     }
     //our old getItemCount()
     public int getBasicItemCount() {

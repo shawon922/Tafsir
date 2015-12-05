@@ -1,10 +1,6 @@
-package com.jolpai.tafsir.entity;
+package com.jolpai.tafsir.model;
 
-import android.app.Application;
-import android.content.Context;
 import android.graphics.Typeface;
-
-import com.jolpai.tafsir.custom.view.Typefaces;
 
 import java.util.ArrayList;
 
@@ -21,7 +17,7 @@ public class Global {
     public static String selectedArabicFontName="trado";
     public static String selectedTransFontName="SolaimanLipi";
     public static String selectedEngFontName="trado";
-    public static int arabicFontSize =20;
+    public static int arabicFontSize =30;
 
 
     public static Typeface getTypefaceArabic() {

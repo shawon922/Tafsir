@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
-import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.SurahName;
+import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.SurahName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +19,13 @@ import java.util.Random;
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class SurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<SurahName> mItemList;
-    private ArrayList<com.jolpai.tafsir.entity.Verse> mVerseTransList;
+    private ArrayList<com.jolpai.tafsir.model.Verse> mVerseTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
 
-    public RecyclerSurahNameAdapter() {
+    public SurahNameAdapter() {
         mItemList = Global.getSurahNameList();
         mVerseTransList = Global.getVerseVerseTransList();
     }
@@ -55,10 +55,10 @@ public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.
 
 
 
-            return RecyclerSurahNameItemViewHolder.newInstance(view);
+            return SurahNameItemViewHolder.newInstance(view);
         } else if (viewType == TYPE_HEADER) {
             final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header_surah, parent, false);
-            return new RecyclerSurahNameHeaderViewHolder(view);
+            return new SurahNameHeaderViewHolder(view);
         }
         throw new RuntimeException("There is no type that matches the type " + viewType + " + make sure your using types    correctly");
     }
@@ -66,7 +66,7 @@ public class RecyclerSurahNameAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (!isPositionHeader(position)) {
-            RecyclerSurahNameItemViewHolder holder = (RecyclerSurahNameItemViewHolder) viewHolder;
+            SurahNameItemViewHolder holder = (SurahNameItemViewHolder) viewHolder;
             SurahName surahName=mItemList.get(position-1); // we are taking header in to account so all of our items are correctly positioned
 
             holder.setItemText(surahName);

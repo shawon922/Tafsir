@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     card_view:cardCornerRadius="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/gray_500">
 
         <LinearLayout
@@ -25,48 +25,55 @@
                 android:text="322"
                 android:textSize="12sp"
                 android:layout_marginTop="20dp"
-                android:gravity="center_vertical|center_horizontal"
-
-                />
+                android:gravity="center_vertical|center_horizontal"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/white_trns_100"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="5dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
                 <com.jolpai.tafsir.custom.view.R2L
                     android:id="@+id/cl_R2L"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:layout_margin="5dp">
+                    android:background="@color/white"
+                    android:focusable="true">
 
                 </com.jolpai.tafsir.custom.view.R2L>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:gravity="center"
+                android:padding="5dp"
                 android:layout_marginBottom="1dp"
+                android:background="@color/white"
                 android:orientation="vertical">
-                <com.jolpai.tafsir.custom.view.L2R
-                    android:id="@+id/cl_L2R"
+
+                <LinearLayout
+                    android:id="@+id/cl_Normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/blue_gray_500"
                     android:focusable="true"
-                    android:layout_margin="5dp">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                </com.jolpai.tafsir.custom.view.L2R>
+
+                </LinearLayout>
             </LinearLayout>
-
 
 
         </LinearLayout>

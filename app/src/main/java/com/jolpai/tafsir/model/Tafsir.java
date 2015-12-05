@@ -1,4 +1,4 @@
-package com.jolpai.tafsir.entity;
+package com.jolpai.tafsir.model;
 
 /**
  * Created by Tanim reja on 7/14/2015.

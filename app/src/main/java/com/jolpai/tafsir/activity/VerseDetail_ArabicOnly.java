@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -23,19 +23,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.adapter.VerseAdapter_ArabicOnly;
-import com.jolpai.tafsir.custom.listener.HidingScrollListener;
 import com.jolpai.tafsir.adapter.VerseAdapter;
-import com.jolpai.tafsir.utility.Typefaces;
+import com.jolpai.tafsir.custom.listener.HidingScrollListener;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.model.Global;
 import com.jolpai.tafsir.model.Settings;
+import com.jolpai.tafsir.utility.Typefaces;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerseDetail extends ActionBarActivity implements View.OnClickListener {
+public class VerseDetail_ArabicOnly extends AppCompatActivity implements View.OnClickListener {
 
 
     private Toolbar mToolbar;
@@ -48,7 +47,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.verse_detail);
 
-        DatabaseManager dbm = new DatabaseManager(VerseDetail.this);
+        DatabaseManager dbm = new DatabaseManager(VerseDetail_ArabicOnly.this);
 
         Intent intent = getIntent();
         surahNo = intent.getStringExtra("surahNo");
@@ -74,7 +73,6 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         VerseAdapter recyclerAdapter = new VerseAdapter(Global.getVerseList());
-        VerseAdapter_ArabicOnly recyclerAdapter_arabic = new VerseAdapter_ArabicOnly(Global.getVerseList());
         recyclerView.setAdapter(recyclerAdapter);
 
         recyclerView.setSoundEffectsEnabled(true);
@@ -164,7 +162,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
 
            // new ShowDialog(this).settingsDialogFromBotton();
             //new dialog().settingsDialogFromBotton();
-            Intent intent = new Intent(VerseDetail.this,MySettings.class);
+            Intent intent = new Intent(VerseDetail_ArabicOnly.this,MySettings.class);
             startActivity(intent);
         }
     }
@@ -172,7 +170,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
 
     private class dialog implements View.OnClickListener {
 
-        private Context context =VerseDetail.this;
+        private Context context =VerseDetail_ArabicOnly.this;
         private View view;
         private TextView txtFontArabicSize,
                 txtSampleArabic,
@@ -229,7 +227,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     if (position != 0) {
                         Toast.makeText(context, spnrFont.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        Global.setTypefaceArabic(Typefaces.get(VerseDetail.this, spnrFont.getSelectedItem().toString()));
+                        Global.setTypefaceArabic(Typefaces.get(VerseDetail_ArabicOnly.this, spnrFont.getSelectedItem().toString()));
                         txtSampleArabic.setTypeface(Global.getTypefaceArabic());
                     }
                 }

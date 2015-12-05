@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 
-import com.jolpai.tafsir.entity.Settings;
-import com.jolpai.tafsir.entity.SurahName;
-import com.jolpai.tafsir.entity.Tafsir;
-import com.jolpai.tafsir.entity.Translation;
-import com.jolpai.tafsir.entity.Verse;
-import com.jolpai.tafsir.entity.VerseArabic;
-import com.jolpai.tafsir.entity.VerseTrans;
+import com.jolpai.tafsir.model.Settings;
+import com.jolpai.tafsir.model.SurahName;
+import com.jolpai.tafsir.model.Tafsir;
+import com.jolpai.tafsir.model.Translation;
+import com.jolpai.tafsir.model.Verse;
+import com.jolpai.tafsir.model.VerseArabic;
+import com.jolpai.tafsir.model.VerseTrans;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -227,7 +227,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-
+    public ArrayList<String> getArabicFontList(){
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select please");
+        list.add("me_quran_volt_newmet");
+        list.add("trado");
+        list.add("_PDMS_Saleem_QuranFont");
+        list.add("noorehira");
+        return list;
+    }
 
     public ArrayList<Translation> getTranslatorNameList(){
         ArrayList<Translation> list = new ArrayList<>();

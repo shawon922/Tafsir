@@ -9,23 +9,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.custom.view.Typefaces;
-import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.SurahName;
+import com.jolpai.tafsir.utility.Typefaces;
+import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.SurahName;
 
 import java.util.Random;
 
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerSurahNameItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
    // private final TextView mItemTextView;
     Context context;
     private final TextView txtSurahName,txtSurahNo,txtAyahNo;
     private  static Typeface tf ;
     private  final  View card;
 
-    public RecyclerSurahNameItemViewHolder(final View parent, TextView txtSurahName) {
+    public SurahNameItemViewHolder(final View parent, TextView txtSurahName) {
         super(parent);
         this.card=parent;
         this.txtSurahName=txtSurahName;
@@ -34,13 +34,13 @@ public class RecyclerSurahNameItemViewHolder extends RecyclerView.ViewHolder imp
         context=parent.getContext();
     }
 
-    public static RecyclerSurahNameItemViewHolder newInstance(View parent) {
+    public static SurahNameItemViewHolder newInstance(View parent) {
 
         Global.setTypefaceTrans(Typefaces.get(parent.getContext(),Global.selectedEngFontName));
         TextView txtSurahName = (TextView) parent.findViewById(R.id.txtSurahName);
 
 
-        return new RecyclerSurahNameItemViewHolder(parent,txtSurahName);
+        return new SurahNameItemViewHolder(parent,txtSurahName);
     }
 
     public void setItemText(SurahName surahName) {

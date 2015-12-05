@@ -1,13 +1,12 @@
 package com.jolpai.tafsir.activity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -16,14 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.adapter.HidingScrollListener;
-import com.jolpai.tafsir.adapter.RecyclerSurahNameAdapter;
-import com.jolpai.tafsir.adapter.RecyclerSurahNameItemViewHolder;
-import com.jolpai.tafsir.custom.view.ShowDialog;
-import com.jolpai.tafsir.custom.view.Typefaces;
+import com.jolpai.tafsir.custom.listener.HidingScrollListener;
+import com.jolpai.tafsir.adapter.SurahNameAdapter;
+import com.jolpai.tafsir.adapter.SurahNameItemViewHolder;
+import com.jolpai.tafsir.utility.Typefaces;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
-import com.jolpai.tafsir.entity.Global;
+import com.jolpai.tafsir.model.Global;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -75,7 +73,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     private void initRecyclerView() {
         final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerSurahNameAdapter recyclerAdapter = new RecyclerSurahNameAdapter();
+        SurahNameAdapter recyclerAdapter = new SurahNameAdapter();
         recyclerView.setAdapter(recyclerAdapter);
         //setting up our OnScrollListener
         recyclerView.setOnScrollListener(new HidingScrollListener() {
@@ -93,7 +91,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RecyclerSurahNameItemViewHolder ss = (RecyclerSurahNameItemViewHolder) recyclerView.getChildViewHolder(v);
+                SurahNameItemViewHolder ss = (SurahNameItemViewHolder) recyclerView.getChildViewHolder(v);
 
             }
         });
@@ -113,7 +111,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
 
 
     protected void verseTransList(){
-        ArrayList<com.jolpai.tafsir.entity.SurahName> surahNameList;
+        ArrayList<com.jolpai.tafsir.model.SurahName> surahNameList;
         surahNameList=App.getContext().getDatabaseManager().getSurahName("en");
         Global.setSurahNameList(surahNameList);
     }
@@ -124,8 +122,9 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         int id = v.getId();
         if (id == settingImageView.getId()) {
 
-            new ShowDialog(this).settingsDialogFromBotton();
-
+            //new ShowDialog(this).settingsDialogFromBotton();
+            Intent intent = new Intent(SurahName.this,MySettings.class);
+            startActivity(intent);
         }
     }
 

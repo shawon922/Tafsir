@@ -3,19 +3,19 @@ package com.jolpai.tafsir.custom.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
-import com.jolpai.tafsir.entity.Global;
-import com.jolpai.tafsir.entity.Verse;
+import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,7 @@ public class ShowDialog implements View.OnClickListener{
             txtSampleArabic,
             txtFontArabicPlus,
             txtFontArabicMinus;
+    private SharedPreferences sharedPreferences;
 
 
     public ShowDialog(Context context){
@@ -87,6 +88,14 @@ public class ShowDialog implements View.OnClickListener{
                     public void onClick(DialogInterface dialog, int id) {
                         // sign in the user ...
                        // (VerseDetail)context.onResume();
+                        sharedPreferences = context.getSharedPreferences("mySharedPreference", Context.MODE_PRIVATE);
+
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        Settings mySettings = new Settings();
+                        mySettings.setArabicFontSize(Global.arabicFontSize);
+                       // editor.p
+                      //  editor.putString("mySettings",mySettings);
+                        editor.commit();
 
                         VerseDetail v = new VerseDetail();
                         v.initRecyclerView();

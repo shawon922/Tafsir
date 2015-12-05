@@ -21,12 +21,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.TestWebView"
             android:label="TafSir" >
-
+        </activity>
+        <activity android:name=".activity.MySettings" >
+        </activity>
+        <activity android:name=".activity.TafsirDetail" >
         </activity>
     </application>
 

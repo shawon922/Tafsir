@@ -1,6 +1,4 @@
-package com.jolpai.tafsir.entity;
-
-import java.util.ArrayList;
+package com.jolpai.tafsir.model;
 
 /**
  * Created by Tanim reja on 7/14/2015.
@@ -9,7 +7,16 @@ public class Settings {
     private int id;
     private String name;
     private String lang;
+    private int arabicFontSize;
 
+
+    public int getArabicFontSize() {
+        return arabicFontSize;
+    }
+
+    public void setArabicFontSize(int arabicFontSize) {
+        this.arabicFontSize = arabicFontSize;
+    }
 
     public int getId() {
         return id;

@@ -6,8 +6,8 @@ import android.view.View;
 /**
  * Created by Tanim reja on 8/9/2015.
  */
-public class RecyclerSurahNameHeaderViewHolder extends RecyclerView.ViewHolder {
-    public RecyclerSurahNameHeaderViewHolder(View itemView) {
+public class VerseHeaderViewHolder extends RecyclerView.ViewHolder {
+    public VerseHeaderViewHolder(View itemView) {
         super(itemView);
     }
 

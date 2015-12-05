@@ -7,11 +7,15 @@
     <color name="white_trns_100">#50ffffff</color>
 
     <color name="red_500">#F44336</color>
+    <color name="red_300">#E57373</color>
 
     <color name ="deepOrange_500">#FF5722</color>
 
     <color name="green_500">#4CAF50</color>
+    <color name="green_300">#81C784</color>
+
     <color name="light_green_600">#7CB342</color>
+    <color name="light_green_100">#C8E6C9</color>
 
     <color name="amber_500">#FFC107</color>
     <color name="amber_200">#FFE082</color>
@@ -36,9 +40,9 @@
     <color name="gray_50">#EEEEEE</color>
     <color name="gray_500_trans_50">#509E9E9E</color>
 
+    <color name="orange_500">#FF9800</color>
+
     <color name="teal_500">#009688</color>
-
-
 
     <integer-array name="androidcolors">
 

@@ -1,4 +1,4 @@
-package com.jolpai.tafsir.adapter;
+package com.jolpai.tafsir.custom.listener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

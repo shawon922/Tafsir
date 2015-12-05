@@ -1,4 +1,4 @@
-package com.jolpai.tafsir.custom.view;
+package com.jolpai.tafsir.utility;
 
 import android.content.Context;
 import android.graphics.Typeface;
