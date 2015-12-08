@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +34,7 @@ import com.jolpai.tafsir.model.Global;
 import com.jolpai.tafsir.model.Settings;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class VerseDetail extends ActionBarActivity implements View.OnClickListener {
@@ -42,6 +44,10 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
     private ImageView settingImageView;
     private String surahNo;
     private String surahName;
+    private RecyclerView recyclerView;
+    Hashtable<String,Parcelable> hashtable=new Hashtable<>();
+
+    int scrollX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,57 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
         getDataFromPref();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // The activity is about to become visible.
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // The activity has become visible (it is now "resumed").
+        initToolbar();
+        initRecyclerView();
+
+        if (hashtable.get("h") != null) {
+            recyclerView.getLayoutManager().onRestoreInstanceState(hashtable.get("h"));
+
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Another activity is taking focus (this activity is about to be "paused").
+
+        // hare i need to save recycler  view scroll position..
+        scrollX= recyclerView.computeVerticalScrollOffset();
+        Toast.makeText(VerseDetail.this, "scrollX " + scrollX, Toast.LENGTH_SHORT).show();
+        RecyclerView.LayoutManager layoutManager=recyclerView.getLayoutManager();
+
+
+        hashtable.put("h", layoutManager.onSaveInstanceState());
+
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // The activity is no longer visible (it is now "stopped")
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // The activity is about to be destroyed.
+
+    }
+
+
     private void initToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         (this).setSupportActionBar(mToolbar);
@@ -71,15 +128,16 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
     }
 
     public void initRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         VerseAdapter recyclerAdapter = new VerseAdapter(Global.getVerseList());
         VerseAdapter_ArabicOnly recyclerAdapter_arabic = new VerseAdapter_ArabicOnly(Global.getVerseList());
         recyclerView.setAdapter(recyclerAdapter);
 
         recyclerView.setSoundEffectsEnabled(true);
-        //recyclerView.scrollToPosition(50);
-        //recyclerView.smoothScrollToPositionFromTop(position,offset,duration);
+
+       // recyclerView.scrollToPosition(50);
+       // recyclerView.smoothScrollToPositionFromTop(position,offset,duration);
        // recyclerView.smoothScrollToPosition(50);
         //setting up our OnScrollListener
         recyclerView.setOnScrollListener(new HidingScrollListener() {
@@ -106,43 +164,7 @@ public class VerseDetail extends ActionBarActivity implements View.OnClickListen
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // The activity is about to become visible.
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // The activity has become visible (it is now "resumed").
-        initToolbar();
-        initRecyclerView();
-
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Another activity is taking focus (this activity is about to be "paused").
-
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // The activity is no longer visible (it is now "stopped")
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // The activity is about to be destroyed.
-
-    }
 
     protected void getDataFromPref() {
         ArrayList<com.jolpai.tafsir.model.Verse> verseArabicList;

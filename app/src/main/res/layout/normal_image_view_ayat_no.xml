@@ -5,11 +5,14 @@
     android:background="@color/gray_500"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/imgAyatNo"
-        android:src="@drawable/ayat_number"
-        />
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/txtAyatNo"
+        android:background="@drawable/ayat_number_gray"
+        android:text="322"
+        android:textSize="12sp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical|center_horizontal"/>
 
 </LinearLayout>

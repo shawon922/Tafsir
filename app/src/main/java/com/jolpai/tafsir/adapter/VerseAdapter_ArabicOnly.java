@@ -50,18 +50,16 @@ public class VerseAdapter_ArabicOnly extends RecyclerView.Adapter<RecyclerView.V
         
         if (!isPositionHeader(position)) {
             VerseItemViewHolder holder = (VerseItemViewHolder) viewHolder;
-
+            String m=" ";
             VerseArabic verseArabic = (VerseArabic) verseArabicList.get(position - 1);
-            /*VerseTrans verseTrans;
-            if (verseArabic.getVerseId().equalsIgnoreCase("0")) {
-                verseTrans = new VerseTrans();
-            } else if (verseArabic.getSurahNo().equalsIgnoreCase("1") || verseArabic.getSurahNo().equalsIgnoreCase("9")) {
-                verseTrans = (VerseTrans) verseTransList.get(position - 1);
-            } else {
-                verseTrans = (VerseTrans) verseTransList.get(position - 2);
-            }*/
 
-            holder.setItemText(verseArabic);
+            for(int k=0;k<verseArabicList.size();k++){
+                VerseArabic verseArabic1 = (VerseArabic) verseArabicList.get(k);
+                m +=verseArabic1.getVerse();
+            }
+
+           // holder.setItemText(m);
+
         }
 
     }

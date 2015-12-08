@@ -49,7 +49,6 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         super.onResume();
         initToolbar();
         initRecyclerView();
-        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show();
 
     }
 

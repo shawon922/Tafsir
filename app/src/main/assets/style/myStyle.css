@@ -1,0 +1,27 @@
+@font-face {
+    font-family: trado;
+    src: url('file:///android_asset/fonts/trado.ttf');
+}
+@font-face {
+    font-family: solaimanlipi;
+    src: url('file:///android_asset/fonts/SolaimanLipi.ttf');
+}
+@font-face {
+    font-family: noorehira;
+    src: url('file:///android_asset/fonts/noorehira.ttf');
+}
+body {
+    background-color: white;
+}
+
+h1 {
+    color: orange;
+    text-align: center;
+}
+
+p {
+    font-family: 'trado';
+    font-size: 32px;
+    color: green;
+    text-align: center;
+}

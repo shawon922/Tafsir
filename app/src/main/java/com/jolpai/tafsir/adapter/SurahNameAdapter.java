@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
+import com.jolpai.tafsir.activity.VerseDetail_ArabicOnly;
 import com.jolpai.tafsir.model.Global;
 import com.jolpai.tafsir.model.SurahName;
 

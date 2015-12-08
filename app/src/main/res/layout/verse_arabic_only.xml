@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red_300">
+
+
+        <com.jolpai.tafsir.custom.view.R2L
+            android:id="@+id/cl_R2L"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true">
+
+        </com.jolpai.tafsir.custom.view.R2L>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
