@@ -9,41 +9,48 @@ import android.view.ViewGroup;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
-import com.jolpai.tafsir.activity.VerseDetail_ArabicOnly;
+import com.jolpai.tafsir.adapter.holder.SurahNameScreenHeaderViewHolder;
+import com.jolpai.tafsir.adapter.holder.SurahNameItemViewHolder;
 import com.jolpai.tafsir.model.Global;
 import com.jolpai.tafsir.model.SurahName;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
  * Created by Tanim reja on 8/9/2015.
  */
 public class SurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private Context context;
     private List<SurahName> mItemList;
     private ArrayList<com.jolpai.tafsir.model.Verse> mVerseTransList;
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
+    private Map<String, String> bookMarkStoreSurah;
 
-    public SurahNameAdapter() {
+    public SurahNameAdapter(Context context,Map<String,String> mapBookMarkStoreSurah) {
+        this.context=context;
+        this.bookMarkStoreSurah=mapBookMarkStoreSurah;
         mItemList = Global.getSurahNameList();
         mVerseTransList = Global.getVerseVerseTransList();
+
+
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         if (viewType == TYPE_ITEM) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_row_surah, parent, false);
+            final View view = LayoutInflater.from(context).inflate(R.layout.row_surah, parent, false);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     SurahName surahName =(SurahName) v.getTag();
 
                     Intent intent = new Intent(parent.getContext(), VerseDetail.class);
-                    intent.putExtra("surahNo",""+surahName.getSurahNo());
-                    intent.putExtra("surahName",""+surahName.getSurahName());
+                    intent.putExtra("surahName", surahName);
                     parent.getContext().startActivity(intent);
 
 
@@ -58,8 +65,8 @@ public class SurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             return SurahNameItemViewHolder.newInstance(view);
         } else if (viewType == TYPE_HEADER) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.recycler_header_surah, parent, false);
-            return new SurahNameHeaderViewHolder(view);
+            final View view = LayoutInflater.from(context).inflate(R.layout.header_surah, parent, false);
+            return new SurahNameScreenHeaderViewHolder(view);
         }
         throw new RuntimeException("There is no type that matches the type " + viewType + " + make sure your using types    correctly");
     }
@@ -70,7 +77,9 @@ public class SurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             SurahNameItemViewHolder holder = (SurahNameItemViewHolder) viewHolder;
             SurahName surahName=mItemList.get(position-1); // we are taking header in to account so all of our items are correctly positioned
 
-            holder.setItemText(surahName);
+
+
+            holder.setItemText(surahName,bookMarkStoreSurah);
         }
     }
     //our old getItemCount()

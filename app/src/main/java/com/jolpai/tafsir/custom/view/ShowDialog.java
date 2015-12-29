@@ -45,7 +45,7 @@ public class ShowDialog implements View.OnClickListener{
         // Get the layout inflater
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View v = inflater.inflate(R.layout.dialog_settings, null);
+        View v = inflater.inflate(R.layout.settings, null);
 
         txtFontArabicPlus =(TextView)v.findViewById(R.id.txtFontArabicPlus);
         txtFontArabicMinus =(TextView)v.findViewById(R.id.txtFontArabicMinus);
@@ -98,7 +98,7 @@ public class ShowDialog implements View.OnClickListener{
                         editor.commit();
 
                         VerseDetail v = new VerseDetail();
-                        v.initRecyclerView();
+                       // v.initRecyclerView();
 
 
                     }

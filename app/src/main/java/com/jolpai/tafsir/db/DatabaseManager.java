@@ -73,8 +73,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }else{
             try{
                 db=SQLiteDatabase.openDatabase(DB_PATH + "/" + DB_NAME, null,
-                        SQLiteDatabase.OPEN_READWRITE
-                                | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+                                SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+
+                int version=db.getVersion();
+
             }catch (Exception ex){
                 ex.printStackTrace();
                 return false;

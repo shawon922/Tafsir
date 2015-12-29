@@ -1,9 +1,11 @@
 package com.jolpai.tafsir.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Tanim reja on 7/28/2015.
  */
-public class SurahName {
+public class SurahName implements Serializable {
 
     int id;
     String surahName;

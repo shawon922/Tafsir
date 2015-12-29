@@ -12,4 +12,8 @@
     <string name="title_activity_surah">Surah</string>
     <string name="title_activity_test_web_view">TestWebView</string>
 
+    <string name="title_activity_splash">Splash</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>

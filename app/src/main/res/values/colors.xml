@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="transparent">#ffffffff</color>
     <color name="black">#000000</color>
     <color name="black_trns_20">#25000000</color>
 
@@ -51,6 +53,8 @@
         <item>@color/brown_500</item>
 
     </integer-array>
+
+    <color name="black_overlay">#66000000</color>
 
 
 

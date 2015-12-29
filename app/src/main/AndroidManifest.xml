@@ -6,35 +6,40 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/tafsir_icon_nv_blue"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.VerseDetail"
             android:label="@string/app_name" >
         </activity>
-
         <activity
             android:name=".activity.VerseDetail_ArabicOnly"
             android:label="@string/app_name" >
         </activity>
-
         <activity
             android:name=".activity.SurahName"
-            android:label="@string/title_activity_surah" >
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity android:name=".activity.MySettings" >
+        </activity>
+        <activity android:name=".activity.TafsirDetail" >
+        </activity>
+        <activity android:name=".activity.MultimediaDialog" >
+        </activity>
+        <activity
+            android:name=".activity.Splash"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.TestWebView"
-            android:label="TafSir" >
-        </activity>
-        <activity android:name=".activity.MySettings" >
-        </activity>
-        <activity android:name=".activity.TafsirDetail" >
+
+
         </activity>
     </application>
 

@@ -1,10 +1,12 @@
-package com.jolpai.tafsir.adapter;
+package com.jolpai.tafsir.adapter.holder;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +15,10 @@ import com.jolpai.tafsir.utility.Typefaces;
 import com.jolpai.tafsir.model.Global;
 import com.jolpai.tafsir.model.SurahName;
 
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Created by Tanim reja on 8/9/2015.
@@ -22,8 +27,9 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
    // private final TextView mItemTextView;
     Context context;
     private final TextView txtSurahName,txtSurahNo,txtAyahNo;
-    private  static Typeface tf ;
-    private  final  View card;
+    private static Typeface tf ;
+    private final  View card;
+    private final ImageView imgBookMark;
 
     public SurahNameItemViewHolder(final View parent, TextView txtSurahName) {
         super(parent);
@@ -31,19 +37,20 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
         this.txtSurahName=txtSurahName;
         this.txtSurahNo = (TextView)parent.findViewById(R.id.txtSurahNo);
         this.txtAyahNo=(TextView)parent.findViewById(R.id.txtAyahNo);
+        this.imgBookMark=(ImageView)parent.findViewById(R.id.imgBookmark);
         context=parent.getContext();
+        Global.bookmarkedStore=context.getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
     }
 
     public static SurahNameItemViewHolder newInstance(View parent) {
 
-        Global.setTypefaceTrans(Typefaces.get(parent.getContext(),Global.selectedEngFontName));
+        Global.setTypefaceTrans(Typefaces.get(parent.getContext(), Global.selectedEngFontName));
         TextView txtSurahName = (TextView) parent.findViewById(R.id.txtSurahName);
-
 
         return new SurahNameItemViewHolder(parent,txtSurahName);
     }
 
-    public void setItemText(SurahName surahName) {
+    public void setItemText(SurahName surahName,Map<String,String> bookMarkStoreSurah) {
         int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
         int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
         int brown_500=context.getResources().getColor(R.color.brown_500);
@@ -65,10 +72,34 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
         txtAyahNo.setTextSize(15);
         txtAyahNo.setTextColor(brown_500);
 
+        checkBookmark(surahName);
 
+    }
 
+    public void checkBookmark(SurahName surahName){
+        if (Global.bookmarkedStore != null) {
+            Set<String> bookmarkSet = null;
 
+            bookmarkSet = Global.bookmarkedStore.getStringSet("bookmarkSet", null);
+            if(bookmarkSet != null){
+                if (bookmarkSet.contains(surahName.getSurahNo())) {
+                    imgBookMark.setImageDrawable(context.getResources().getDrawable(R.drawable.bookmark_50));
+                } else {
+                    imgBookMark.setImageDrawable(context.getResources().getDrawable(R.drawable.bookmark_empty_50));
+                }
+            }else{
 
+                SharedPreferences.Editor editor = Global.bookmarkedStore.edit();
+                bookmarkSet=new HashSet<>();
+                editor.putStringSet("bookmarkSet", bookmarkSet);
+                editor.commit();
+                checkBookmark(surahName);
+            }
+
+        }else{
+            Global.bookmarkedStore=context.getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
+            checkBookmark(surahName);
+        }
     }
 
     @Override

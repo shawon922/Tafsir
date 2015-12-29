@@ -1,8 +1,15 @@
 package com.jolpai.tafsir.model;
 
+import android.app.Application;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Tanim reja on 8/7/2015.
@@ -18,7 +25,11 @@ public class Global {
     public static String selectedTransFontName="SolaimanLipi";
     public static String selectedEngFontName="trado";
     public static int arabicFontSize =30;
+    public static Map<String,View> itemHeaderViewMap=new Hashtable<>();
+    public static boolean isPopupOpen=false;
 
+    public static SharedPreferences bookmarkedStore;
+    public static SharedPreferences bookMarkedStoreSurah;
 
     public static Typeface getTypefaceArabic() {
         return typefaceArabic;

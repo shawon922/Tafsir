@@ -8,6 +8,16 @@ public class VerseArabic extends Verse {
     private String  verse,
             surahNo,
             verseId;
+    private boolean isBookmarked;
+
+    public boolean isBookmarked() {
+        return isBookmarked;
+    }
+
+    public void setIsBookmarked(boolean isBookmarked) {
+        this.isBookmarked = isBookmarked;
+    }
+
 
     public String getVerse() {
         return verse;

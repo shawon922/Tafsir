@@ -1,7 +1,9 @@
 package com.jolpai.tafsir.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,18 +14,19 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.custom.listener.HidingScrollListener;
 import com.jolpai.tafsir.adapter.SurahNameAdapter;
-import com.jolpai.tafsir.adapter.SurahNameItemViewHolder;
+import com.jolpai.tafsir.adapter.holder.SurahNameItemViewHolder;
 import com.jolpai.tafsir.utility.Typefaces;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.model.Global;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Random;
 
 public class SurahName extends AppCompatActivity implements View.OnClickListener {
@@ -31,17 +34,26 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     private Toolbar mToolbar;
     private ImageView settingImageView;
     MediaPlayer mediaPlayer = new MediaPlayer();
+    private RecyclerView recycler;
+    Hashtable<String,Parcelable> hashtable=new Hashtable<>();
+    Map<String, String> bookMarkStoreSurah;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.surah_name);
         Global.setTypefaceArabic(Typefaces.get(SurahName.this, Global.selectedEngFontName));
+        bookMarkStoreSurah=new Hashtable<>();
+        Global.bookmarkedStore=getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
+        Global.bookMarkedStoreSurah=getSharedPreferences("bookMarkedStoreSurah", Context.MODE_PRIVATE);
 
-        DatabaseManager dbm = new DatabaseManager(SurahName.this);
+        new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans
 
-
-
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // The activity is about to become visible.
     }
 
     @Override
@@ -49,6 +61,34 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         super.onResume();
         initToolbar();
         initRecyclerView();
+
+
+
+        if (hashtable.get("recyclerLastPosition") != null) {
+            recycler.getLayoutManager().onRestoreInstanceState(hashtable.get("recyclerLastPosition"));
+        }
+
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        RecyclerView.LayoutManager layoutManager= recycler.getLayoutManager();
+        hashtable.put("recyclerLastPosition", layoutManager.onSaveInstanceState());
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // The activity is no longer visible (it is now "stopped")
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // The activity is about to be destroyed.
 
     }
 
@@ -70,15 +110,15 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     }
 
     private void initRecyclerView() {
-        final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        SurahNameAdapter recyclerAdapter = new SurahNameAdapter();
-        recyclerView.setAdapter(recyclerAdapter);
+        recycler = (RecyclerView)findViewById(R.id.recyclerView);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        SurahNameAdapter adapter = new SurahNameAdapter(SurahName.this,bookMarkStoreSurah);
+        recycler.setAdapter(adapter);
         //setting up our OnScrollListener
-        recyclerView.setOnScrollListener(new HidingScrollListener() {
+        recycler.setOnScrollListener(new HidingScrollListener() {
             @Override
             public void onHide() {
-                hideViews(recyclerView);
+                hideViews(recycler);
             }
 
             @Override
@@ -87,10 +127,10 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
             }
         });
 
-        recyclerView.setOnClickListener(new View.OnClickListener() {
+        recycler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SurahNameItemViewHolder ss = (SurahNameItemViewHolder) recyclerView.getChildViewHolder(v);
+                SurahNameItemViewHolder ss = (SurahNameItemViewHolder) recycler.getChildViewHolder(v);
 
             }
         });
