@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.jolpai.tafsir.R;
@@ -59,6 +60,7 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
         getDataFromPref();
         initToolbar();
         initStickyRecycler();
+
 
     }
 
