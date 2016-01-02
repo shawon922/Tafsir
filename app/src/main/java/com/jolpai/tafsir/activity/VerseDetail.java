@@ -210,6 +210,7 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
 
 
         });
+
         final DividerDecoration divider =new DividerDecoration.Builder(this)
                 .setHeight(R.dimen.default_divider_height_zero)
                 .setPadding(R.dimen.default_divider_padding_zero)

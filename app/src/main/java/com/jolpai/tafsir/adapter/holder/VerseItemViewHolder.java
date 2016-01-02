@@ -74,12 +74,21 @@ public class VerseItemViewHolder extends RecyclerView.ViewHolder {
                 + "\\u3000" // IDEOGRAPHIC SPACE
                 ;
 
-        String arabic="?????? ???????? ?????? ??????????? ???????? ?????????? ? ???????? ????????????? ????????? ? ???????? ??????? ??????? ";
-        String english="My Name 23 4 #s Tanim #2 Reja. 423432 .Thank #3 you";
+        String regix=null;
+
+        String arabic="خَتَمَ اللَّـهُ عَلَىٰ قُلُوبِهِمْ وَعَلَىٰ سَمْعِهِمْ ۖ وَعَلَىٰ أَبْصَارِهِمْ غِشَاوَةٌ ۖ وَلَهُمْ عَذَابٌ عَظِيمٌ ";
+        String english="My Name 23 4 #s Tanim #2 Reja. 423432 .Thank #3 you";//"[+خ ۖ#|]"
+        try {
+            byte[] utf8Bytes = "[ۖ ۗ ۚ ۙ ۘ]".getBytes("UTF-8");
+            regix= new String(utf8Bytes,"UTF-8");
+        }catch(Exception e){
+
+        }
 
         SpannableString spannableString =new SpannableString(verseArabic.getVerse());
         //  Matcher matcher = Pattern.compile("([0-9_-]+)").matcher(spannableString);
-        Matcher matcher = Pattern.compile("[+? ?#|]").matcher(spannableString);
+        // Matcher matcher = Pattern.compile("[+خ ۖ#|]").matcher(spannableString);
+        Matcher matcher = Pattern.compile("["+ regix +"]").matcher(spannableString);
 
 
         while (matcher.find()){
