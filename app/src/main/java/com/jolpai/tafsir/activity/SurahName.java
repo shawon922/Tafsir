@@ -46,7 +46,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         Global.bookmarkedStore=getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
         Global.bookMarkedStoreSurah=getSharedPreferences("bookMarkedStoreSurah", Context.MODE_PRIVATE);
 
-        new DatabaseManager(SurahName.this);
+       // new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans
 
     }
@@ -151,7 +151,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
 
     protected void verseTransList(){
         ArrayList<com.jolpai.tafsir.model.SurahName> surahNameList;
-        surahNameList=App.getContext().getDatabaseManager().getSurahName("en");
+        surahNameList=Global.db.getSurahName("en");
         Global.setSurahNameList(surahNameList);
     }
 

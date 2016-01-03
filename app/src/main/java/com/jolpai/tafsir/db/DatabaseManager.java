@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.widget.Toast;
 
 import com.jolpai.tafsir.model.Settings;
 import com.jolpai.tafsir.model.SurahName;
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class DatabaseManager extends SQLiteOpenHelper {
 
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
     public static final SQLiteDatabase.CursorFactory FACTORY = null;
     private SQLiteDatabase db;
     private static String DB_NAME = DbProperty.DB_Name;
@@ -55,11 +56,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        Toast.makeText(context,"oncreate calling",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Toast.makeText(context,"upgrade calling",Toast.LENGTH_SHORT).show();
 
     }
 

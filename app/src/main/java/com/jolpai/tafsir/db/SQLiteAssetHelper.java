@@ -23,7 +23,7 @@ public class SQLiteAssetHelper extends SQLiteOpenHelper {
     private final Context context;
     private final String databaseName;
     private  final SQLiteDatabase.CursorFactory factory;
-    private static final String ASSET_DB_PATH = "databases";
+    private static final String ASSET_DB_PATH = "database";
 
     private SQLiteDatabase mDatabase = null;
     private boolean mIsInitializing = false;
@@ -34,7 +34,7 @@ public class SQLiteAssetHelper extends SQLiteOpenHelper {
 
     private String mUpgradePathFormat;
 
-    private int mForcedUpgradeVersion = 0;
+    private int mForcedUpgradeVersion = 4;
 
     int mNewVersion;
 
@@ -60,18 +60,8 @@ public class SQLiteAssetHelper extends SQLiteOpenHelper {
         } else {
             mDatabasePath = context.getApplicationInfo().dataDir + "/databases";
         }
+        mUpgradePathFormat=ASSET_DB_PATH+"/"+databaseName+"_upgrade_%s-%s.sql";
 
-
-    }
-
-
-    public SQLiteAssetHelper(Context context, String databaseName, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, databaseName, factory, version);
-
-        this.context = context;
-        this.databaseName = databaseName;
-        this.factory = factory;
-        this.mNewVersion = version;
 
     }
 
@@ -108,8 +98,6 @@ public class SQLiteAssetHelper extends SQLiteOpenHelper {
             mIsInitializing = false;
             if (db != null && db != mDatabase) db.close();
         }
-
-
     }
 
     @Override

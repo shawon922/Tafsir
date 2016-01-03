@@ -14,12 +14,10 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.custom.listener.HidingScrollListener;
-import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.model.*;
 import com.jolpai.tafsir.model.SurahName;
@@ -57,7 +55,7 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
         Intent intent = getIntent();
         surahName = (SurahName)intent.getSerializableExtra("surahName");
         verseTransList();//testing english trans
-        getDataFromPref();
+        getData();
         initToolbar();
         initStickyRecycler();
 
@@ -245,15 +243,15 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
         mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
     }
 
-    protected void getDataFromPref() {
+    protected void getData() {
         ArrayList<Verse> verseArabicList;
-        verseArabicList = App.getContext().getDatabaseManager().getVersesArabic(surahName.getSurahNo());
+        verseArabicList = Global.db.getVersesArabic(surahName.getSurahNo());
         Global.setVerseList(verseArabicList);
     }
 
     protected void verseTransList() {
         ArrayList<Verse> verseVerseTransList;
-        verseVerseTransList = App.getContext().getDatabaseManager().getPlainTrans(surahName.getSurahNo());
+        verseVerseTransList = Global.db.getPlainTrans(surahName.getSurahNo());
         Global.setVerseVerseTransList(verseVerseTransList);
     }
 

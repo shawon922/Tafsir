@@ -6,7 +6,7 @@ package com.jolpai.tafsir.db;
 public class DbProperty {
 
     public static final String DB_Folder ="TafsirDB";
-    public static final String DB_Name ="jolpai.sqlite";
+    public static final String DB_Name = "database/jolpai.sqlite";
 
     public static final String Tbl_SurahName ="SurahName";
     public static final String Tbl_Settings="Settings";

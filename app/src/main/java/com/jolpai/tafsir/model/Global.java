@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.jolpai.tafsir.db.MyDB;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
@@ -18,6 +20,7 @@ public class Global {
     private static ArrayList<Verse> VERSE_LIST ;
     private static ArrayList<Verse> verseVerseTransList;
     private static ArrayList<SurahName> SURAH_NAME_LIST;
+    public  static MyDB db;
 
     private static Typeface typefaceArabic ;
     private static Typeface typefaceTrans ;
