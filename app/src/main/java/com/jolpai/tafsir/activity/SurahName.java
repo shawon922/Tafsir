@@ -19,10 +19,8 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.custom.listener.HidingScrollListener;
 import com.jolpai.tafsir.adapter.SurahNameAdapter;
 import com.jolpai.tafsir.adapter.holder.SurahNameItemViewHolder;
-import com.jolpai.tafsir.utility.Typefaces;
-import com.jolpai.tafsir.db.App;
-import com.jolpai.tafsir.db.DatabaseManager;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.utility.Fontface;
+import com.jolpai.tafsir.model.GLOBAL;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -41,10 +39,10 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.surah_name);
-        Global.setTypefaceArabic(Typefaces.get(SurahName.this, Global.selectedEngFontName));
+        GLOBAL.setTypefaceArabic(Fontface.get(SurahName.this, GLOBAL.selectedEngFontName));
         bookMarkStoreSurah=new Hashtable<>();
-        Global.bookmarkedStore=getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
-        Global.bookMarkedStoreSurah=getSharedPreferences("bookMarkedStoreSurah", Context.MODE_PRIVATE);
+        GLOBAL.bookmarkedStore=getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
+        GLOBAL.bookMarkedStoreSurah=getSharedPreferences("bookMarkedStoreSurah", Context.MODE_PRIVATE);
 
        // new DatabaseManager(SurahName.this);
         verseTransList();//testing english trans
@@ -99,7 +97,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         settingImageView = (ImageView)findViewById(R.id.settingsImage);
         settingImageView.setOnClickListener(this);
         tv.setText("TAFSIR");
-        tv.setTypeface(Global.getTypefaceArabic());
+        tv.setTypeface(GLOBAL.getTypefaceArabic());
         tv.setTextSize(25);
         tv.setTextColor(getResources().getColor(R.color.white));
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
@@ -151,8 +149,8 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
 
     protected void verseTransList(){
         ArrayList<com.jolpai.tafsir.model.SurahName> surahNameList;
-        surahNameList=Global.db.getSurahName("en");
-        Global.setSurahNameList(surahNameList);
+        surahNameList= GLOBAL.db.getSurahName("en");
+        GLOBAL.setSurahNameList(surahNameList);
     }
 
 
@@ -162,7 +160,7 @@ public class SurahName extends AppCompatActivity implements View.OnClickListener
         if (id == settingImageView.getId()) {
 
             //new ShowDialog(this).settingsDialogFromBotton();
-            Intent intent = new Intent(SurahName.this,MySettings.class);
+            Intent intent = new Intent(SurahName.this,MSettings.class);
             startActivity(intent);
         }
     }

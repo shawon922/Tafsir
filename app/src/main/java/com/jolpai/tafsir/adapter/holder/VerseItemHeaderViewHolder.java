@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.GLOBAL;
 import com.jolpai.tafsir.model.VerseArabic;
 
 /**
@@ -37,8 +37,8 @@ public class VerseItemHeaderViewHolder extends RecyclerView.ViewHolder  {
 
         header.setText(verseArabic.getVerseId());
 
-        if (Global.bookmarkedStore != null) {
-            String id = Global.bookmarkedStore.getString(verseArabic.getSurahNo() + ":" + verseArabic.getVerseId(), "");
+        if (GLOBAL.bookmarkedStore != null) {
+            String id = GLOBAL.bookmarkedStore.getString(verseArabic.getSurahNo() + ":" + verseArabic.getVerseId(), "");
 
             if (id.equalsIgnoreCase(verseArabic.getVerseId())) {
                 Toast.makeText(context, "Yellow :" + id, Toast.LENGTH_SHORT).show();

@@ -2,6 +2,7 @@ package com.jolpai.tafsir.adapter.holder;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -11,12 +12,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.AppSettings;
+import com.jolpai.tafsir.model.GLOBAL;
 import com.jolpai.tafsir.model.VerseArabic;
 import com.jolpai.tafsir.model.VerseTrans;
+import com.jolpai.tafsir.utility.Utility;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,7 +32,10 @@ public class VerseItemViewHolder extends RecyclerView.ViewHolder {
     private TextView textArabic;
     private TextView textTrans;
     private final View card;
-    public VerseItemViewHolder(View item, Context context) {
+    private Typeface arabicFont,
+            secondaryFont;
+    private AppSettings appSettings;
+    public VerseItemViewHolder(View item, Context context, AppSettings appSettings) {
         super(item);
         LinearLayout ll=(LinearLayout)item;
 
@@ -38,10 +43,12 @@ public class VerseItemViewHolder extends RecyclerView.ViewHolder {
         textArabic =(TextView)ll.findViewById(R.id.textArabic);
         textTrans=(TextView)ll.findViewById(R.id.textTrans);
         card=item;
+        this.appSettings=appSettings;
+        //this.appSettings= Utility.getAppSettings(context);
     }
-    public static VerseItemViewHolder newInstance(View item,Context context) {
+    public static VerseItemViewHolder newInstance(View item,Context context,AppSettings appSettings) {
 
-        return new VerseItemViewHolder(item,context);
+        return new VerseItemViewHolder(item,context,appSettings);
     }
     public void setItemText(VerseArabic verseArabic,VerseTrans verseTrans){
 
@@ -109,15 +116,10 @@ public class VerseItemViewHolder extends RecyclerView.ViewHolder {
                     ds.setColor(Color.RED);
                     // ds.setTextSize(30);
                     ds.setUnderlineText(false);
-                   // ds.setSubpixelText(true);
 
                 }
             };
             spannableString.setSpan(clickableSpan, matcher.start(), matcher.end(), Spanned.SPAN_MARK_POINT);
-
-
-
-            //spannableString.setSpan(span1,new ForegroundColorSpan(Color.parseColor("#F44336")), matcher.start(), matcher.end(), 0);
 
         }
 
@@ -126,21 +128,20 @@ public class VerseItemViewHolder extends RecyclerView.ViewHolder {
 
        // textArabic.setText(verseArabic.getVerse());
         textArabic.setText(spannableString);
-        textArabic.setTypeface(Global.getTypefaceArabic());
-        textArabic.setTextSize(Global.arabicFontSize);
+        textArabic.setTypeface(appSettings.getArabicFont());
+        textArabic.setTextSize(appSettings.getArabicFontSize());
         textArabic.setTextColor(Color.DKGRAY);
 
         textTrans.setText(verseTrans.getVerse());
-        textTrans.setTypeface(Global.getTypefaceTrans());
-        textTrans.setTextSize(17);
+        textTrans.setTypeface(appSettings.getSecondaryFont());
+        textTrans.setTextSize(appSettings.getSecondaryFontSize());
         textTrans.setTextColor(Color.DKGRAY);
         card.setTag(verseArabic);
-
-        /*if (Global.bookmarkedStore != null) {
-            String id = Global.bookmarkedStore.getString(verseArabic.getSurahNo() + ":" + verseArabic.getVerseId(), "");
-            if(id.equalsIgnoreCase(verseArabic.getVerseId())){
-                textArabic.setTextColor(context.getResources().getColor(R.color.amber_500));
-            }
+        /*if(appSettings.getTranslation()){
+            textTrans.setVisibility(View.GONE);
+        }else{
+            textTrans.setVisibility(View.VISIBLE);
         }*/
+
     }
 }

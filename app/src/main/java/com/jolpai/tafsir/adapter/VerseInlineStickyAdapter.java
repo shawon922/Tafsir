@@ -2,6 +2,7 @@ package com.jolpai.tafsir.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -19,10 +20,12 @@ import com.jolpai.tafsir.adapter.holder.VerseItemHeaderViewHolder;
 import com.jolpai.tafsir.adapter.holder.VerseItemViewHolder;
 import com.jolpai.tafsir.adapter.sticky.StickyHeaderAdapter;
 import com.jolpai.tafsir.adapter.holder.SurahHeaderHolder;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.GLOBAL;
+import com.jolpai.tafsir.model.AppSettings;
 import com.jolpai.tafsir.model.Verse;
 import com.jolpai.tafsir.model.VerseArabic;
 import com.jolpai.tafsir.model.VerseTrans;
+import com.jolpai.tafsir.utility.Utility;
 
 
 import java.util.List;
@@ -30,7 +33,7 @@ import java.util.List;
 /**
  * Created by Tanim reja on 12/15/2015.//InlineStickyTestAdapter.ItemHolder
  */
-public class InlineStickyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class VerseInlineStickyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                                      implements StickyHeaderAdapter<VerseItemHeaderViewHolder> {
 
 
@@ -41,17 +44,20 @@ public class InlineStickyAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int TYPE_HEADER = 2;
     private static final int TYPE_ITEM = 1;
     private Toolbar mToolbar;
+    private AppSettings appSettings;
 
 
-    public InlineStickyAdapter(Context context,
-                               List<Verse> verseArabicList,
-                               List<Verse> verseTransList,
-                               Toolbar mToolbar){
+    public VerseInlineStickyAdapter(Context context,
+                                    List<Verse> verseArabicList,
+                                    List<Verse> verseTransList,
+                                    Toolbar mToolbar){
         this.context=context;
         this.verseArabicList=verseArabicList;
         this.verseTransList=verseTransList;
         mInflater = LayoutInflater.from(context);
         this.mToolbar = mToolbar;
+        this.appSettings=Utility.getAppSettings(context);
+
 
     }
     private void showViews() {
@@ -80,7 +86,7 @@ public class InlineStickyAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                     VerseArabic verseArabic = (VerseArabic) v.getTag();
 
-                    setBookMark(verseArabic,Global.bookmarkedStore,verseArabic.getSurahNo()+":"+verseArabic.getVerseId());
+                    setBookMark(verseArabic, GLOBAL.bookmarkedStore,verseArabic.getSurahNo()+":"+verseArabic.getVerseId());
                     //setBookMark(verseArabic,Global.bookMarkedStoreSurah,verseArabic.getSurahNo());
                     notifyDataSetChanged();
 
@@ -90,7 +96,7 @@ public class InlineStickyAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
             });
 
-            return VerseItemViewHolder.newInstance(view, context);
+            return VerseItemViewHolder.newInstance(view, context,appSettings);
         } else if (viewType == TYPE_HEADER) {
             final View view = LayoutInflater.from(context).inflate(R.layout.verse_header, parent, false);
             return SurahHeaderHolder.newInstance(view);
@@ -156,18 +162,18 @@ public class InlineStickyAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         @Override
                         public void onDismiss() {
                             //Toast.makeText(context,"dismissed",Toast.LENGTH_SHORT).show();
-                            Global.isPopupOpen = false;
+                            GLOBAL.isPopupOpen = false;
                         }
                     });
 
-                    if (Global.isPopupOpen) {
+                    if (GLOBAL.isPopupOpen) {
 
                         popupWindow.dismiss();
-                        Global.isPopupOpen = false;
+                        GLOBAL.isPopupOpen = false;
                     } else {
                         popupWindow.showAsDropDown(view, width, -100);
 
-                        Global.isPopupOpen = true;
+                        GLOBAL.isPopupOpen = true;
                     }
 
     }

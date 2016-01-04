@@ -22,7 +22,7 @@ import com.jolpai.tafsir.db.DatabaseManager;
 import com.jolpai.tafsir.model.*;
 import com.jolpai.tafsir.model.SurahName;
 import com.jolpai.tafsir.adapter.sticky.DividerDecoration;
-import com.jolpai.tafsir.adapter.InlineStickyAdapter;
+import com.jolpai.tafsir.adapter.VerseInlineStickyAdapter;
 import com.jolpai.tafsir.adapter.sticky.StickyHeaderDecoration;
 
 import java.util.ArrayList;
@@ -110,24 +110,24 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
         boolean hasBookmarked=false;
         for (int i = 0; i < verseNo; i++) {
             String key = surahName.getSurahNo() + ":" + i;
-            String value = Global.bookmarkedStore.getString(key, null);
+            String value = GLOBAL.bookmarkedStore.getString(key, null);
 
             if (value != null) {
                 // that means this surah has atleast one bookmarked ayah so record it in bookmarkSet.
                 hasBookmarked=true;
-                bookmarkSet = Global.bookmarkedStore.getStringSet("bookmarkSet", null);
+                bookmarkSet = GLOBAL.bookmarkedStore.getStringSet("bookmarkSet", null);
                 if (bookmarkSet != null) {
                     if (!bookmarkSet.contains(surahName.getSurahNo())) {
                         bookmarkSet.add(surahName.getSurahNo());
 
-                        SharedPreferences.Editor editor = Global.bookmarkedStore.edit();
+                        SharedPreferences.Editor editor = GLOBAL.bookmarkedStore.edit();
                         editor.putStringSet("bookmarkSet", bookmarkSet);
                         editor.commit();
                     }
                     break;
                 }else {
                     bookmarkSet=new HashSet<>();
-                    SharedPreferences.Editor editor = Global.bookmarkedStore.edit();
+                    SharedPreferences.Editor editor = GLOBAL.bookmarkedStore.edit();
                     editor.putStringSet("bookmarkSet", bookmarkSet);
                     editor.commit();
                      /*
@@ -142,18 +142,18 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
             /*  that means this surah has not any bookmarked ayah so remove data from bookmarkSet if it contains
                 any previous bookmarked data about this surahName.
             */
-            bookmarkSet = Global.bookmarkedStore.getStringSet("bookmarkSet", null);
+            bookmarkSet = GLOBAL.bookmarkedStore.getStringSet("bookmarkSet", null);
             if (bookmarkSet != null) {
                 if (bookmarkSet.contains(surahName.getSurahNo())) {
                     bookmarkSet.remove(surahName.getSurahNo());
 
-                    SharedPreferences.Editor editor = Global.bookmarkedStore.edit();
+                    SharedPreferences.Editor editor = GLOBAL.bookmarkedStore.edit();
                     editor.putStringSet("bookmarkSet", bookmarkSet);
                     editor.commit();
                 }
             }else {
                 bookmarkSet=new HashSet<>();
-                SharedPreferences.Editor editor = Global.bookmarkedStore.edit();
+                SharedPreferences.Editor editor = GLOBAL.bookmarkedStore.edit();
                 editor.putStringSet("bookmarkSet", bookmarkSet);
                 editor.commit();
                 /*
@@ -174,7 +174,7 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
         settingImageView.setOnClickListener(this);
         txtToolbar.setText(surahName.getSurahName());
         txtToolbar.setTextColor(Color.WHITE);
-        txtToolbar.setTypeface(Global.getTypefaceArabic());
+        txtToolbar.setTypeface(GLOBAL.getTypefaceArabic());
         txtToolbar.setTextSize(25);
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
@@ -190,9 +190,9 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
         recycler = (RecyclerView) findViewById(R.id.recyclerView);
         recycler.setLayoutManager(new LinearLayoutManager(this));
 
-        final InlineStickyAdapter adapter = new InlineStickyAdapter(this,
-                Global.getVerseList(),
-                Global.getVerseVerseTransList(),
+        final VerseInlineStickyAdapter adapter = new VerseInlineStickyAdapter(this,
+                GLOBAL.getVerseList(),
+                GLOBAL.getVerseVerseTransList(),
                 mToolbar);
 
         headerDecoration = new StickyHeaderDecoration(adapter, true);
@@ -245,21 +245,21 @@ public class VerseDetail extends AppCompatActivity implements View.OnClickListen
 
     protected void getData() {
         ArrayList<Verse> verseArabicList;
-        verseArabicList = Global.db.getVersesArabic(surahName.getSurahNo());
-        Global.setVerseList(verseArabicList);
+        verseArabicList = GLOBAL.db.getVersesArabic(surahName.getSurahNo());
+        GLOBAL.setVerseList(verseArabicList);
     }
 
     protected void verseTransList() {
         ArrayList<Verse> verseVerseTransList;
-        verseVerseTransList = Global.db.getPlainTrans(surahName.getSurahNo());
-        Global.setVerseVerseTransList(verseVerseTransList);
+        verseVerseTransList = GLOBAL.db.getPlainTrans(surahName.getSurahNo());
+        GLOBAL.setVerseVerseTransList(verseVerseTransList);
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == settingImageView.getId()) {
-            Intent intent = new Intent(VerseDetail.this,MySettings.class);
+            Intent intent = new Intent(VerseDetail.this,MSettings.class);
             startActivity(intent);
         }
     }

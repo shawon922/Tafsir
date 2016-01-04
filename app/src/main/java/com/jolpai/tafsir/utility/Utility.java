@@ -1,4 +1,4 @@
-package com.jolpai.tafsir.communication;
+package com.jolpai.tafsir.utility;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -6,11 +6,12 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
@@ -22,8 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
-import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.custom.view.MyToast;
+import com.jolpai.tafsir.model.AppSettings;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
@@ -409,6 +409,54 @@ public class Utility {
 		Method dataMtd = ConnectivityManager.class.getDeclaredMethod("setMobileDataEnabled", boolean.class);
 		dataMtd.setAccessible(true);
 		dataMtd.invoke(dataManager, false);
+	}
+
+	public static Typeface getFont(Context context,String fontName){
+		Typeface typeface=null;
+		SharedPreferences settings = context.getSharedPreferences("Settings",Context.MODE_PRIVATE);
+		String mFont =settings.getString(fontName, null);
+		if(mFont !=null){
+			typeface= Fontface.get(context, mFont);
+		}
+		return typeface;
+	}
+
+	public static AppSettings getAppSettings(Context context){
+		AppSettings appSettings=new AppSettings();
+		SharedPreferences sharedSettings = context.getSharedPreferences("MySettings",Context.MODE_PRIVATE);
+		if(sharedSettings != null){
+
+			String arabicFont =sharedSettings.getString("arabicFont", null);
+			String arabicFontSize=sharedSettings.getString("arabicFontSize", null);
+			Boolean translation=sharedSettings.getBoolean("translation", false);
+			String secondaryLang=sharedSettings.getString("secondaryLang", null);
+			String secondaryFont=sharedSettings.getString("secondaryFont", null);
+			String translator=sharedSettings.getString("translator", null);
+			String secondaryFontSize=sharedSettings.getString("secondaryFontSize", null);
+
+			if( arabicFont != null){
+				appSettings.setArabicFont(Fontface.get(context, arabicFont));
+			}
+			if( arabicFont != null){
+				appSettings.setSecondaryFont(Fontface.get(context, secondaryFont));
+			}
+			if( arabicFont != null){
+				appSettings.setArabicFontSize(Integer.parseInt(arabicFontSize));
+			}
+			if( arabicFont != null){
+				appSettings.setSecondaryFontSize(Integer.parseInt(secondaryFontSize));
+			}
+			if( arabicFont != null){
+				appSettings.setSecondaryLang(secondaryLang);
+			}
+			if( arabicFont != null){
+				appSettings.setTranslator(translator);
+			}if( arabicFont != null){
+				appSettings.setTranslation(translation);
+			}
+		}
+
+		return appSettings;
 	}
 	 
 }

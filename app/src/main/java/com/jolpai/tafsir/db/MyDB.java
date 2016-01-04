@@ -5,7 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 
+import com.jolpai.tafsir.model.AppSettings;
 import com.jolpai.tafsir.model.SurahName;
+import com.jolpai.tafsir.model.Tafsir;
+import com.jolpai.tafsir.model.Translation;
 import com.jolpai.tafsir.model.Verse;
 import com.jolpai.tafsir.model.VerseArabic;
 import com.jolpai.tafsir.model.VerseTrans;
@@ -122,5 +125,68 @@ public class MyDB extends SQLiteAssetHelper {
 
         return verseTransList;
     }
+
+    public ArrayList<Tafsir> getTafsirNameList(){
+        ArrayList<Tafsir> list = new ArrayList<>();
+
+        Tafsir tafsir = new Tafsir();
+        tafsir.setName("Ibn Kathir");
+        list.add(tafsir);
+
+        Tafsir tafsir1 = new Tafsir();
+        tafsir1.setName("Fee Zilalil Quran");
+        list.add(tafsir1);
+
+        Tafsir tafsir2 = new Tafsir();
+        tafsir2.setName("Ma'reful Quran");
+        list.add(tafsir2);
+
+        return list;
+
+    }
+
+    public ArrayList<String> getArabicFontList(){
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Select please");
+        list.add("me_quran_volt_newmet");
+        list.add("trado");
+        list.add("_PDMS_Saleem_QuranFont");
+        list.add("noorehira");
+        return list;
+    }
+
+    public ArrayList<String> getSecondaryFontList(){
+        ArrayList<String> list = new ArrayList();
+        list.add("Select please");
+        list.add("SolaimanLipi");
+        list.add("SolaimanLipi");
+        list.add("SolaimanLipi");
+        return list;
+    }
+
+    public ArrayList<String> getTranslatorList(){
+        ArrayList<String> list = new ArrayList();
+        list.add("Select please");
+        list.add("A");
+        list.add("B");
+        list.add("C");
+        list.add("D");
+
+        return list;
+    }
+
+    public ArrayList<String> getSecondaryLangList(){
+        ArrayList<String> list = new ArrayList();
+        list.add("Select please");
+        list.add("Bangla");
+        list.add("English");
+        list.add("Hindi");
+        list.add("Mandarin");
+
+        return list;
+    }
+
+
+
 
 }

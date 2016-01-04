@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
-import com.jolpai.tafsir.utility.Typefaces;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.utility.Fontface;
+import com.jolpai.tafsir.model.GLOBAL;
 import com.jolpai.tafsir.model.SurahName;
 
 import java.util.HashSet;
@@ -39,12 +39,12 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
         this.txtAyahNo=(TextView)parent.findViewById(R.id.txtAyahNo);
         this.imgBookMark=(ImageView)parent.findViewById(R.id.imgBookmark);
         context=parent.getContext();
-        Global.bookmarkedStore=context.getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
+        GLOBAL.bookmarkedStore=context.getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
     }
 
     public static SurahNameItemViewHolder newInstance(View parent) {
 
-        Global.setTypefaceTrans(Typefaces.get(parent.getContext(), Global.selectedEngFontName));
+        GLOBAL.setTypefaceTrans(Fontface.get(parent.getContext(), GLOBAL.selectedEngFontName));
         TextView txtSurahName = (TextView) parent.findViewById(R.id.txtSurahName);
 
         return new SurahNameItemViewHolder(parent,txtSurahName);
@@ -58,17 +58,17 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
         card.setTag(surahName);
 
         txtSurahNo.setText(surahName.getSurahNo());
-        txtSurahNo.setTypeface(Global.getTypefaceTrans());
+        txtSurahNo.setTypeface(GLOBAL.getTypefaceTrans());
         txtSurahNo.setTextSize(20);
         txtSurahNo.setTextColor(Color.DKGRAY);
 
         txtSurahName.setText(surahName.getSurahName());
-        txtSurahName.setTypeface(Global.getTypefaceTrans());
+        txtSurahName.setTypeface(GLOBAL.getTypefaceTrans());
         txtSurahName.setTextSize(23);
         txtSurahName.setTextColor(randomAndroidColor);
 
         txtAyahNo.setText(surahName.getVerseNo());
-        txtAyahNo.setTypeface(Global.getTypefaceTrans());
+        txtAyahNo.setTypeface(GLOBAL.getTypefaceTrans());
         txtAyahNo.setTextSize(15);
         txtAyahNo.setTextColor(brown_500);
 
@@ -77,10 +77,10 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
     }
 
     public void checkBookmark(SurahName surahName){
-        if (Global.bookmarkedStore != null) {
+        if (GLOBAL.bookmarkedStore != null) {
             Set<String> bookmarkSet = null;
 
-            bookmarkSet = Global.bookmarkedStore.getStringSet("bookmarkSet", null);
+            bookmarkSet = GLOBAL.bookmarkedStore.getStringSet("bookmarkSet", null);
             if(bookmarkSet != null){
                 if (bookmarkSet.contains(surahName.getSurahNo())) {
                     imgBookMark.setImageDrawable(context.getResources().getDrawable(R.drawable.bookmark_50));
@@ -89,7 +89,7 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
                 }
             }else{
 
-                SharedPreferences.Editor editor = Global.bookmarkedStore.edit();
+                SharedPreferences.Editor editor = GLOBAL.bookmarkedStore.edit();
                 bookmarkSet=new HashSet<>();
                 editor.putStringSet("bookmarkSet", bookmarkSet);
                 editor.commit();
@@ -97,7 +97,7 @@ public class SurahNameItemViewHolder extends RecyclerView.ViewHolder implements 
             }
 
         }else{
-            Global.bookmarkedStore=context.getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
+            GLOBAL.bookmarkedStore=context.getSharedPreferences("bookmarkedStore", Context.MODE_PRIVATE);
             checkBookmark(surahName);
         }
     }

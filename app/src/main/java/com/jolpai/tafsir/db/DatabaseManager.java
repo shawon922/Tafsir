@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.jolpai.tafsir.model.Settings;
+import com.jolpai.tafsir.model.AppSettings;
 import com.jolpai.tafsir.model.SurahName;
 import com.jolpai.tafsir.model.Tafsir;
 import com.jolpai.tafsir.model.Translation;
@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Tanim reja on 7/28/2015.
@@ -264,36 +263,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Settings> getFont(String langType){
-        ArrayList<Settings> list = new ArrayList<>();
 
-        String sql="select * from Font where lang='" + langType + "'" ;
-        Cursor cursor = db.rawQuery(sql, null);
-        Settings settings=null;
-
-        if(cursor.moveToFirst()){
-            do{
-                settings=new Settings();
-                settings.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
-                settings.setName(cursor.getString(cursor.getColumnIndex("name")));
-                settings.setLang(cursor.getString(cursor.getColumnIndex("lang")));
-
-
-                list.add(settings);
-            }while(cursor.moveToNext());
-
-        }
-        cursor.close();
-        if(settings.equals(null)) {
-            settings=new Settings();
-            settings.setId(0);
-            settings.setName("Choose Arabic Font");
-        }else{
-            settings.setId(0);
-            settings.setName("Choose Arabic Font");
-        }
-
-        return list;
-    }
 
 }

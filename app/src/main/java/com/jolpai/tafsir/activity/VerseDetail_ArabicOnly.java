@@ -18,7 +18,7 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.custom.view.R2L;
 import com.jolpai.tafsir.db.App;
 import com.jolpai.tafsir.db.DatabaseManager;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.GLOBAL;
 import com.jolpai.tafsir.model.Verse;
 import com.jolpai.tafsir.model.VerseArabic;
 
@@ -63,7 +63,7 @@ public class VerseDetail_ArabicOnly extends AppCompatActivity implements View.On
     }
 
     public void setRawData(){
-        List<Verse> itemList= Global.getVerseList();
+        List<Verse> itemList= GLOBAL.getVerseList();
         mCustomR2L.removeAllViews();
         for(int k=0;k<itemList.size();k++){
             VerseArabic verseArabic = (VerseArabic) itemList.get(k);
@@ -73,8 +73,8 @@ public class VerseDetail_ArabicOnly extends AppCompatActivity implements View.On
             TextView tv;
             tv = (TextView)normalView.findViewById(R.id.textView);
             tv.setText(verseArabic.getVerse());
-            tv.setTypeface(Global.getTypefaceArabic());
-            tv.setTextSize(Global.arabicFontSize);
+            tv.setTypeface(GLOBAL.getTypefaceArabic());
+            tv.setTextSize(GLOBAL.arabicFontSize);
             tv.setTextColor(Color.DKGRAY);
             /*for (int i=0; i<arrayWhitespace.length; i++) {
                // View normalView =View.inflate(context, R.layout.normal_view, null);
@@ -102,7 +102,7 @@ public class VerseDetail_ArabicOnly extends AppCompatActivity implements View.On
     }
     public void setHtml(){
 
-        List<Verse> itemList= Global.getVerseList();
+        List<Verse> itemList= GLOBAL.getVerseList();
 
         String html="";
 
@@ -184,13 +184,13 @@ public class VerseDetail_ArabicOnly extends AppCompatActivity implements View.On
     protected void getDataFromPref() {
         ArrayList<com.jolpai.tafsir.model.Verse> verseArabicList;
         verseArabicList = App.getContext().getDatabaseManager().getVersesArabic(surahNo);
-        Global.setVerseList(verseArabicList);
+        GLOBAL.setVerseList(verseArabicList);
     }
 
     protected void verseTransList() {
         ArrayList<com.jolpai.tafsir.model.Verse> verseVerseTransList;
         verseVerseTransList = App.getContext().getDatabaseManager().getPlainTrans(surahNo);
-        Global.setVerseVerseTransList(verseVerseTransList);
+        GLOBAL.setVerseVerseTransList(verseVerseTransList);
     }
 
 
@@ -201,7 +201,7 @@ public class VerseDetail_ArabicOnly extends AppCompatActivity implements View.On
 
            // new ShowDialog(this).settingsDialogFromBotton();
             //new dialog().settingsDialogFromBotton();
-            Intent intent = new Intent(VerseDetail_ArabicOnly.this,MySettings.class);
+            Intent intent = new Intent(VerseDetail_ArabicOnly.this,MSettings.class);
             startActivity(intent);
         }
     }

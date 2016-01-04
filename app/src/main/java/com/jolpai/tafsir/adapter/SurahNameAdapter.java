@@ -11,7 +11,7 @@ import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
 import com.jolpai.tafsir.adapter.holder.SurahNameScreenHeaderViewHolder;
 import com.jolpai.tafsir.adapter.holder.SurahNameItemViewHolder;
-import com.jolpai.tafsir.model.Global;
+import com.jolpai.tafsir.model.GLOBAL;
 import com.jolpai.tafsir.model.SurahName;
 
 import java.util.ArrayList;
@@ -33,8 +33,8 @@ public class SurahNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public SurahNameAdapter(Context context,Map<String,String> mapBookMarkStoreSurah) {
         this.context=context;
         this.bookMarkStoreSurah=mapBookMarkStoreSurah;
-        mItemList = Global.getSurahNameList();
-        mVerseTransList = Global.getVerseVerseTransList();
+        mItemList = GLOBAL.getSurahNameList();
+        mVerseTransList = GLOBAL.getVerseVerseTransList();
 
 
     }

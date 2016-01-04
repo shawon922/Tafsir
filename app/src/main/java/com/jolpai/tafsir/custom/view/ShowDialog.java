@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.activity.VerseDetail;
-import com.jolpai.tafsir.model.Global;
-import com.jolpai.tafsir.model.Settings;
+import com.jolpai.tafsir.model.GLOBAL;
+import com.jolpai.tafsir.model.AppSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +72,7 @@ public class ShowDialog implements View.OnClickListener{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
                     Toast.makeText(context, spnrFont.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                    Global.selectedArabicFontName = spnrFont.getSelectedItem().toString();
+                    GLOBAL.selectedArabicFontName = spnrFont.getSelectedItem().toString();
                 }
             }
             @Override
@@ -91,8 +91,8 @@ public class ShowDialog implements View.OnClickListener{
                         sharedPreferences = context.getSharedPreferences("mySharedPreference", Context.MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        Settings mySettings = new Settings();
-                        mySettings.setArabicFontSize(Global.arabicFontSize);
+                        AppSettings mySettings = new AppSettings();
+                        mySettings.setArabicFontSize(GLOBAL.arabicFontSize);
                        // editor.p
                       //  editor.putString("mySettings",mySettings);
                         editor.commit();
@@ -112,15 +112,15 @@ public class ShowDialog implements View.OnClickListener{
     }
 
    public void increaseFontSize(){
-        Global.arabicFontSize +=1;
-        txtFontArabicSize.setText(String.valueOf(Global.arabicFontSize));
-        txtSampleArabic.setTextSize(Global.arabicFontSize);
+        GLOBAL.arabicFontSize +=1;
+        txtFontArabicSize.setText(String.valueOf(GLOBAL.arabicFontSize));
+        txtSampleArabic.setTextSize(GLOBAL.arabicFontSize);
     }
 
     public void decreaseFontSize(){
-        Global.arabicFontSize -=1;
-        txtFontArabicSize.setText(String.valueOf(Global.arabicFontSize));
-        txtSampleArabic.setTextSize(Global.arabicFontSize);
+        GLOBAL.arabicFontSize -=1;
+        txtFontArabicSize.setText(String.valueOf(GLOBAL.arabicFontSize));
+        txtSampleArabic.setTextSize(GLOBAL.arabicFontSize);
     }
 
 

@@ -1,9 +1,8 @@
 package com.jolpai.tafsir.model;
 
-import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.jolpai.tafsir.db.MyDB;
@@ -11,12 +10,12 @@ import com.jolpai.tafsir.db.MyDB;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Tanim reja on 8/7/2015.
  */
-public class Global {
+public class GLOBAL {
+    private static Context context;
     private static ArrayList<Verse> VERSE_LIST ;
     private static ArrayList<Verse> verseVerseTransList;
     private static ArrayList<SurahName> SURAH_NAME_LIST;
@@ -41,7 +40,7 @@ public class Global {
     public static void setTypefaceArabic(Typeface typefaceArabic) {
 
 
-        Global.typefaceArabic = typefaceArabic;
+        GLOBAL.typefaceArabic = typefaceArabic;
     }
 
     public static Typeface getTypefaceTrans() {
@@ -49,7 +48,7 @@ public class Global {
     }
 
     public static void setTypefaceTrans(Typeface typefaceTrans) {
-        Global.typefaceTrans = typefaceTrans;
+        GLOBAL.typefaceTrans = typefaceTrans;
     }
 
     public static ArrayList<SurahName> getSurahNameList() {
@@ -65,7 +64,7 @@ public class Global {
     }
 
     public static void setVerseVerseTransList(ArrayList<Verse> verseVerseTransList) {
-        Global.verseVerseTransList = verseVerseTransList;
+        GLOBAL.verseVerseTransList = verseVerseTransList;
     }
 
     public static ArrayList<Verse> getVerseList() {

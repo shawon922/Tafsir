@@ -1,7 +1,6 @@
 package com.jolpai.tafsir.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,9 +10,7 @@ import android.widget.TextView;
 
 import com.jolpai.tafsir.R;
 import com.jolpai.tafsir.db.MyDB;
-import com.jolpai.tafsir.model.Global;
-
-import java.util.ArrayList;
+import com.jolpai.tafsir.model.GLOBAL;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -30,7 +27,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        Global.db=MyDB.getInstance(Splash.this);
+        GLOBAL.db=MyDB.getInstance(Splash.this);
 
         mainLayout=(FrameLayout)findViewById(R.id.main_layout);
 

@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.jolpai.tafsir.custom.exception.CustomException;
 import com.jolpai.tafsir.custom.exception.ErrorCode;
+import com.jolpai.tafsir.utility.Utility;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -63,7 +64,7 @@ public class Request {
 
 	public void setContext(Context context) {
 		this.context = context;
-		this.imei=Utility.getIMEInumber(this.context);
+		this.imei= Utility.getIMEInumber(this.context);
 	}
 
 
